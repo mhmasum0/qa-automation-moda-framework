@@ -1,5 +1,6 @@
 package com.mahmud.pages;
 
+import com.mahmud.utils.ExplicitWait;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,6 +37,7 @@ public class LoginPage {
     public void inputPassword(String password){
         Allure.step("Enter Password");
         Allure.parameter("password", password);
+
         passwordField.sendKeys(password);
     }
 

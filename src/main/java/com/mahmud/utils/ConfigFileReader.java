@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigFileReader {
-    public static String getConfigProperty(String propertyName){
+    public static String getConfigPropertyValue(String propertyName){
 
         String configPath = "";
         try(InputStream inputStream = new FileInputStream(Constants.CONFIG_PATH)) {
