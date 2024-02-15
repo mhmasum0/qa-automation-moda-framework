@@ -9,5 +9,5 @@ public class Constants {
     public static final String URL = ConfigFileReader.getConfigPropertyValue("url");
     public static final String USER = ConfigFileReader.getConfigPropertyValue("username");
     public static final String PASSWORD = ConfigFileReader.getConfigPropertyValue("password");
-    public static final String WRONG_PASSWORD = ConfigFileReader.getConfigPropertyValue("wrongp_assword");
+    public static final String WRONG_PASSWORD = ConfigFileReader.getConfigPropertyValue("wrong_password");
 }

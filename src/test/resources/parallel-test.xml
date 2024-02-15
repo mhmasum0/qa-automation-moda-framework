@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="browser" value="firefox" />
+    <test verbose="2" name="TestSuite" thread-count="2" parallel="classes">
+        <classes>
+            <class name="com.moda.ValidLoginTC" />
+            <class name="com.moda.InvalidLoginTC"/>
+        </classes>
+    </test>
+</suite>
