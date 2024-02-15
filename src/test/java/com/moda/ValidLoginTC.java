@@ -1,8 +1,8 @@
-package com.mahmud;
+package com.moda;
 
-import com.mahmud.basetc.BaseTest;
-import com.mahmud.core.Constants;
-import com.mahmud.pages.LoginPage;
+import com.moda.basetc.BaseTest;
+import com.moda.core.Constants;
+import com.moda.pages.LoginPage;
 import org.testng.annotations.Test;
 
 public class ValidLoginTC extends BaseTest {

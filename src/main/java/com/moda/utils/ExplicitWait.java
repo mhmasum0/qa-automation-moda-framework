@@ -1,4 +1,4 @@
-package com.mahmud.utils;
+package com.moda.utils;
 
 public class ExplicitWait {
 }

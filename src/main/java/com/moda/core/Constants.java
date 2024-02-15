@@ -1,6 +1,6 @@
-package com.mahmud.core;
+package com.moda.core;
 
-import com.mahmud.utils.ConfigFileReader;
+import com.moda.utils.ConfigFileReader;
 
 import java.nio.file.Paths;
 

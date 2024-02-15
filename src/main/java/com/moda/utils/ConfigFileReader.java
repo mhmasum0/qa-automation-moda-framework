@@ -1,6 +1,6 @@
-package com.mahmud.utils;
+package com.moda.utils;
 
-import com.mahmud.core.Constants;
+import com.moda.core.Constants;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

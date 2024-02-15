@@ -1,6 +1,5 @@
-package com.mahmud.pages;
+package com.moda.pages;
 
-import com.mahmud.utils.ExplicitWait;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

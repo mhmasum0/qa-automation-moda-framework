@@ -1,4 +1,4 @@
-package com.mahmud.core;
+package com.moda.core;
 
 public class ResourceString {
     // Login Page

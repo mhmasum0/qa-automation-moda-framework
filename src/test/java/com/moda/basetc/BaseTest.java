@@ -1,8 +1,7 @@
-package com.mahmud.basetc;
+package com.moda.basetc;
 
-import com.mahmud.core.Constants;
+import com.moda.core.Constants;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

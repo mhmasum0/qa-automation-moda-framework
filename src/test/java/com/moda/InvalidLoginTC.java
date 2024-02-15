@@ -1,9 +1,9 @@
-package com.mahmud;
+package com.moda;
 
-import com.mahmud.basetc.BaseTest;
-import com.mahmud.core.Constants;
-import com.mahmud.core.ResourceString;
-import com.mahmud.pages.LoginPage;
+import com.moda.basetc.BaseTest;
+import com.moda.core.Constants;
+import com.moda.core.ResourceString;
+import com.moda.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
