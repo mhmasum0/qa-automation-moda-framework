@@ -7,12 +7,14 @@ import com.moda.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class InvalidLoginTC extends BaseTest {
     String userName = Constants.USER;
     String wrongPassword = Constants.WRONG_PASSWORD;
 
     @Test(priority = 1, description = "Invalid Credentials Test")
-    public void inValidLoginTest(){
+    public void inValidLoginTest() throws IOException {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.inputUserName(userName);

@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="AllTestsSuite">
+    <!-- Include the parallel tests suite -->
+    <suite-files>
+        <suite-file path="parallel-test.xml" />
+    </suite-files>
+
+    <!-- Include the individual tests suite -->
+    <suite-files>
+        <suite-file path="individual-test.xml" />
+    </suite-files>
+</suite>

@@ -13,7 +13,7 @@ public class ValidLoginTC extends BaseTest {
     String userName = Constants.USER;
     String password = Constants.PASSWORD;
 
-    @Test(priority = 2, description = "Valid Credential login")
+    @Test(priority = 1, description = "Valid Credential login")
     public void ValidLoginTest(){
         LoginPage loginPage = new LoginPage(driver);
 

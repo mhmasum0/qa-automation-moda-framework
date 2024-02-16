@@ -9,8 +9,6 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>qa-automation-test-framework-demo</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,7 +35,7 @@
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
-      <version>2.24.0</version>
+      <version>2.25.0</version>
     </dependency>
 
     <dependency>
@@ -47,11 +45,23 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.14.1</version> <!-- Use the latest version -->
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
+    <dependency>
+      <groupId>ru.yandex.qatools.ashot</groupId>
+      <artifactId>ashot</artifactId>
+      <version>1.5.3</version>
+    </dependency>
+
 
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (maybe moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
@@ -74,7 +84,7 @@
           <configuration>
             <!-- Specifying TestNG suite xml file -->
             <suiteXmlFiles>
-              <suiteXmlFile>src/test/resources/parallel-test.xml</suiteXmlFile>
+              <suiteXmlFile>src/test/resources/individual-test.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>
@@ -102,4 +112,60 @@
       </plugins>
     </pluginManagement>
   </build>
+  <profiles>
+    <profile>
+      <id>parallel-tests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>src/test/resources/parallel-test.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>individual-tests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>src/test/resources/individual-test.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>all-tests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>src/test/resources/all-tests.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
 </project>

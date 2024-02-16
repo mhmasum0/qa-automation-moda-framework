@@ -2,6 +2,8 @@ package com.moda.basetc;
 
 import com.moda.core.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,6 +17,7 @@ public class BaseTest {
     // initialize web driver
     public WebDriver driver;
     String URL = Constants.URL;
+    protected static final Logger logger = LogManager.getLogger();
 
     @Parameters({"browser"})
     @BeforeClass
@@ -24,6 +27,7 @@ public class BaseTest {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
+                logger.info("Chrome driver setup");
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -35,6 +39,7 @@ public class BaseTest {
 
 //        driver.manage().window().maximize();
         driver.get(URL);
+        logger.info("go to the url");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
