@@ -1,6 +1,6 @@
 package com.moda.pages;
 
-import com.moda.core.Constants;
+
 import com.moda.utils.ExplicitWait;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

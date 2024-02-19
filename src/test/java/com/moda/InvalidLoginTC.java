@@ -15,7 +15,7 @@ public class InvalidLoginTC extends BaseTest {
 
     @Test(priority = 1, description = "Invalid Credentials Test")
     public void inValidLoginTest() throws IOException {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(wrongPassword);

@@ -3,9 +3,12 @@ package com.moda;
 import com.moda.basetc.BaseTest;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
+import com.moda.listeners.TestListener;
 import com.moda.pages.DashboardPage;
 import com.moda.pages.LoginPage;
+
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 public class ValidLoginTC extends BaseTest {
@@ -15,13 +18,13 @@ public class ValidLoginTC extends BaseTest {
 
     @Test(priority = 1, description = "Valid Credential login")
     public void ValidLoginTest(){
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);
         loginPage.submitLogin();
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage(getDriver());
         String welcomeMessage = dashboardPage.welcomeMessage();
 
         Assert.assertEquals(welcomeMessage, ResourceString.WELCOME_MESSAGE);

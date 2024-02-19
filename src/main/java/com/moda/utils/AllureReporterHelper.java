@@ -13,13 +13,13 @@ public class AllureReporterHelper {
      *
      * @param screenshotFilePath The path of the screenshot file.
      */
-    public static void attachScreenshot(String screenshotFilePath) {
+    public static void attachScreenshot(String screenshotFilePath,String fileName) {
         try {
             // Read the screenshot file into a byte array
             byte[] bytes = Files.readAllBytes(Paths.get(screenshotFilePath));
 
             // Attach the screenshot to the Allure report
-            Allure.addAttachment("Screenshot", "image/png", new ByteArrayInputStream(bytes), "png");
+            Allure.addAttachment(fileName, "image/png", new ByteArrayInputStream(bytes), "png");
 
         } catch (IOException e) {
             // Log the error or handle the exception as per your requirements

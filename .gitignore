@@ -5,3 +5,8 @@ allure-results
 .DS_Store
 logs
 screenshots
+.settings
+.classpath
+.factorypath
+.project
+*.log
