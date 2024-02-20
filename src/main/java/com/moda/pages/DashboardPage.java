@@ -21,7 +21,7 @@ public class DashboardPage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final String welcomeMessageXpath = "//div[contains(text(),'Stacey, welcome to your Member Dashboard')]";
+    private static final String welcomeMessageXpath = "//div[contains(text(),'Tawny, welcome to your Member Dashboard')]";
     @FindBy(xpath = welcomeMessageXpath )
     private WebElement welcomeMessage;
 
