@@ -7,7 +7,7 @@
     </listeners>
     <test verbose="2" name="TestSuite">
         <classes>
-            <class name="com.moda.InvalidLoginTC" />
+            <class name="com.moda.Moda360ProgramsTC" />
         </classes>
     </test>
 </suite>

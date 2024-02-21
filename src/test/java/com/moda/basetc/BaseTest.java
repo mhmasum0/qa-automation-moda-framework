@@ -9,10 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -24,7 +21,7 @@ public class BaseTest {
     protected static final Logger logger = LogManager.getLogger();
 
     @Parameters({"browser"})
-    @BeforeClass
+    @BeforeSuite
     public void setUp(@Optional("chrome") String browser) {
         try {
             WebDriver driverInstance;
@@ -57,7 +54,7 @@ public class BaseTest {
         }
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void wrapUp() throws InterruptedException {
         Thread.sleep(3000);
         driver.get().quit();
