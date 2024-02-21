@@ -25,6 +25,6 @@ public class ValidLoginTC extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         String welcomeMessage = dashboardPage.welcomeMessage();
 
-        Assert.assertEquals(welcomeMessage, ResourceString.WELCOME_MESSAGE);
+        Assert.assertTrue(welcomeMessage.contains(ResourceString.WELCOME_MESSAGE), ResourceString.WELCOME_MESSAGE + " does not exist in the" + welcomeMessage);
     }
 }

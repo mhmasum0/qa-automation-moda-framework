@@ -2,6 +2,7 @@ package com.moda.pages;
 
 
 import com.moda.utils.ExplicitWait;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -21,7 +22,7 @@ public class DashboardPage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final String welcomeMessageXpath = "//div[contains(text(),'Tawny, welcome to your Member Dashboard')]";
+    private static final String welcomeMessageXpath = "//div[contains(text(),'welcome to your Member Dashboard')]";
     @FindBy(xpath = welcomeMessageXpath )
     private WebElement welcomeMessage;
 
