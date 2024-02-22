@@ -1,6 +1,7 @@
 package com.moda.pages;
 
 
+import com.moda.pages.base.BasePage;
 import com.moda.utils.ExplicitWait;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +13,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPage {
+import java.util.List;
+
+public class DashboardPage extends BasePage {
     WebDriver driver;
     private static final Logger logger = LogManager.getLogger(DashboardPage.class);
 
@@ -25,7 +28,7 @@ public class DashboardPage {
     @FindBy(xpath = welcomeMessageXpath )
     private WebElement welcomeMessage;
 
-    @FindBy(xpath = "//c-button[@id='menubutton-id-190']")
+    @FindBy(xpath = "//span[contains(@role,'tooltip')][normalize-space()='Moda 360']")
     private WebElement mainMenu360;
 
     @FindBy(xpath = "//span[@title='Moda 360 Programs']")
@@ -49,8 +52,24 @@ public class DashboardPage {
     @FindBy(xpath = "//span[@title='Cancel']")
     private WebElement cancelButton;
 
-    @FindBy(xpath = "/html/body/div[3]/div[2]/div[2]/div/div/div/div/c-cf-mc360_-b-h360program_-detail-page/div/vlocity_ins-action[2]/c-modal/div/section/div/div/slot/div/slot/div/c-cf-mc360_-program-url_-popup/div/vlocity_ins-flex-card-state/div/slot/div/div/vlocity_ins-block/div/div/div/slot/div/div[3]/vlocity_ins-block/div/div/div/slot/div/div/vlocity_ins-output-field/div/lightning-formatted-rich-text/span/div/span")
-    private WebElement leave;
+    @FindBy(xpath = "//div[@data-style-id='state0element3block_element3block_element0block_element0']")
+    private WebElement healthCoachingProgram;
+
+    private static final String healthCoachingProgramHeadingXpath = "//div[contains(text(),'Health coaching program')]";
+    @FindBy(xpath = healthCoachingProgramHeadingXpath)
+    private WebElement healthCoachingProgramHeading;
+
+    @FindBy(xpath = "//div[@class='slds-col slds-size_12-of-12']//vlocity_ins-custom-lwc-wrapper//slot//c-member-console-breadcrumbs//header//nav//ul//li//div//span[contains(text(),'Moda 360 Programs')]")
+    private WebElement backModa360Programs;
+
+    @FindBy(xpath = "//div[contains(text(),'Get extra dental benefits')]")
+    private WebElement getExtraBenifits;
+
+    @FindBy(xpath = "//span[contains(text(),'Health through Oral Wellness (PDF)')][1]")
+    private List<WebElement> healthThroughOralWellNess;
+
+    @FindBy(xpath = "//div/span[contains(text(),'Leave')]")
+    private WebElement leavePopupButton;
 
     public String welcomeMessage(){
         String welcomeMessageText = "";
@@ -65,37 +84,54 @@ public class DashboardPage {
     }
 
     public void click360Menu(){
-        mainMenu360.click();
+        click(mainMenu360,logger,"Moda 360 Menu Clicked");
     }
 
     public void clickModa360ProgramMenu(){
-        moda_360_programs_menu.click();
+        click(moda_360_programs_menu,logger,"Clicked on 360 programs menu");
     }
 
-    public boolean visibility_360_programs_heading(){
-        new ExplicitWait(driver).waitForElement(40,By.xpath(moda_360_programs_xpath));
-        return moda_360_heading.isDisplayed();
+    public void visibility_360_programs_heading(){
+        waitAndisDisplayed(driver,moda_360_heading,40,logger," 360 programs displayed",moda_360_programs_xpath);
+    }
+
+    public void clickOnHealthCoachingProgram(){
+        click(healthCoachingProgram,logger,"Click on health program");
+    }
+
+    public void checkHealthCoachingProgramHeading(){
+        waitAndisDisplayed(driver,healthCoachingProgramHeading,40,logger,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
+    }
+
+    public void clickOnBackModa360Programs(){
+        click(backModa360Programs,logger,"Back from Health programs");
+    }
+
+    public void clickOnGetExtraBenifits(){
+        click(getExtraBenifits,logger,"Click on Get Extra Benifits link");
+    }
+
+    public void clickOnHealthThroughOraWellness(){
+        clickWithIndex(healthThroughOralWellNess,1,logger,"Click on Health thought Oral Wellness(PDF)");
+    }
+
+    public void clickLeavePopup(){
+        click(leavePopupButton,logger,"Click on Leave");
     }
 
     public void clickBehavioral_health_360(){
-        behavioral_health_360.click();
+        click(behavioral_health_360, logger, "Click Behavioral health 360");
     }
 
     public void clickAddictionCare(){
-        new ExplicitWait(driver).waitForElement(60,By.xpath(addiction_car_section_heading_xpath));
-        addiction_care_section_heading.click();
+        waitAndClick(driver,addiction_care_section_heading,60, logger,"Click on addiction care", addiction_car_section_heading_xpath);
     }
 
     public void clickLearnMore(){
-        new ExplicitWait(driver).waitForElement(60,By.xpath(learn_more_xpath));
-        learn_more_link.click();
+        waitAndClick(driver,learn_more_link,60,logger,"Click on learn more", learn_more_xpath);
     }
 
     public void clickOnCancel(){
-        cancelButton.click();
-    }
-
-    public void clickLeave(){
-        leave.click();
+        click(cancelButton,logger,"Click on cancel");
     }
 }

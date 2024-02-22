@@ -9,6 +9,7 @@
         <classes>
             <class name="com.moda.Moda360ProgramsTC"/>
             <class name="com.moda.InvalidLoginTC"/>
+            <class name="com.moda.BehavioralHealth360TC"/>
         </classes>
     </test>
 </suite>

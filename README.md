@@ -23,4 +23,5 @@ allure open allure-report
 ```
 rmdir /s .git
 rmdir /s allure-results
+rmdir /s logs
 ```

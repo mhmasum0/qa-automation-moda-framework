@@ -2,6 +2,7 @@ package com.moda;
 
 import com.moda.pages.DashboardPage;
 
+import com.moda.utils.ExtraWating;
 import org.testng.annotations.Test;
 
 public class Moda360ProgramsTC extends ValidLoginTC {
@@ -13,15 +14,22 @@ public class Moda360ProgramsTC extends ValidLoginTC {
     dashboardPage.click360Menu();
     dashboardPage.clickModa360ProgramMenu();
     dashboardPage.visibility_360_programs_heading();
-    dashboardPage.clickBehavioral_health_360();
 
-    dashboardPage.clickAddictionCare();
-    dashboardPage.clickLearnMore();
+    dashboardPage.clickOnHealthCoachingProgram();
+    ExtraWating.extraWait(3);
+    dashboardPage.checkHealthCoachingProgramHeading();
+
+    dashboardPage.clickOnBackModa360Programs();
+    dashboardPage.clickOnGetExtraBenifits();
+    ExtraWating.extraWait(3);
+    dashboardPage.clickOnHealthThroughOraWellness();
+    ExtraWating.extraWait(3);
     dashboardPage.clickOnCancel();
+    ExtraWating.extraWait(3);
+    dashboardPage.clickOnHealthThroughOraWellness();
+    ExtraWating.extraWait(3);
+    dashboardPage.clickLeavePopup();
 
-    dashboardPage.clickLearnMore();
-    dashboardPage.clickLeave();
-
-    Thread.sleep(5000);
   }
+
 }

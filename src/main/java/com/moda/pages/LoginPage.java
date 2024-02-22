@@ -1,5 +1,6 @@
 package com.moda.pages;
 
+import com.moda.pages.base.BasePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import io.qameta.allure.Allure;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     WebDriver driver;
     private static final Logger logger = LogManager.getLogger(LoginPage.class);
 
@@ -31,24 +32,15 @@ public class LoginPage {
     private WebElement errorMessageText;
 
     public void inputUserName(String userName){
-        Allure.step("Enter user name");
-        Allure.parameter("userName", userName);
-        userNameField.sendKeys(userName);
-        logger.info("Inputting username: {}", userName); // Log the username input action
+        input(userNameField,userName,logger,"Enter User name");
     }
 
     public void inputPassword(String password){
-        Allure.step("Enter Password");
-        Allure.parameter("password", password);
-
-        passwordField.sendKeys(password);
-        logger.info("Inputting password: {}", password);
+        input(passwordField,password,logger,"Enter password");
     }
 
     public void submitLogin(){
-        Allure.step("Submit Login");
-        loginButton.submit();
-        logger.info("Login Button Clicked");
+        click(loginButton,logger,"Click on login");
     }
 
     public String loginErrorMessage(){

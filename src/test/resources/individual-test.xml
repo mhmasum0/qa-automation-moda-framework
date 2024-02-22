@@ -5,9 +5,19 @@
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
     </listeners>
-    <test verbose="2" name="TestSuite">
+    <test verbose="2" name="Behavior Health 360">
         <classes>
-            <class name="com.moda.Moda360ProgramsTC" />
+            <class name="com.moda.BehavioralHealth360TC"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Moda 360 Programs">
+        <classes>
+            <class name="com.moda.Moda360ProgramsTC"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Invalid Login">
+        <classes>
+            <class name="com.moda.InvalidLoginTC"/>
         </classes>
     </test>
 </suite>
