@@ -21,7 +21,7 @@ public class BaseTest {
     protected static final Logger logger = LogManager.getLogger();
 
     @Parameters({"browser"})
-    @BeforeSuite
+    @BeforeClass
     public void setUp(@Optional("chrome") String browser) {
         try {
             WebDriver driverInstance;
@@ -54,7 +54,7 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void wrapUp() throws InterruptedException {
         Thread.sleep(3000);
         driver.get().quit();
