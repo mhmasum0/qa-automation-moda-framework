@@ -1,0 +1,2837 @@
+{
+	"info": {
+		"_postman_id": "3ea836a6-73f9-4709-a519-badc74ed7574",
+		"name": "moda360gateway Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14651198",
+		"_collection_link": "https://modawebdevs.postman.co/workspace/Ben's-sandbox~bc2281f0-de76-4ecb-8013-fdebc2b8477e/collection/14651198-3ea836a6-73f9-4709-a519-badc74ed7574?action=share&source=collection_link&creator=14651198"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Get JWT token with credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('currentAccessToken', responseBody)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joshtest\",\r\n    \"password\": \"testing0\",\r\n    \"groupId\": \"optional\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/token/authentication",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"token",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get JWT token with credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('currentAccessToken', responseBody)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joshtest\",\r\n    \"password\": \"testing0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/token",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360service",
+								"api",
+								"token",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Benefits",
+			"item": [
+				{
+					"name": "Get Dental Benefits",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/dental?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"dental"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								}
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medical Benefits",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/medical?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"medical"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								}
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medical Benefits Description",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/medical/description/?tierId=tab3&pageId=p01",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"medical",
+								"description",
+								""
+							],
+							"query": [
+								{
+									"key": "tierId",
+									"value": "tab3"
+								},
+								{
+									"key": "pageId",
+									"value": "p01"
+								}
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pharmacy Benefits",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/pharmacy",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"pharmacy"
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vision Benefits",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/vision",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"vision"
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Benefits History",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/benefits/history",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"benefits",
+								"history"
+							]
+						},
+						"description": "suffix\n\nOptional. Allowed values: 0-99. Default: 0. Subscriber suffix number associated with the family member to retrieve data for."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Claims",
+			"item": [
+				{
+					"name": "Get Dental Claims",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/claims/dental?startDate=2016-03-15&endDate=2024-03-15&page=0&size=10&claimStatus=PAID&providerId=P00001003018",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"claims",
+								"dental"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2016-03-15"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-03-15"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "claimStatus",
+									"value": "PAID"
+								},
+								{
+									"key": "providerId",
+									"value": "P00001003018"
+								}
+							]
+						},
+						"description": "### Get Dental Claims\n\nReturns a list of dental claims\n\n#### **Parameters**\n\n**suffix**  \n*Optional, integer, default: 0*  \nSubscriber suffix number associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**page**  \n*Optional, integer, default: 0*  \nZero based paging system\n\n**size**  \n*Optional, integer, default: 10*  \nNumber of claims to return per page\n\n**claimStatus**  \n*Optional, string*  \nFilter to only claims with this claim status. Possible values can be obtained through the claims metadata endpoint.\n\n**providerId**  \n*Optional, string*  \nFilter to only claims with this provider id. Possible values can be obtained through the claims metadata endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dental Claim",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/claims/dental/193653987300?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"claims",
+								"dental",
+								"193653987300"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								}
+							]
+						},
+						"description": "### Get Dental Claims\n\nReturns a list of dental claims\n\n#### **Parameters**\n\n**suffix**  \n*Optional, integer, default: 0*  \nSubscriber suffix number associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**page**  \n*Optional, integer, default: 0*  \nZero based paging system\n\n**size**  \n*Optional, integer, default: 10*  \nNumber of claims to return per page\n\n**claimStatus**  \n*Optional, string*  \nFilter to only claims with this claim status. Possible values can be obtained through the claims metadata endpoint.\n\n**providerId**  \n*Optional, string*  \nFilter to only claims with this provider id. Possible values can be obtained through the claims metadata endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medical Claims",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/claims/medical?suffix=0&startDate=2020-03-15&endDate=2024-03-15&page=0&size=10&claimStatus=PAID&providerId=P00001298682",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"claims",
+								"medical"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "startDate",
+									"value": "2020-03-15"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-03-15"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "claimStatus",
+									"value": "PAID"
+								},
+								{
+									"key": "providerId",
+									"value": "P00001298682"
+								}
+							]
+						},
+						"description": "### Get Medical Claims\n\nReturns a list of medical claims\n\n#### **Parameters**\n\n**suffix**  \n*Optional, integer, default: 0*  \nSubscriber suffix number associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**page**  \n*Optional, integer, default: 0*  \nZero based paging system\n\n**size**  \n*Optional, integer, default: 10*  \nNumber of claims to return per page\n\n**claimStatus**  \n*Optional, string*  \nFilter to only claims with this claim status. Possible values can be obtained through the claims metadata endpoint.\n\n**providerId**  \n*Optional, string*  \nFilter to only claims with this provider id. Possible values can be obtained through the claims metadata endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Medical Claim",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/claims/medical/232144571100?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"claims",
+								"medical",
+								"232144571100"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								}
+							]
+						},
+						"description": "### Get Dental Claims\n\nReturns a list of dental claims\n\n#### **Parameters**\n\n**suffix**  \n*Optional, integer, default: 0*  \nSubscriber suffix number associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**page**  \n*Optional, integer, default: 0*  \nZero based paging system\n\n**size**  \n*Optional, integer, default: 10*  \nNumber of claims to return per page\n\n**claimStatus**  \n*Optional, string*  \nFilter to only claims with this claim status. Possible values can be obtained through the claims metadata endpoint.\n\n**providerId**  \n*Optional, string*  \nFilter to only claims with this provider id. Possible values can be obtained through the claims metadata endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Claims Metadata",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/claims/metadata?suffix=0&startDate=2020-03-15&endDate=2024-03-15&claimType=M",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"claims",
+								"metadata"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "startDate",
+									"value": "2020-03-15"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-03-15"
+								},
+								{
+									"key": "claimType",
+									"value": "M"
+								}
+							]
+						},
+						"description": "### Get Claims Metadata\n\nReturns a list of all provider ids and claim statuses pertaining to a given claims dataset. This endpoint should be used in conjunction with the claims endpoints and is useful for filtering the paginated claims results.\n\n#### **Parameters**\n\n**claimType**  \n*Required, character ('M' or 'D')*  \nFilter to only claims with this claim type. There are only two possible values: 'M' for medical, and 'D' for dental.\n\n**suffix**  \n*Optional, integer, default: 0*  \nSubscriber suffix number associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Get Account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2RhMzYwIiwibWVtYmVyS2V5IjoiMzcxMzM2MDAiLCJleHAiOjE2ODIxNzQ5NjF9.738_siofExM9bVjb9cuaZ1djkrN46ool2RQ3V665yPjL1DT0H14RfqoLSTkqwC-fmKowpJTZlJCdXZv-bNGCow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account"
+							]
+						},
+						"description": "### Get Account\n\nReturns an account object for the requesting member. This includes basic information about the subscriber, members, eligibilities, and preferences related to the account.\n\n#### **Parameters**\n\nNone"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Security Questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/security-questions",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"security-questions"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "### Get Security Questions\n\nReturns a list of all supported account security questions along with their corresponding IDs.\n\n#### **Parameters**\n\nNone"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Security Answers",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answer1\": {\r\n        \"questionId\": 1,\r\n        \"answer\": \"Some answer2\" \r\n    },\r\n    \"answer2\": {\r\n        \"questionId\": 5,\r\n        \"answer\": \"Some other answer2\" \r\n    },\r\n    \"answer3\": {\r\n        \"questionId\": 12,\r\n        \"answer\": \"Another answer\" \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/security-answers",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"security-answers"
+							]
+						},
+						"description": "### Update Security Answers\n\nUpdates the security question answers for the requesting member's account.\n\n#### **Request Body**\n\n**answer1**  \n*Required, object*  \nFirst answer object which must include \"questionId\" (integer) and \"answer\" (string) fields.\n\n**answer2**  \n*Required, object*  \nSecond answer object which must include \"questionId\" (integer) and \"answer\" (string) fields.\n\n**answer3**  \n*Required, object*  \nThird answer object which must include \"questionId\" (integer) and \"answer\" (string) fields."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"Funny02\",\r\n    \"newPassword\": \"Funny01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/password",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"password"
+							]
+						},
+						"description": "### Update Password\n\nUpdates the password for the requesting member's account.\n\n#### **Request Body**\n\n**currentPassword**  \n*Required, string*  \nExisting password. This is validated by the API before making changes.\n\n**newPassword**  \n*Required, string*  \nNew password. Password must contain at least one number."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Preferences",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailAddress\": \"test@test.com\",\r\n    \"electronicEob\": \"N\",\r\n    \"electronicMedicareMailing\": \"Y\",\r\n    \"emailBreakingNews\": \"Y\",\r\n    \"discontinuePaperStatements\": \"N\",\r\n    \"emailWhenBillReady\": \"Y\",\r\n    \"emailPaymentReminder\": \"Y\",\r\n    \"emailAutopayWithdrawalReminder\": \"Y\",\r\n    \"emailEwpNotification\": \"Y\",\r\n    \"showEwpLandingPage\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/preferences",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"preferences"
+							]
+						},
+						"description": "### Update Preferences\n\nUpdates the preferences for the requesting member's account. Any fields omitted or set to NULL will be ignored.\n\n#### **Request Body**\n\n**emailAddress**  \n*Required, string*  \nEmail address\n\n**electronicEob**  \n*Optional, character*  \nReceive Electronic EOBs. Allowed values: 'Y' (enrolled), 'N' (declined), 'P' (pending), 'R' (remind), 'L' (later), and 'U' (undeliverable).\n\n**electronicMedicareMailing**  \n*Required, string*  \nReceive electronic Medicare mailings. Allowed values: 'Y' (enrolled), 'N' (declined), 'P' (pending), 'R' (remind), 'L' (later), and 'U' (undeliverable).\n\n**emailBreakingNews**  \n*Optional, character ('Y' or 'N')*  \nEmail breaking news\n\n**discontinuePaperStatements**  \n*Optional, character ('Y' or 'N')*  \nDiscontinue paper statements\n\n**emailWhenBillReady**  \n*Optional, character ('Y' or 'N')*  \nEmail when bill is ready\n\n**emailPaymentReminder**  \n*Optional, character ('Y' or 'N')*  \nEmail payment reminders\n\n**emailAutopayWithdrawalReminder**  \n*Optional, character ('Y' or 'N')*  \nEmail autopay withdrawal reminders"
+					},
+					"response": []
+				},
+				{
+					"name": "Validation User Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailAddress\": \"test@test.com\",\r\n    \"electronicEob\": \"N\",\r\n    \"electronicMedicareMailing\": \"Y\",\r\n    \"emailBreakingNews\": \"Y\",\r\n    \"discontinuePaperStatements\": \"N\",\r\n    \"emailWhenBillReady\": \"Y\",\r\n    \"emailPaymentReminder\": \"Y\",\r\n    \"emailAutopayWithdrawalReminder\": \"Y\",\r\n    \"emailEwpNotification\": \"Y\",\r\n    \"showEwpLandingPage\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/preferences",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"preferences"
+							]
+						},
+						"description": "### Update Preferences\n\nUpdates the preferences for the requesting member's account. Any fields omitted or set to NULL will be ignored.\n\n#### **Request Body**\n\n**emailAddress**  \n*Required, string*  \nEmail address\n\n**electronicEob**  \n*Optional, character*  \nReceive Electronic EOBs. Allowed values: 'Y' (enrolled), 'N' (declined), 'P' (pending), 'R' (remind), 'L' (later), and 'U' (undeliverable).\n\n**electronicMedicareMailing**  \n*Required, string*  \nReceive electronic Medicare mailings. Allowed values: 'Y' (enrolled), 'N' (declined), 'P' (pending), 'R' (remind), 'L' (later), and 'U' (undeliverable).\n\n**emailBreakingNews**  \n*Optional, character ('Y' or 'N')*  \nEmail breaking news\n\n**discontinuePaperStatements**  \n*Optional, character ('Y' or 'N')*  \nDiscontinue paper statements\n\n**emailWhenBillReady**  \n*Optional, character ('Y' or 'N')*  \nEmail when bill is ready\n\n**emailPaymentReminder**  \n*Optional, character ('Y' or 'N')*  \nEmail payment reminders\n\n**emailAutopayWithdrawalReminder**  \n*Optional, character ('Y' or 'N')*  \nEmail autopay withdrawal reminders"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressLine1\": \"249 NW Sundown Way\",\r\n    \"addressLine2\": null,\r\n    \"city\": \"Miami\",\r\n    \"state\": \"FL\",\r\n    \"zipCode\": \"10001\",\r\n    \"country\": null,\r\n    \"phoneNumber\": \"3214441212\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/account/address",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"account",
+								"address"
+							]
+						},
+						"description": "### Update Address\n\nUpdates the address for the requesting member's account.\n\n#### **Request Body**\n\n**addressLine1**  \n*Required, string*  \nAddress line 1\n\n**addressLine2**  \n*Optional, string*  \nAddress line 2\n\n**city**  \n*Required, string*  \nCity\n\n**state**  \n*Optional, string*  \nState. Supports full state names or two letter abbreviations.\n\n**zipCode**  \n*Required, string*  \nZip code\n\n**country**  \n*Optional, string*  \nCountry\n\n**phoneNumber**  \n*Optional, string*  \nPhone number. All non-numeric characters will be stripped."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Care-Reminders",
+			"item": [
+				{
+					"name": "Get Care Reminders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/care-reminders?status=dismissed",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"care-reminders"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "dismissed"
+								}
+							]
+						},
+						"description": "### Get Care Reminders\n\nReturns a list of active care reminders for the requesting member\n\n#### **Parameters**\n\n**status**  \n*Optional, string, default: 'active'*  \nFilters care reminders down to only those with the specified status. Options are 'active', 'dismissed', and 'all'. If not provided, defaults to 'active'."
+					},
+					"response": []
+				},
+				{
+					"name": "Perform Care Reminder Action",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"Dismissed by Member\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/care-reminders/9206668/actions",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"care-reminders",
+								"9206668",
+								"actions"
+							]
+						},
+						"description": "### Create Care Reminder Action\n\nCreates a care reminder action, or updates an action if one already exists\n\n#### **Request Body**\n\n**action**  \n*Required, string*  \nAction to perform on a given care reminder. Possible values are: 'Accomplished by Member', 'Dismissed by Member', 'Dismissed by Navigator', and 'Un-dismissed'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EOBs",
+			"item": [
+				{
+					"name": "getEobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/eobs?memberKey=142018000",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"eobs"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2022-07-01",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2022-08-01",
+									"disabled": true
+								},
+								{
+									"key": "memberKey",
+									"value": "142018000"
+								},
+								{
+									"key": "providerId",
+									"value": "P00001080354",
+									"disabled": true
+								},
+								{
+									"key": "claimType",
+									"value": "MEDICAL",
+									"disabled": true
+								}
+							]
+						},
+						"description": "### Get EOBs\n\nReturns a list of EOBs\n\n#### **Parameters**\n\n**memberKey**  \n*Optional, long, default: requesting member's key*  \nKey associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**providerId**  \n*Optional, string*  \nFilter to only EOBs with this provider id, and only claims within those EOBs with this provider id\n\n**claimType**  \n*Optional, string*  \nFilter to only EOBs with this claim type, and only claims within those EOBs with this claim type. Possible values are 'MEDICAL', 'DENTAL', 'VISION', and 'PHARMACY'."
+					},
+					"response": []
+				},
+				{
+					"name": "getEobDetail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/eobs/eob-detail?documentId=1435001FC2022072901002174&startDate=2022-07-01&endDate=2022-08-01&memberKey=197856004&providerId=P00001080354&claimType=MEDICAL",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"eobs",
+								"eob-detail"
+							],
+							"query": [
+								{
+									"key": "documentId",
+									"value": "1435001FC2022072901002174"
+								},
+								{
+									"key": "startDate",
+									"value": "2022-07-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2022-08-01"
+								},
+								{
+									"key": "memberKey",
+									"value": "197856004"
+								},
+								{
+									"key": "providerId",
+									"value": "P00001080354"
+								},
+								{
+									"key": "claimType",
+									"value": "MEDICAL"
+								}
+							]
+						},
+						"description": "### Get EOB Detail\n\nReturns a single EOB based on document id. These EOBs are similar to the EOBs returned from the /eobs endpoint, but with additional financial details added to the claims objects. Filters can be used to filter out claims within an EOB. The date range filters are required if the EOB falls outside of the default range (last two years).\n\n#### **Parameters**\n\n**documentId**  \n*Required, string*  \nUnique identifier for an EOB\n\n**memberKey**  \n*Optional, long, default: requesting member's key*  \nKey associated with the family member to retrieve data for\n\n**startDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: two years ago relative to today*  \nStarting date range\n\n**endDate**  \n*Optional, date with format 'yyyy-mm-dd' (ex. 2024-03-15), default: today*  \nEnding date range\n\n**providerId**  \n*Optional, string*  \nFilter to only EOBs with this provider id, and only claims within those EOBs with this provider id\n\n**claimType**  \n*Optional, string*  \nFilter to only EOBs with this claim type, and only claims within those EOBs with this claim type. Possible values are 'MEDICAL', 'DENTAL', 'VISION', and 'PHARMACY'."
+					},
+					"response": []
+				},
+				{
+					"name": "getPdf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/eobs/pdf?docId=ryZC9Zq9fLwdWpEUsfMT3Q==",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"eobs",
+								"pdf"
+							],
+							"query": [
+								{
+									"key": "docId",
+									"value": "ryZC9Zq9fLwdWpEUsfMT3Q=="
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EOBS count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MemberHandbooks",
+			"item": [
+				{
+					"name": "getHandbooksMedical",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/handbook/medical",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"handbook",
+								"medical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHandbooksDental",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/handbook/dental",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"handbook",
+								"dental"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SingleSignOn",
+			"item": [
+				{
+					"name": "IdFederate_sp_NavitusRx",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-navitus?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-navitus"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idFederate_sp_Insignia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-insignia?suffix=0",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-insignia"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdFederate_sp_MedimpactRx",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-medimpact?suffix=0&Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-medimpact"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdFederate_sp_SapphireCare",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-sapphireCare?suffix=0&Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-sapphireCare"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdF_DentalOptz_Cost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/dentalOptimizer/cost?Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"dentalOptimizer",
+								"cost"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdF_DentalOptz_Risk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/dentalOptimizer/risk?Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"dentalOptimizer",
+								"risk"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idFederate_sp_SpringHealth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-springHealth?suffix=0&Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-springHealth"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idFederate_sp_Telus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/sso/sp-telus?suffix=0&Authorization={{currentAccessToken}}",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"sso",
+								"sp-telus"
+							],
+							"query": [
+								{
+									"key": "suffix",
+									"value": "0"
+								},
+								{
+									"key": "Authorization",
+									"value": "{{currentAccessToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ECard",
+			"item": [
+				{
+					"name": "idCard/request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard/request?category=M",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard",
+								"request"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "M"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idCard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idCard/eligible",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard/eligible",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard",
+								"eligible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idCard/View",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard/view",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idCard/Available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard/available",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idCard/email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailAddress\": \"mo@mo.com\",\r\n    \"message\": \"hello! is it me you're looking for?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/idCard/email",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"idCard",
+								"email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact_Us",
+			"item": [
+				{
+					"name": "ContactUs dropdown data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/message/dropdown",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"message",
+								"dropdown"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "contactEmail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"ben\",\r\n    \"lastName\": \"russell\",\r\n    \"email\": \"mo@mo.com\",\r\n    \"subscriberId\": \"EZ3174127\",\r\n    \"phone\": \"123-123-1234\",\r\n    \"subject\": \"stuff\",\r\n    \"body\": \"things\",\r\n    \"groupId\": \"10005028\",\r\n    \"regarding\": \"General Member Dashboard questions\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/contact/email",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"contact",
+								"email"
+							]
+						},
+						"description": "# **Paramters:**\n\n\"**firstName**\": \"ben\"\n\n// Members first name {REQUIRED}\n\n\"**lastName**\": \"russell\"\n\n// Members last name {REQUIRED}\n\n\"**email**\": \"[mo@mo.com](mailto:mo@mo.com)\"\n\n// User entered email {OPTIONAL}\n\nStartFragment\n\n\"**phone**\": \"[mo@mo.com](mailto:mo@mo.com)\"\n\n// User entered phone number {OPTIONAL}\n\nEndFragment\n\n\"**subject**\": \"stuff\"\n\n// User entered subject line {REQUIRED}\n\n\"**body**\": \"things\"\n\n// User entered message/request {REQUIRED}\n\n\"**groupId**\": \"10005028\"\n\n// Members groupId {REQUIRED}\n\n\"**subscriberId**\": \"EZ3174127\"\n\n// User entered subscriberId {OPTIONAL}\n\n\"**regarding**\": \"General Member Dashboard questions\"\n\n// Selected by the user to descide where the email gets sent to {OPTIONAL}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Programs",
+			"item": [
+				{
+					"name": "Get Programs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/programs",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PCP",
+			"item": [
+				{
+					"name": "getPcpElig",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/eligibility",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"eligibility"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPcpMembers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/members",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pcpSearch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"members\": [\r\n\t\t{\r\n            \"memberKey\": 197856000,\r\n            \"effectiveDate\": \"07/01/2022\"\r\n        }\r\n    ],\r\n    \"zip\": \"97140\",\r\n    \"radius\": 100,\r\n    \"searchString\": \"john\"\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/search?page=1&size=10",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"search"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "request body:\n\nStartFragment\n\n``` json\n{\n  \"members\": [\n    {\n      \"memberKey\": 30571250,\n      \"effectiveDate\": \"07/01/2022\"\n    },\n    {\n      \"memberKey\": 30571254,\n      \"effectiveDate\": \"07/01/2022\"\n    },\n    {\n      \"memberCk\": 30571255,\n      \"effectiveDate\": \"07/01/2022\"\n    }\n  ],\n  \"zip\": \"97140\",\n  \"radius\": 10,\n  \"searchString\": \"optional\"\n}\n```\n\nEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "selectPcp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"pcpSelectList\": [\r\n        {\r\n            \"memberKey\": 37133600,\r\n            \"effectiveDate\": \"08/01/2022\"\r\n        }\r\n    ],\r\n    \"providerId\": \"P00000157775\",\r\n    \"email\": \"test@test.com\"\r\n }"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/select",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pcpProviderDetails",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/provider?providerId=P00000994625",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"provider"
+							],
+							"query": [
+								{
+									"key": "providerId",
+									"value": "P00000994625"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pcpSearch distance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"members\": [\r\n\t\t{\r\n            \"memberKey\": 29201651,\r\n            \"effectiveDate\": \"02/01/2023\"\r\n        }\r\n    ],\r\n    \"zip\": \"97140\",\r\n    \"radius\": 100,\r\n    \"searchString\": \"Legacy\"\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/pcp/search/distance?page=0&size=10",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"pcp",
+								"search",
+								"distance"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "request body:\n\nStartFragment\n\n``` json\n{\n  \"members\": [\n    {\n      \"memberKey\": 30571250,\n      \"effectiveDate\": \"07/01/2022\"\n    },\n    {\n      \"memberCk\": 30571254,\n      \"effectiveDate\": \"07/01/2022\"\n    },\n    {\n      \"memberCk\": 30571255,\n      \"effectiveDate\": \"07/01/2022\"\n    }\n  ],\n  \"zip\": \"97140\",\n  \"radius\": 10,\n  \"searchString\": \"optional\"\n}\n```\n\nEndFragment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Links",
+			"item": [
+				{
+					"name": "Get Find Care Link",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/links/find-care",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"links",
+								"find-care"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "Perform Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"George\",\r\n  \"middleInitial\": \"K\",\r\n  \"lastName\": \"Ahuna\",\r\n  \"dateOfBirth\": \"1938-07-29\",\r\n  \"subscriberId\": \"G08698890\",\r\n  \"email\": \"t@t.com\",\r\n  \"username\": \"G086988900\",\r\n  \"password\": \"Funny01\",\r\n  \"domainId\": 1,\r\n  \"emailBreakingNews\": \"Y\",\r\n  \"electronicEob\": \"Y\",\r\n  \"privacyPolicySigned\": true,\r\n  \"communicationPolicySigned\": true,\r\n  \"electronicDeliveryPolicySigned\": true,\r\n  \"securityAnswers\": {\r\n    \"answer1\": {\r\n      \"questionId\": 1,\r\n      \"answer\": \"Some answer2\"\r\n    },\r\n    \"answer2\": {\r\n      \"questionId\": 5,\r\n      \"answer\": \"Some other answer2\"\r\n    },\r\n    \"answer3\": {\r\n      \"questionId\": 12,\r\n      \"answer\": \"Another answer\"\r\n    }\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/registration",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"registration"
+							]
+						},
+						"description": "### Perform Registration\n\nRegisters a new user in the database and returns an auth token that can be used for subsequent requests.\n\n#### **Request Body**\n\n**firstName**  \n_Required, string_  \nUser's first name\n\n**middleInitial**  \n_Optional, string_  \nThe first initial of the user's middle name\n\n**lastName**  \n_Required, string_  \nUser's last name\n\n**dateOfBirth**  \n_Required, date with format 'yyyy-mm-dd' (ex. 2024-03-15)_  \nUser's date of birth\n\n**subscriberId**  \n_Required, string_  \nSubscriber ID associated with user\n\n**email**  \n_Required, string_  \nUser's email address\n\n**username**  \n_Required, string_  \nUser's desired username. Must be an alphanumeric string between 3 and 16 characters.\n\n**password**  \n_Required, string_  \nUser's desired password. Must be an alphanumeric string between 6 and 15 characters with at least one number.\n\n**domainId**  \n_Required, integer_  \nDomain ID associated with user. For non-Summit users, use 1. For Summit users, use 2.\n\n**emailBreakingNews**  \n_Required, character ('Y' or 'N')_  \nUser preference for receiving breaking news via email\n\n**electronicEob**  \n_Optional, character ('Y' or 'N')_  \nUser preference for receiving EOBs electronically. If a user does not qualify for an extended policy, this setting is defaulted to 'Y' regardless of what's specified in the request.\n\n**privacyPolicySigned**  \n_Required, boolean_  \nWhether or not the user has signed the privacy policy\n\n**communicationPolicySigned**  \n_Required, boolean_  \nWhether or not the user has signed the communication policy\n\n**electronicDeliveryPolicySigned**  \n_Required, boolean_  \nWhether or not the user has signed the electronic delivery policy\n\n**securityAnswers**  \n_Required, object_  \nObject containing all three security question answers associated with their corresponding question IDs:\n\n- **answer1**  \n    _Required, object_  \n    First answer object which must include \"questionId\" (integer) and \"answer\" (string) fields.\n- **answer2**  \n    _Required, object_  \n    Second answer object which must include \"questionId\" (integer) and \"answer\" (string) fields.\n- **answer3**  \n    _Required, object_  \n    Third answer object which must include \"questionId\" (integer) and \"answer\" (string) fields."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Registration Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/registration/details?firstName=Damian&lastName=Kolbay&dateOfBirth=1979-07-19&subscriberId=J27286172",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"registration",
+								"details"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Damian"
+								},
+								{
+									"key": "lastName",
+									"value": "Kolbay"
+								},
+								{
+									"key": "dateOfBirth",
+									"value": "1979-07-19"
+								},
+								{
+									"key": "subscriberId",
+									"value": "J27286172"
+								}
+							]
+						},
+						"description": "### Get Registration Details\n\nReturns details required for the registration flow.\n\n#### **Parameters**\n\n**firstName**  \n_Required, string_  \nUser's first name\n\n**lastName**  \n_Required, string_  \nUser's last name\n\n**dateOfBirth**  \n_Required, date with format 'yyyy-mm-dd' (ex. 2024-03-15)_  \nUser's date of birth\n\n**subscriberId**  \n_Required, string_  \nSubscriber ID associated with user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CCAWebService",
+			"item": [
+				{
+					"name": "getCase",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/umcase/P000000044",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"umcase",
+								"P000000044"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Providers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/provider/search?tin=930399811&npi=1053488718",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"provider",
+								"search"
+							],
+							"query": [
+								{
+									"key": "tin",
+									"value": "930399811"
+								},
+								{
+									"key": "npi",
+									"value": "1053488718"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCase",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"procedures\": [\r\n    {\r\n      \"code\": \"33928\",\r\n      \"codeSetId\": \"CPT\",\r\n      \"isPrimary\": true,\r\n      \"requestedUnits\": 1\r\n    }\r\n  ],\r\n  \"diagnoses\": [\r\n    {\r\n      \"code\": \"I27.1\",\r\n      \"codeSetId\": \"ICD10\",\r\n      \"isPrimary\": true\r\n    }\r\n  ],\r\n  \"facetsSubscriberId\": \"E10660908\",\r\n  \"memberGroupId\": \"10000169\",\r\n  \"firstName\" : \"Maria\",\r\n  \"lastName\" : \"Mc Candless\",\r\n  \"dob\" : \"1962-12-19\",\r\n  \"procedureTypeCode\": 2,\r\n  \"requestingTermsCode\": 6,\r\n  \"caseStatus\": \"1\",\r\n  \"fromDate\": \"2023-10-12T00:00:00\",\r\n  \"toDate\": \"2023-11-24T00:00:00\",\r\n  \"actualAdmissionDate\": \"2023-10-12T00:00:00\",\r\n  \"daysRequested\": 3,\r\n  \"placeOfServiceCode\": 21,\r\n  \"typeOfCareCode\": 1,\r\n  \"typeOfServiceCode\": 2,\r\n  \"requestingProviderID\": \"P00000007005\",\r\n  \"requestingProviderName\": \"Rhinehart, Bradley\",\r\n  \"requestingProviderTIN\": \"201820332\",\r\n  \"requestingProviderNPI\": \"1356457030\",\r\n  \"treatingProviderID\": \"P00000007005\",\r\n  \"treatingProviderName\": \"Rhinehart, Bradley\",\r\n  \"treatingProviderTIN\": \"201820332\",\r\n  \"treatingProviderNPI\": \"1356457030\",\r\n//   \"facilityID\": \"P00000696150\",\r\n//   \"facilityName\": \"Frost, Hannah E.\",\r\n//   \"facilityTIN\": \"861035283\",\r\n//   \"facilityNPI\": \"1548260698\",\r\n  \"contactName\": \"asdf\",\r\n  \"contactPhoneNumber\": \"50355512345\"\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/umcase",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"umcase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCase",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"facetsSubscriberId\": \"E10660908\",\r\n  \"memberGroupId\": \"10000169\",\r\n  \"firstName\" : \"Maria\",\r\n  \"lastName\" : \"Mc Candless\",\r\n  \"dob\" : \"1962-12-19\",\r\n  \"procedureTypeCode\": 1,\r\n  \"procedures\": [\r\n    {\r\n      \"code\": \"82040\",\r\n      \"codeSetId\": \"CPT\",\r\n      \"isPrimary\": true,\r\n      \"requestedUnits\": 1\r\n    }\r\n  ],\r\n  \"requestingTermsCode\": 5,\r\n  \"diagnoses\": [\r\n    {\r\n      \"code\": \"E08.\",\r\n      \"codeSetId\": \"ICD10\",\r\n      \"isPrimary\": true\r\n    }\r\n  ],\r\n  \"fromDate\": \"2023-05-12T00:00:00\",\r\n  \"toDate\": \"2023-05-15T00:00:00\",\r\n  \"actualAdmissionDate\": \"2023-05-10T00:00:00\",\r\n  \"placeOfServiceCode\": 6,\r\n  \"typeOfCareCode\": 1,\r\n  \"typeOfServiceCode\": 1,\r\n  \"requestingProviderID\": \"P00000814349\",\r\n  \"requestingProviderName\": \"provider name new name\",\r\n  \"requestingProviderTIN\": \"12346\",\r\n  \"requestingProviderNPI\": \"123458\",\r\n  \"treatingProviderID\": \"P00000814349\",\r\n  \"treatingProviderName\": \"provider name\",\r\n  \"treatingProviderTIN\": \"12346\",\r\n  \"treatingProviderNPI\": \"123458\",\r\n  \"facilityID\": \"P00000814349\",\r\n  \"facilityName\": \"provider name\",\r\n  \"facilityTIN\": \"12346\",\r\n  \"facilityNPI\": \"123458\",\r\n  \"contactName\": \"Test contact name\",\r\n  \"contactPhoneNumber\": \"2815698798\",\r\n  \"caseStatus\": \"1\",\r\n  \"caseLastUpdateDate\": \"2023-08-17T00:00:00\",\r\n  \"externalId\": \"000005342\",\r\n  \"requestCreationDate\": \"2023-08-17T07:30:35.123\",\r\n  \"losExternalId\" : \"000000165\",\r\n  \"losExtensionExternalId\": \"000000177\",\r\n   \"daysRequested\": \"4\"\r\n\r\n    \r\n \r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/umcase",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"umcase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCases",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"memberId\": \"89991301\",\r\n  \"externalSystemID\": \"2\",\r\n  \"placeOfServiceID\": \"1\",\r\n  \"placeOfServiceDescription\": \"place of service description\",\r\n  \"isImpatient\": true,\r\n  \"actualAdmitDate\": \"2023-07-04\",\r\n  \"requestedAdmitDate\": \"2023-07-04\",\r\n  \"typeOfCareID\": \"1\",\r\n  \"typeOfCareDescription\": \"type of care description\",\r\n  \"requestingTerms\": \"1\",\r\n  \"reviewType\": \"1\",\r\n  \"openReasonType\": \"1\",\r\n  \"caseStatus\": \"1\",\r\n  \"requesterType\": \"1\",\r\n  \"services\": [\r\n    {\r\n      \"requestingProviderID\": \"111\",\r\n      \"requestingProviderName\": \"req prov name\",\r\n      \"requestingProviderTIN\": \"123123\",\r\n      \"requestingProviderNPI\": \"21312323\",\r\n      \"treatingProviderID\": \"222\",\r\n      \"treatingProviderName\": \"treat prov name\",\r\n      \"treatingProviderTIN\": \"54545\",\r\n      \"treatingProviderNPI\": \"45345345\",\r\n      \"facilityID\": \"333\",\r\n      \"facilityName\": \"facility name\",\r\n      \"facilityTIN\": \"345454\",\r\n      \"facilityNPI\": \"345345345\",\r\n      \"diagnosisCode\": \"555\",\r\n      \"procedureCode\": \"555\",\r\n      \"procedureDescription\": \"procedure description\",\r\n      \"requestedUnits\": \"1\",\r\n      \"fromDate\": \"2023-07-04\",\r\n      \"toDate\": \"2023-07-04\",\r\n      \"authorizedUnits\": \"1\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/umcase/search?facetsSubscriberId=WI601N7H&memberGroupId=10017006&itemsPerPage=10&pageNumber=1&searchCasesSort=FromDate&isAscendingOrder=false&firstName=Titus&lastName=Lindsay&dob=2001-08-21&providerTIN=454801614",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"umcase",
+								"search"
+							],
+							"query": [
+								{
+									"key": "facetsSubscriberId",
+									"value": "WI601N7H"
+								},
+								{
+									"key": "memberGroupId",
+									"value": "10017006"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "10"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "searchCasesSort",
+									"value": "FromDate"
+								},
+								{
+									"key": "isAscendingOrder",
+									"value": "false"
+								},
+								{
+									"key": "firstName",
+									"value": "Titus"
+								},
+								{
+									"key": "lastName",
+									"value": "Lindsay"
+								},
+								{
+									"key": "dob",
+									"value": "2001-08-21"
+								},
+								{
+									"key": "providerTIN",
+									"value": "454801614"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/files/upload",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"files",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download file",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/files/download?fileId&fileName",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"files",
+								"download"
+							],
+							"query": [
+								{
+									"key": "fileId",
+									"value": null
+								},
+								{
+									"key": "fileName",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attach file to case",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"facetsSubscriberId\": \"E10660908\",\r\n  \"memberGroupId\": \"10000169\",\r\n  \"firstName\" : \"Maria\",\r\n  \"lastName\" : \"Mc Candless\",\r\n  \"dob\" : \"1962-12-19\",\r\n  \"caseId\": \"000001231\",\r\n  \"requestingProviderID\": \"P00000814349\",\r\n  \"files\": [\r\n    {\r\n      \"attachmentId\": \"\",\r\n      \"fileName\": \"createCaseWithLos.txt\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/files/attachFiles",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"files",
+								"attachFiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of attached files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/files/list?caseId=P000000087&facetsSubscriberId=E10660908&memberGroupId=10000169&firstName=Maria&lastName=Mc Candless&dob=1962-12-19",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"files",
+								"list"
+							],
+							"query": [
+								{
+									"key": "caseId",
+									"value": "P000000087"
+								},
+								{
+									"key": "facetsSubscriberId",
+									"value": "E10660908"
+								},
+								{
+									"key": "memberGroupId",
+									"value": "10000169"
+								},
+								{
+									"key": "firstName",
+									"value": "Maria"
+								},
+								{
+									"key": "lastName",
+									"value": "Mc Candless"
+								},
+								{
+									"key": "dob",
+									"value": "1962-12-19"
+								},
+								{
+									"key": "externalMemberId",
+									"value": "100000250",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create note",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"facetsSubscriberId\": \"E10660908\",\r\n  \"memberGroupId\": \"10000169\",\r\n  \"firstName\" : \"Maria\",\r\n  \"lastName\" : \"Mc Candless\",\r\n  \"dob\" : \"1962-12-19\",\r\n  \"caseId\": \"P000000012\",\r\n  \"requestingProviderId\": \"P00000814349\",\r\n  \"noteText\": \"Loooong text!!!\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/notes",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update note",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"facetsSubscriberId\": \"E10660908\",\r\n  \"memberGroupId\": \"10000169\",\r\n  \"firstName\" : \"Maria\",\r\n  \"lastName\" : \"Mc Candless\",\r\n  \"dob\" : \"1962-12-19\",\r\n  \"caseId\": \"\",\r\n  \"requestingProviderId\": \"\",\r\n  \"noteText\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/notes",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get note",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/notes?caseId&facetsSubscriberId=E10660908&memberGroupId=10000169&firstName=Maria&lastName=Mc Candless&dob=1962-12-19",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"notes"
+							],
+							"query": [
+								{
+									"key": "caseId",
+									"value": null
+								},
+								{
+									"key": "facetsSubscriberId",
+									"value": "E10660908"
+								},
+								{
+									"key": "memberGroupId",
+									"value": "10000169"
+								},
+								{
+									"key": "firstName",
+									"value": "Maria"
+								},
+								{
+									"key": "lastName",
+									"value": "Mc Candless"
+								},
+								{
+									"key": "dob",
+									"value": "1962-12-19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Static data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/static-data",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"static-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get procedure groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/procedure-groups?memberKey=101039450",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"procedure-groups"
+							],
+							"query": [
+								{
+									"key": "memberKey",
+									"value": "101039450"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get prior auth eligibility",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/prior-auth-eligibility?memberKey=3950&procedureCodes=0003U,0009U,BOGUS&procedureGroupId=ANC",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"prior-auth-eligibility"
+							],
+							"query": [
+								{
+									"key": "memberKey",
+									"value": "3950"
+								},
+								{
+									"key": "procedureCodes",
+									"value": "0003U,0009U,BOGUS"
+								},
+								{
+									"key": "procedureGroupId",
+									"value": "ANC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get procedure",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/procedure/0009U",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"procedure",
+								"0009U"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get diagnosis",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/diagnosis/E081",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"diagnosis",
+								"E081"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get date rules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/date-rules?memberKey=270920551",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"date-rules"
+							],
+							"query": [
+								{
+									"key": "memberKey",
+									"value": "270920551"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get links",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{odshost}}/moda360gateway/api/cca/links?memberKey=270920551",
+							"host": [
+								"{{odshost}}"
+							],
+							"path": [
+								"moda360gateway",
+								"api",
+								"cca",
+								"links"
+							],
+							"query": [
+								{
+									"key": "memberKey",
+									"value": "270920551"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

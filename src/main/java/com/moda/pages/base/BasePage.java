@@ -11,8 +11,8 @@ import java.util.List;
 
 public class BasePage {
     public void click(WebElement element, Logger logger,String log){
-        element.click();
         Allure.step(log);
+        element.click();
         logger.info(log);
     }
 

@@ -1,11 +1,11 @@
-package com.moda;
+package com.moda.dev;
 
+import com.moda.ValidLoginTC;
 import com.moda.pages.DashboardPage;
 import com.moda.utils.ExtraWating;
 import org.testng.annotations.Test;
 
 public class BehavioralHealth360TC extends ValidLoginTC {
-
     @Test(dependsOnMethods = "ValidLoginTest")
     public void behavioralHealth360() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
