@@ -21,7 +21,7 @@ public class BaseTest {
     protected static final Logger logger = LogManager.getLogger();
 
     @Parameters({"browser"})
-    @BeforeClass
+    @BeforeTest
     public void setUp(@Optional("chrome") String browser) {
         try {
             WebDriver driverInstance;
@@ -45,7 +45,7 @@ public class BaseTest {
             driverInstance.get(Constants.URL);
 
             // Optionally maximize window
-            // driverInstance.manage().window().maximize();
+             driverInstance.manage().window().maximize();
 
             logger.info("Navigated to the URL with browser: {}", browser);
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class BaseTest {
         }
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void wrapUp() throws InterruptedException {
         Thread.sleep(3000);
         driver.get().quit();

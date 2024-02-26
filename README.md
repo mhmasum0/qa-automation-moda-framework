@@ -11,6 +11,14 @@ mvn test -Pindividual-tests
 ```shell
 mvn test -Pall-tests
 ```
+## Run individual test
+
+```
+mvn test -DsuiteXmlFile=src/test/resources/individual-tests/invalid-login.xml
+mvn test -DsuiteXmlFile=src/test/resources/individual-tests/valid-login.xml
+mvn test -DsuiteXmlFile=src/test/resources/individual-tests/care-reminder.xml
+mvn test -DsuiteXmlFile=src/test/resources/individual-tests/bh360-programs.xml
+```
 
 # Generate allure report
 ```

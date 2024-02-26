@@ -1,9 +1,12 @@
 package com.moda.pages;
 
 
+import java.util.List;
+
 import com.moda.pages.base.BasePage;
 import com.moda.utils.ExplicitWait;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,8 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
 
 public class DashboardPage extends BasePage {
     WebDriver driver;
@@ -28,11 +29,14 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = welcomeMessageXpath )
     private WebElement welcomeMessage;
 
-    @FindBy(xpath = "//span[contains(@role,'tooltip')][normalize-space()='Moda 360']")
-    private WebElement mainMenu360;
+    @FindBy(xpath = "//button//span[text()='Moda 360']")
+    private WebElement moda360Menu;
 
     @FindBy(xpath = "//span[@title='Moda 360 Programs']")
-    private WebElement moda_360_programs_menu;
+    private WebElement moda360ProgramsMenu;
+
+    @FindBy(xpath = "(//a[@aria-label='Behavioral Health 360'])[1]")
+    private WebElement behavioralHealth360Menu;
 
     private static final String moda_360_programs_xpath = "//div[contains(text(),'Moda 360 programs')][1]";
     @FindBy(xpath = moda_360_programs_xpath)
@@ -52,8 +56,9 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//span[@title='Cancel']")
     private WebElement cancelButton;
 
-    @FindBy(xpath = "//div[@data-style-id='state0element3block_element3block_element0block_element0']")
+    @FindBy(xpath = "//div[text()='Health coaching program']")
     private WebElement healthCoachingProgram;
+    // //div[text()='Health coaching program']
 
     private static final String healthCoachingProgramHeadingXpath = "//div[contains(text(),'Health coaching program')]";
     @FindBy(xpath = healthCoachingProgramHeadingXpath)
@@ -71,6 +76,15 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//div/span[contains(text(),'Leave')]")
     private WebElement leavePopupButton;
 
+    // //h1[text()='Hope. Health. Healing.']
+    private static final String hopeHealthHealingXpath = "//h1[text()='Hope. Health. Healing.']";
+    @FindBy(xpath = hopeHealthHealingXpath)
+    private WebElement hopeHealthHealing;
+
+
+    @FindBy(xpath = "//li//span[text()='Care Reminders' and @title='Care Reminders']")
+    private WebElement careRemindersMenu;
+
     public String welcomeMessage(){
         String welcomeMessageText = "";
         try {
@@ -83,16 +97,21 @@ public class DashboardPage extends BasePage {
         return welcomeMessageText;
     }
 
-    public void click360Menu(){
-        click(mainMenu360,logger,"Moda 360 Menu Clicked");
+    public void clickOnModa360Menu(){
+        click(moda360Menu,logger,"Moda 360 Menu Clicked");
     }
 
+
     public void clickModa360ProgramMenu(){
-        click(moda_360_programs_menu,logger,"Clicked on 360 programs menu");
+        click(moda360ProgramsMenu,logger,"Clicked on 360 programs menu");
+    }
+
+    public void clickOnBehavioralHealth360Menu(){
+        click(behavioralHealth360Menu,logger,"Clicked on Behavioral Health 360 menu");
     }
 
     public void visibility_360_programs_heading(){
-        waitAndisDisplayed(driver,moda_360_heading,40,logger," 360 programs displayed",moda_360_programs_xpath);
+        waitIsDisplayed(driver,moda_360_heading,40,logger," 360 programs displayed",moda_360_programs_xpath);
     }
 
     public void clickOnHealthCoachingProgram(){
@@ -100,7 +119,7 @@ public class DashboardPage extends BasePage {
     }
 
     public void checkHealthCoachingProgramHeading(){
-        waitAndisDisplayed(driver,healthCoachingProgramHeading,40,logger,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
+        waitIsDisplayed(driver,healthCoachingProgramHeading,40,logger,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
     }
 
     public void clickOnBackModa360Programs(){
@@ -119,19 +138,47 @@ public class DashboardPage extends BasePage {
         click(leavePopupButton,logger,"Click on Leave");
     }
 
+    public void goToNextTab(String originalTab){
+        goToNextTab(driver, originalTab, logger, "Go to opened tab");
+    }
+
+    public String getMainHeading(){
+        return waitGettext(driver, hopeHealthHealing, 60, hopeHealthHealingXpath, logger, "Get main heading");
+    }
+
+    public String getPDFContent(String pdfURL) throws Exception {
+        return readPDFContent(driver, pdfURL, logger, "Read PDF content");
+    }
+
+    public void backToOriginalTab(String originalTab){
+        backToOriginalTab(driver, originalTab, logger, "Back to original tab");
+    }
+
+    public void closeTab(){
+        closeTab(driver, logger, "Close tab");
+    }
+
     public void clickBehavioral_health_360(){
         click(behavioral_health_360, logger, "Click Behavioral health 360");
     }
 
     public void clickAddictionCare(){
-        waitAndClick(driver,addiction_care_section_heading,60, logger,"Click on addiction care", addiction_car_section_heading_xpath);
+        waitClick(driver,addiction_care_section_heading,60, logger,"Click on addiction care", addiction_car_section_heading_xpath);
     }
 
     public void clickLearnMore(){
-        waitAndClick(driver,learn_more_link,60,logger,"Click on learn more", learn_more_xpath);
+        waitClick(driver,learn_more_link,60,logger,"Click on learn more", learn_more_xpath);
     }
 
     public void clickOnCancel(){
         click(cancelButton,logger,"Click on cancel");
+    }
+
+    public void switchToNewTab(String originalTab){
+       goToNextTab(driver , originalTab, logger, "Switch to new tab");
+    }
+
+    public void clickOnCareRemindersMenu(){
+        click(careRemindersMenu,logger,"click on Care Reminders menu");
     }
 }

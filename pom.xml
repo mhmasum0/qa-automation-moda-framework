@@ -57,6 +57,14 @@
       <version>1.5.3</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>2.0.24</version>
+    </dependency>
+
+
 
   </dependencies>
 
@@ -84,7 +92,8 @@
           <configuration>
             <!-- Specifying TestNG suite xml file -->
             <suiteXmlFiles>
-              <suiteXmlFile>src/test/resources/individual-test.xml</suiteXmlFile>
+              <!--suppress UnresolvedMavenProperty -->
+              <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>

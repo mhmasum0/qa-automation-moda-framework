@@ -5,10 +5,9 @@
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
     </listeners>
-    <test verbose="2" name="TestSuite" thread-count="2" parallel="classes">
+    <test verbose="2" name="Invalid Login Test">
         <classes>
-            <class name="com.moda.Moda360ProgramsTC"/>
-            <class name="com.moda.BehavioralHealth360TC"/>
+            <class name="com.moda.InvalidLoginTC" />
         </classes>
     </test>
 </suite>
