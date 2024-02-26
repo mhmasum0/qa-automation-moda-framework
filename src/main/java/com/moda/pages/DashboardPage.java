@@ -6,7 +6,6 @@ import java.util.List;
 import com.moda.pages.base.BasePage;
 import com.moda.utils.ExplicitWait;
 
-import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -64,8 +63,9 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = healthCoachingProgramHeadingXpath)
     private WebElement healthCoachingProgramHeading;
 
-    @FindBy(xpath = "//div[@class='slds-col slds-size_12-of-12']//vlocity_ins-custom-lwc-wrapper//slot//c-member-console-breadcrumbs//header//nav//ul//li//div//span[contains(text(),'Moda 360 Programs')]")
+    @FindBy(xpath = "//span[text()='Moda 360 Programs']/preceding-sibling::lightning-icon")
     private WebElement backModa360Programs;
+    // //span[text()='Moda 360 Programs']/preceding-sibling::lightning-icon
 
     @FindBy(xpath = "//div[contains(text(),'Get extra dental benefits')]")
     private WebElement getExtraBenifits;
