@@ -7,9 +7,10 @@ By Default, It will run individual-test
 mvn test -Pparallel-tests
 mvn test -Pindividual-tests
 ```
-**Run Both**
+## Run all tests
 ```shell
-mvn test -Pall-tests
+mvn test -DsuiteXmlFile=src/test/resources/valid-test.xml
+mvn test -DsuiteXmlFile=src/test/resources/all-tests.xml
 ```
 ## Run individual test
 

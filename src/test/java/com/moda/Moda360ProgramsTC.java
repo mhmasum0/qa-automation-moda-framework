@@ -22,8 +22,10 @@ public class Moda360ProgramsTC extends BaseTest {
     dashboardPage.clickOnHealthCoachingProgram();
     ExtraWating.extraWait(3);
     dashboardPage.checkHealthCoachingProgramHeading();
+    ExtraWating.extraWait(3);
 
     dashboardPage.clickOnBackModa360Programs();
+    ExtraWating.extraWait(3);
     dashboardPage.clickOnGetExtraBenifits();
     ExtraWating.extraWait(3);
     dashboardPage.clickOnHealthThroughOraWellness();
