@@ -1,10 +1,12 @@
 package com.moda.dev;
 
-import com.moda.ValidLoginTC;
 import com.moda.basetc.BaseTest;
+import com.moda.core.ResourceString;
+import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
-import com.moda.utils.ExtraWating;
+import com.moda.utils.ExtraWaiting;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BehavioralHealth360TC extends BaseTest {
@@ -15,18 +17,30 @@ public class BehavioralHealth360TC extends BaseTest {
         dashboardPage.clickOnModa360Menu();
         dashboardPage.clickOnBehavioralHealth360Menu();
 
-        ExtraWating.extraWait(3);
-        dashboardPage.clickAddictionCare();
+        ExtraWaiting.extraWait(3);
 
-        ExtraWating.extraWait(3);
-        dashboardPage.clickLearnMore();
-        ExtraWating.extraWait(3);
+        BH360ProgramsPage bh360ProgramsPage = new BH360ProgramsPage(getDriver());
+
+        bh360ProgramsPage.clickAddictionCare();
+
+        ExtraWaiting.extraWait(3);
+        bh360ProgramsPage.clickLearnMore();
+        ExtraWaiting.extraWait(3);
         dashboardPage.clickOnCancel();
-        ExtraWating.extraWait(3);
-        dashboardPage.clickLearnMore();
-        ExtraWating.extraWait(3);
+        ExtraWaiting.extraWait(3);
+        bh360ProgramsPage.clickLearnMore();
+        ExtraWaiting.extraWait(3);
 
         dashboardPage.clickLeavePopup();
-        ExtraWating.extraWait(5);
+        String originalTab = getDriver().getWindowHandle();
+        dashboardPage.goToNextTab(originalTab);
+
+        String hopeHealthHealing = dashboardPage.getMainHeading();
+        Assert.assertEquals(hopeHealthHealing, ResourceString.Hazelden_Betty_Ford);
+
+        dashboardPage.closeTab();
+        dashboardPage.backToOriginalTab(originalTab);
+
+        ExtraWaiting.extraWait(5);
     }
 }

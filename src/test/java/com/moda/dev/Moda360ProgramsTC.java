@@ -1,9 +1,9 @@
 package com.moda.dev;
 
-import com.moda.ValidLoginTC;
 import com.moda.basetc.BaseTest;
 import com.moda.pages.DashboardPage;
-import com.moda.utils.ExtraWating;
+import com.moda.pages.Moda360ProgramsPage;
+import com.moda.utils.ExtraWaiting;
 import org.testng.annotations.Test;
 
 public class Moda360ProgramsTC extends BaseTest {
@@ -14,8 +14,11 @@ public class Moda360ProgramsTC extends BaseTest {
 
         dashboardPage.clickOnModa360Menu();
         dashboardPage.clickModa360ProgramMenu();
-        dashboardPage.visibility_360_programs_heading();
 
-        ExtraWating.extraWait(5);
+        Moda360ProgramsPage moda360ProgramsPage = new Moda360ProgramsPage(getDriver());
+
+        moda360ProgramsPage.visibility_360_programs_heading();
+
+        ExtraWaiting.extraWait(5);
     }
 }

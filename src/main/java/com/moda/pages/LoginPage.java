@@ -1,6 +1,7 @@
 package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
+import com.moda.utils.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,6 @@ import io.qameta.allure.Allure;
 
 public class LoginPage extends BasePage {
     WebDriver driver;
-    private static final Logger logger = LogManager.getLogger(LoginPage.class);
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -32,15 +32,15 @@ public class LoginPage extends BasePage {
     private WebElement errorMessageText;
 
     public void inputUserName(String userName){
-        input(userNameField,userName,logger,"Enter User name");
+        input(userNameField,userName, "Enter User name");
     }
 
     public void inputPassword(String password){
-        input(passwordField,password,logger,"Enter password");
+        input(passwordField,password, "Enter password");
     }
 
     public void submitLogin(){
-        click(loginButton,logger,"Click on login");
+        click(loginButton, "Click on login");
     }
 
     public String loginErrorMessage(){
@@ -49,7 +49,7 @@ public class LoginPage extends BasePage {
 
         // Extract only the Error Text
         String errorMessage = fullErrorMessage.split("\\n")[0].trim();
-        logger.info("Error Message: {}", errorMessage);
+        LogHelper.getLogger().info("Error Message: {}", errorMessage);
         return errorMessage;
     }
 

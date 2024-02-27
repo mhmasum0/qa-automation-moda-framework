@@ -1,11 +1,10 @@
 package com.moda.dev;
 
-import com.moda.ValidLoginTC;
 import com.moda.basetc.BaseTest;
 import com.moda.core.ResourceString;
 import com.moda.pages.CareReminderPage;
 import com.moda.pages.DashboardPage;
-import com.moda.utils.ExtraWating;
+import com.moda.utils.ExtraWaiting;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -41,7 +40,7 @@ public class CareReminderTC extends BaseTest {
         careReminderPage.clickOnUnsnoozeCareReminder();
         careReminderPage.clickOnUnsnoozeButton();
 
-        ExtraWating.extraWait(7);
+        ExtraWaiting.extraWait(7);
     }
 
 }

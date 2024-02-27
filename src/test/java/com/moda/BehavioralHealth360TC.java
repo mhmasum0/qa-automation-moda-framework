@@ -2,8 +2,9 @@ package com.moda;
 
 import com.moda.basetc.BaseTest;
 import com.moda.core.ResourceString;
+import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
-import com.moda.utils.ExtraWating;
+import com.moda.utils.ExtraWaiting;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,16 +18,19 @@ public class BehavioralHealth360TC extends BaseTest {
         dashboardPage.clickOnModa360Menu();
         dashboardPage.clickOnBehavioralHealth360Menu();
 
-        ExtraWating.extraWait(3);
-        dashboardPage.clickAddictionCare();
+        ExtraWaiting.extraWait(3);
 
-        ExtraWating.extraWait(3);
-        dashboardPage.clickLearnMore();
-        ExtraWating.extraWait(3);
+        BH360ProgramsPage bh360ProgramsPage = new BH360ProgramsPage(getDriver());
+
+        bh360ProgramsPage.clickAddictionCare();
+
+        ExtraWaiting.extraWait(3);
+        bh360ProgramsPage.clickLearnMore();
+        ExtraWaiting.extraWait(3);
         dashboardPage.clickOnCancel();
-        ExtraWating.extraWait(3);
-        dashboardPage.clickLearnMore();
-        ExtraWating.extraWait(3);
+        ExtraWaiting.extraWait(3);
+        bh360ProgramsPage.clickLearnMore();
+        ExtraWaiting.extraWait(3);
 
         dashboardPage.clickLeavePopup();
         String originalTab = getDriver().getWindowHandle();
@@ -38,6 +42,6 @@ public class BehavioralHealth360TC extends BaseTest {
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);
 
-        ExtraWating.extraWait(5);
+        ExtraWaiting.extraWait(5);
     }
 }

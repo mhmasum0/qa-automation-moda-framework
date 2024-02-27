@@ -1,0 +1,33 @@
+package com.moda.pages;
+
+import com.moda.pages.base.BasePage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class BH360ProgramsPage extends BasePage {
+    WebDriver driver;
+
+    public BH360ProgramsPage(WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver,this);
+    }
+
+    private static final String addiction_car_section_heading_xpath = "//div[contains(text(),'Addiction care with Hazelden Betty Ford')]";
+    @FindBy(xpath = addiction_car_section_heading_xpath)
+    private WebElement addiction_care_section_heading;
+
+    private static final String learn_more_xpath = "//div[contains(text(),'Learn more and enroll')]";
+    @FindBy(xpath = learn_more_xpath)
+    private WebElement learn_more_link;
+
+
+    public void clickAddictionCare(){
+        waitClick(driver,addiction_care_section_heading,60,"Click on addiction care", addiction_car_section_heading_xpath);
+    }
+
+    public void clickLearnMore(){
+        waitClick(driver,learn_more_link,60, "Click on learn more", learn_more_xpath);
+    }
+}
