@@ -39,6 +39,9 @@ public class Moda360ProgramsPage extends BasePage {
     @FindBy(xpath = "//div/span[contains(text(),'Leave')]")
     private WebElement leavePopupButton;
 
+    @FindBy(xpath = "//span[@title='Cancel']")
+    private WebElement cancelButton;
+
     public void visibility_360_programs_heading(){
         waitIsDisplayed(driver,moda_360_heading,40," 360 programs displayed",moda_360_programs_xpath);
     }
@@ -63,22 +66,16 @@ public class Moda360ProgramsPage extends BasePage {
         clickWithIndex(healthThroughOralWellNess,1,"Click on Health thought Oral Wellness(PDF)");
     }
 
+    public void clickOnCancel(){
+        click(cancelButton, "Click on cancel");
+    }
+
     public void clickLeavePopup(){
         click(leavePopupButton,"Click on Leave");
     }
 
-    public void goToNextTab(String originalTab){
-        goToNextTab(driver, originalTab,  "Go to opened tab");
+    public String getPDFContent(String url) throws Exception {
+        return readPDFContent(driver,url,"Get the PDF content");
     }
 
-    public String getPDFContent(String pdfURL) throws Exception {
-        return readPDFContent(driver, pdfURL, "Read PDF content");
-    }
-    public void backToOriginalTab(String originalTab){
-        backToOriginalTab(driver, originalTab,  "Back to original tab");
-    }
-
-    public void closeTab(){
-        closeTab(driver, "Close tab");
-    }
 }

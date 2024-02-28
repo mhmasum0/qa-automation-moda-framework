@@ -27,16 +27,16 @@ public class BehavioralHealth360TC extends BaseTest {
         ExtraWaiting.extraWait(3);
         bh360ProgramsPage.clickLearnMore();
         ExtraWaiting.extraWait(3);
-        dashboardPage.clickOnCancel();
+        bh360ProgramsPage.clickOnCancel();
         ExtraWaiting.extraWait(3);
         bh360ProgramsPage.clickLearnMore();
         ExtraWaiting.extraWait(3);
 
-        dashboardPage.clickLeavePopup();
+        bh360ProgramsPage.clickLeavePopup();
         String originalTab = getDriver().getWindowHandle();
         dashboardPage.goToNextTab(originalTab);
 
-        String hopeHealthHealing = dashboardPage.getMainHeading();
+        String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
         Assert.assertEquals(hopeHealthHealing, ResourceString.Hazelden_Betty_Ford);
 
         dashboardPage.closeTab();

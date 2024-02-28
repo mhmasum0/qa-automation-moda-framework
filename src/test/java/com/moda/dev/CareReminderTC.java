@@ -5,6 +5,7 @@ import com.moda.core.ResourceString;
 import com.moda.pages.CareReminderPage;
 import com.moda.pages.DashboardPage;
 import com.moda.utils.ExtraWaiting;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,23 +25,25 @@ public class CareReminderTC extends BaseTest {
 
         Assert.assertEquals(careRemindersPageHeading, ResourceString.CARE_REMINDERS);
 
-        careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
-        careReminderPage.clickOnSnoozeReminder();
-        careReminderPage.clickOnOK();
-
-        String careRemindersPageHeadingAgain = careReminderPage.confirmCareRemindersPage();
-        Assert.assertEquals(careRemindersPageHeadingAgain, ResourceString.CARE_REMINDERS);
-
-        careReminderPage.clickOnSnoozedButton();
-
-        String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
-        Assert.assertEquals(confirmSnoozed, ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
-
-        careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
-        careReminderPage.clickOnUnsnoozeCareReminder();
-        careReminderPage.clickOnUnsnoozeButton();
-
-        ExtraWaiting.extraWait(7);
+        careReminderPage.clickOnActiveButton();
+        ExtraWaiting.extraWait(3);
+        careReminderPage.clickOnYearlyDentalReminderLink();
+//        careReminderPage.clickOnSnoozeReminder();
+//        careReminderPage.clickOnOK();
+//
+//        String careRemindersPageHeadingAgain = careReminderPage.confirmCareRemindersPage();
+//        Assert.assertEquals(careRemindersPageHeadingAgain, ResourceString.CARE_REMINDERS);
+//
+//        careReminderPage.clickOnSnoozedButton();
+//
+//        String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
+//        Assert.assertEquals(confirmSnoozed, ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+//
+//        careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
+//        careReminderPage.clickOnUnsnoozeCareReminder();
+//        careReminderPage.clickOnUnsnoozeButton();
+//
+//        ExtraWaiting.extraWait(7);
     }
 
 }

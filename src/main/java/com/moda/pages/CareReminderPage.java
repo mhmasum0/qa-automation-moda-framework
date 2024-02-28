@@ -2,8 +2,7 @@ package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.moda.utils.Scroll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +21,9 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = careRemindersHeadingXpath)
     private WebElement careRemindersHeading;
 
+    @FindBy(xpath = "//div[text()='Active']")
+    private WebElement activeButton;
+
     // DEV
     @FindBy(xpath = "(//div[text()='Yearly Dental Exam and Cleaning'][1])[1]")
     private WebElement yearlyDentalReminderLink;
@@ -31,14 +33,14 @@ public class CareReminderPage  extends BasePage {
     private WebElement cervicalCancerScreening;
 
     // DEV
-//    private static final String snoozeReminderActionXpath = "//div[text()='Snooze this reminder']";
-//    @FindBy( xpath = snoozeReminderActionXpath)
-//    private WebElement snoozeReminderAction;
-
-    // UAT
-    private static final String snoozeReminderActionXpath = "//span[text()='Snooze this reminder']";
+    private static final String snoozeReminderActionXpath = "//div[text()='Snooze this reminder']";
     @FindBy( xpath = snoozeReminderActionXpath)
     private WebElement snoozeReminderAction;
+
+//    // UAT
+//    private static final String snoozeReminderActionXpath = "//span[text()='Snooze this reminder']";
+//    @FindBy( xpath = snoozeReminderActionXpath)
+//    private WebElement snoozeReminderAction;
 
     @FindBy(xpath = "//span[text()='OK']")
     private WebElement okButton;
@@ -63,7 +65,12 @@ public class CareReminderPage  extends BasePage {
         return waitGettext(driver,careRemindersHeading,30,careRemindersHeadingXpath, "Confirm Care Reminders page");
     }
 
-    public void clickOnYearlyDentalReminderLink(){
+    public void clickOnActiveButton(){
+        click(activeButton, "Click on Active button");
+    }
+
+    public void clickOnYearlyDentalReminderLink() throws InterruptedException {
+        Scroll.scrollToElement(driver, yearlyDentalReminderLink);
         click(yearlyDentalReminderLink, "Click on Year Dental Exam and Cleaning Reminder link");
     }
 

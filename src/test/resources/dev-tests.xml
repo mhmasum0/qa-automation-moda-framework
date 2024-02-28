@@ -9,7 +9,7 @@
         <classes>
             <class name="com.moda.ValidLoginTC" />
 <!--            <class name="com.moda.dev.Moda360ProgramsTC"/>-->
-            <class name="com.moda.CareReminderTC" />
+            <class name="com.moda.dev.CareReminderTC" />
 <!--            <class name="com.moda.dev.BehavioralHealth360TC"/>-->
         </classes>
     </test>

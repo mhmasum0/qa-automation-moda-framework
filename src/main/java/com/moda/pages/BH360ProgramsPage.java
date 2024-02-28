@@ -22,6 +22,10 @@ public class BH360ProgramsPage extends BasePage {
     @FindBy(xpath = learn_more_xpath)
     private WebElement learn_more_link;
 
+    private static final String hopeHealthHealingXpath = "//h1[text()='Hope. Health. Healing.']";
+    @FindBy(xpath = hopeHealthHealingXpath)
+    private WebElement hopeHealthHealing;
+
 
     public void clickAddictionCare(){
         waitClick(driver,addiction_care_section_heading,60,"Click on addiction care", addiction_car_section_heading_xpath);
@@ -29,5 +33,19 @@ public class BH360ProgramsPage extends BasePage {
 
     public void clickLearnMore(){
         waitClick(driver,learn_more_link,60, "Click on learn more", learn_more_xpath);
+    }
+
+    public void clickOnCancel() {
+        Moda360ProgramsPage moda360ProgramsPage = new Moda360ProgramsPage(driver);
+        moda360ProgramsPage.clickOnCancel();
+    }
+
+    public void clickLeavePopup() {
+        Moda360ProgramsPage moda360ProgramsPage = new Moda360ProgramsPage(driver);
+        moda360ProgramsPage.clickLeavePopup();
+    }
+
+    public String getMainHeading(){
+        return waitGettext(driver, hopeHealthHealing, 60, hopeHealthHealingXpath,  "Get main heading");
     }
 }

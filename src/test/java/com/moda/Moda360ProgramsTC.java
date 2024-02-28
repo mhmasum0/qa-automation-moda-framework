@@ -34,11 +34,11 @@ public class Moda360ProgramsTC extends BaseTest {
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnHealthThroughOraWellness();
     ExtraWaiting.extraWait(3);
-    dashboardPage.clickOnCancel();
+    moda360ProgramsPage.clickOnCancel();
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnHealthThroughOraWellness();
     ExtraWaiting.extraWait(3);
-    dashboardPage.clickLeavePopup();
+    moda360ProgramsPage.clickLeavePopup();
 
     String originalTab = getDriver().getWindowHandle();
     dashboardPage.goToNextTab(originalTab);

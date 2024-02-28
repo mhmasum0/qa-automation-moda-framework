@@ -45,19 +45,6 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = learn_more_xpath)
     private WebElement learn_more_link;
 
-    @FindBy(xpath = "//span[@title='Cancel']")
-    private WebElement cancelButton;
-
-    @FindBy(xpath = "//span[contains(text(),'Health through Oral Wellness (PDF)')][1]")
-    private List<WebElement> healthThroughOralWellNess;
-
-    @FindBy(xpath = "//div/span[contains(text(),'Leave')]")
-    private WebElement leavePopupButton;
-
-    private static final String hopeHealthHealingXpath = "//h1[text()='Hope. Health. Healing.']";
-    @FindBy(xpath = hopeHealthHealingXpath)
-    private WebElement hopeHealthHealing;
-
     @FindBy(xpath = "//li//span[text()='Care Reminders' and @title='Care Reminders']")
     private WebElement careRemindersMenu;
 
@@ -86,16 +73,8 @@ public class DashboardPage extends BasePage {
         click(behavioralHealth360Menu,"Clicked on Behavioral Health 360 menu");
     }
 
-    public void clickLeavePopup(){
-        click(leavePopupButton,"Click on Leave");
-    }
-
     public void goToNextTab(String originalTab){
         goToNextTab(driver, originalTab,  "Go to opened tab");
-    }
-
-    public String getMainHeading(){
-        return waitGettext(driver, hopeHealthHealing, 60, hopeHealthHealingXpath,  "Get main heading");
     }
 
     public void backToOriginalTab(String originalTab){
@@ -104,14 +83,6 @@ public class DashboardPage extends BasePage {
 
     public void closeTab(){
         closeTab(driver, "Close tab");
-    }
-
-    public void clickOnCancel(){
-        click(cancelButton, "Click on cancel");
-    }
-
-    public void switchToNewTab(String originalTab){
-       goToNextTab(driver , originalTab, "Switch to new tab");
     }
 
     public void clickOnCareRemindersMenu(){
