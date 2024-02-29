@@ -1,6 +1,7 @@
 package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
+import com.moda.utils.Scroll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,11 +47,12 @@ public class Moda360ProgramsPage extends BasePage {
         waitIsDisplayed(driver,moda_360_heading,40," 360 programs displayed",moda_360_programs_xpath);
     }
 
-    public void clickOnHealthCoachingProgram(){
+    public void clickOnHealthCoachingProgram() throws InterruptedException {
+        Scroll.scrollToElement(driver,healthCoachingProgram);
         click(healthCoachingProgram,"Click on health program");
     }
 
-    public void checkHealthCoachingProgramHeading(){
+    public void checkHealthCoachingProgramHeading() {
         waitIsDisplayed(driver,healthCoachingProgramHeading,40,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
     }
 
@@ -58,11 +60,14 @@ public class Moda360ProgramsPage extends BasePage {
         click(backModa360Programs,"Back from Health programs");
     }
 
-    public void clickOnGetExtraBenefits(){
+    public void clickOnGetExtraBenefits() throws InterruptedException {
+        Scroll.scrollToElement(driver, getExtraBenefits);
         click(getExtraBenefits,"Click on Get Extra Benifits link");
     }
 
-    public void clickOnHealthThroughOraWellness(){
+    public void clickOnHealthThroughOraWellness() throws InterruptedException {
+        var el = healthThroughOralWellNess.get(1);
+        Scroll.scrollToElement(driver, el);
         clickWithIndex(healthThroughOralWellNess,1,"Click on Health thought Oral Wellness(PDF)");
     }
 

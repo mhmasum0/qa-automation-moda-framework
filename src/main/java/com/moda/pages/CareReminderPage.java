@@ -3,6 +3,7 @@ package com.moda.pages;
 import com.moda.pages.base.BasePage;
 
 import com.moda.utils.Scroll;
+import com.moda.utils.Tab;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,11 +22,13 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = careRemindersHeadingXpath)
     private WebElement careRemindersHeading;
 
-    @FindBy(xpath = "//div[text()='Active']")
+    private static final String activeButtonXpath = "//div[text()='Active']";
+    @FindBy(xpath = activeButtonXpath)
     private WebElement activeButton;
 
     // DEV
-    @FindBy(xpath = "(//div[text()='Yearly Dental Exam and Cleaning'][1])[1]")
+    private static final String yearlyDentalReminderLinkXpath = "(//div[text()='Yearly Dental Exam and Cleaning'][1])[1]";
+    @FindBy(xpath = yearlyDentalReminderLinkXpath)
     private WebElement yearlyDentalReminderLink;
 
     // UAT
@@ -65,13 +68,14 @@ public class CareReminderPage  extends BasePage {
         return waitGettext(driver,careRemindersHeading,30,careRemindersHeadingXpath, "Confirm Care Reminders page");
     }
 
-    public void clickOnActiveButton(){
+    public void clickOnActiveButton() throws InterruptedException {
+        Scroll.scrollToElement(driver, activeButton);
         click(activeButton, "Click on Active button");
     }
 
     public void clickOnYearlyDentalReminderLink() throws InterruptedException {
         Scroll.scrollToElement(driver, yearlyDentalReminderLink);
-        click(yearlyDentalReminderLink, "Click on Year Dental Exam and Cleaning Reminder link");
+        waitClick(driver,yearlyDentalReminderLink, 30 ,"Click on Year Dental Exam and Cleaning Reminder link", yearlyDentalReminderLinkXpath);
     }
 
     public void clickOnCervicalCancerScreening(){
@@ -82,7 +86,8 @@ public class CareReminderPage  extends BasePage {
         click(snoozedCareReminders, "Click on Snoozed Care Reminders");
     }
 
-    public void clickOnSnoozeReminder(){
+    public void clickOnSnoozeReminder() throws InterruptedException {
+        Scroll.scrollToElement(driver,snoozeReminderAction);
         waitClick(driver, snoozeReminderAction, 30, "Click on Snooze this reminder", snoozeReminderActionXpath);
     }
 
@@ -90,7 +95,8 @@ public class CareReminderPage  extends BasePage {
         click(okButton, "Click on OK");
     }
 
-    public void clickOnSnoozedButton(){
+    public void clickOnSnoozedButton() throws InterruptedException {
+        Scroll.scrollToElement(driver, snoozedButton);
         click(snoozedButton, "Click on Snoozed button");
     }
 
@@ -98,11 +104,13 @@ public class CareReminderPage  extends BasePage {
         return waitGettext(driver, yearlyDentalExamAndCleaningSnoozed, 30, careRemindersHeadingXpath, "Confirm Yearly Dental Exam and Cleaning Snoozed");
     }
 
-    public void clickOnYearlyDentalExamAndCleaningSnoozed(){
+    public void clickOnYearlyDentalExamAndCleaningSnoozed() throws InterruptedException {
+        Scroll.scrollToElement(driver, yearlyDentalExamAndCleaningSnoozed);
         click(yearlyDentalExamAndCleaningSnoozed, "Click on Yearly Dental Exam and Cleaning Snoozed");
     }
 
-    public void clickOnUnsnoozeCareReminder(){
+    public void clickOnUnsnoozeCareReminder() throws InterruptedException {
+        Scroll.scrollToElement(driver, unsnoozeCareReminder);
         click(unsnoozeCareReminder, "Click on Unsnooze Care Reminder");
     }
 

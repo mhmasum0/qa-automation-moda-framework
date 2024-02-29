@@ -1,6 +1,7 @@
 package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
+import com.moda.utils.Scroll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,7 +28,8 @@ public class BH360ProgramsPage extends BasePage {
     private WebElement hopeHealthHealing;
 
 
-    public void clickAddictionCare(){
+    public void clickAddictionCare() throws InterruptedException {
+        Scroll.scrollToElement(driver, addiction_care_section_heading);
         waitClick(driver,addiction_care_section_heading,60,"Click on addiction care", addiction_car_section_heading_xpath);
     }
 

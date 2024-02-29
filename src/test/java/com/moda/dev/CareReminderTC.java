@@ -25,25 +25,29 @@ public class CareReminderTC extends BaseTest {
 
         Assert.assertEquals(careRemindersPageHeading, ResourceString.CARE_REMINDERS);
 
+        ExtraWaiting.extraWait(3);
         careReminderPage.clickOnActiveButton();
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnYearlyDentalReminderLink();
-//        careReminderPage.clickOnSnoozeReminder();
-//        careReminderPage.clickOnOK();
-//
-//        String careRemindersPageHeadingAgain = careReminderPage.confirmCareRemindersPage();
-//        Assert.assertEquals(careRemindersPageHeadingAgain, ResourceString.CARE_REMINDERS);
-//
-//        careReminderPage.clickOnSnoozedButton();
-//
-//        String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
-//        Assert.assertEquals(confirmSnoozed, ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
-//
-//        careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
-//        careReminderPage.clickOnUnsnoozeCareReminder();
-//        careReminderPage.clickOnUnsnoozeButton();
-//
-//        ExtraWaiting.extraWait(7);
+        careReminderPage.clickOnSnoozeReminder();
+        ExtraWaiting.extraWait(3);
+        careReminderPage.clickOnOK();
+
+        String careRemindersPageHeadingAgain = careReminderPage.confirmCareRemindersPage();
+        Assert.assertEquals(careRemindersPageHeadingAgain, ResourceString.CARE_REMINDERS);
+
+        careReminderPage.clickOnSnoozedButton();
+
+        String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
+        Assert.assertEquals(confirmSnoozed, ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+
+        careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
+        ExtraWaiting.extraWait(3);
+        careReminderPage.clickOnUnsnoozeCareReminder();
+        ExtraWaiting.extraWait(3);
+        careReminderPage.clickOnUnsnoozeButton();
+
+        ExtraWaiting.extraWait(7);
     }
 
 }
