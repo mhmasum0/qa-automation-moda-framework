@@ -19,7 +19,7 @@ public class LoginEndPoints {
          contentType(ContentType.JSON)
          .body(payload)
          .when()
-         .post(Routes.post_login_url);
+         .post(ModaAPI.post_login_url);
       return response;
    }
       

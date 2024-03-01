@@ -8,3 +8,6 @@
 - Click on active button from reminder page
 - Dashboard cleanup
 
+**Date: 01-03-2024**
+- Allure annotation fixed
+- Login API
