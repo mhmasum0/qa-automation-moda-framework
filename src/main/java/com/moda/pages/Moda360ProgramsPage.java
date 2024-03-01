@@ -2,6 +2,7 @@ package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
 import com.moda.utils.Scroll;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,42 +44,51 @@ public class Moda360ProgramsPage extends BasePage {
     @FindBy(xpath = "//span[@title='Cancel']")
     private WebElement cancelButton;
 
+    @Step("360 programs displayed")
     public void visibility_360_programs_heading(){
-        waitIsDisplayed(driver,moda_360_heading,40," 360 programs displayed",moda_360_programs_xpath);
+        waitIsDisplayed(driver,moda_360_heading,40,"360 programs displayed",moda_360_programs_xpath);
     }
 
+    @Step("Click on health program")
     public void clickOnHealthCoachingProgram() throws InterruptedException {
         Scroll.scrollToElement(driver,healthCoachingProgram);
         click(healthCoachingProgram,"Click on health program");
     }
 
+    @Step("Check health coaching program heading")
     public void checkHealthCoachingProgramHeading() {
         waitIsDisplayed(driver,healthCoachingProgramHeading,40,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
     }
 
+    @Step("Click on back to Moda 360 programs")
     public void clickOnBackModa360Programs(){
         click(backModa360Programs,"Back from Health programs");
     }
 
+    @Step("Click on Get Extra Benefits")
     public void clickOnGetExtraBenefits() throws InterruptedException {
         Scroll.scrollToElement(driver, getExtraBenefits);
         click(getExtraBenefits,"Click on Get Extra Benifits link");
     }
 
+    @Step("Click on Health Through Oral Wellness(PDF)")
     public void clickOnHealthThroughOraWellness() throws InterruptedException {
         var el = healthThroughOralWellNess.get(1);
         Scroll.scrollToElement(driver, el);
         clickWithIndex(healthThroughOralWellNess,1,"Click on Health thought Oral Wellness(PDF)");
     }
 
+    @Step("Click on Cancel")
     public void clickOnCancel(){
         click(cancelButton, "Click on cancel");
     }
 
+    @Step("Click on Leave")
     public void clickLeavePopup(){
         click(leavePopupButton,"Click on Leave");
     }
 
+    @Step("Get the PDF Content")
     public String getPDFContent(String url) throws Exception {
         return readPDFContent(driver,url,"Get the PDF content");
     }

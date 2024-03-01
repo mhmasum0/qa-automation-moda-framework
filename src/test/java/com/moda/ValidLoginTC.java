@@ -9,6 +9,8 @@ import com.moda.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.restassured.response.Response;
+
 public class ValidLoginTC extends BaseTest {
 
     String userName = Constants.USER;
@@ -17,6 +19,9 @@ public class ValidLoginTC extends BaseTest {
     @Test(priority = 1, description = "Valid Credential login")
     public void ValidLoginTest(){
         LoginPage loginPage = new LoginPage(getDriver());
+
+        Response response = loginPage.loginUserAPI(userName, password);
+        Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);

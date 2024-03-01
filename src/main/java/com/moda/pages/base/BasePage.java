@@ -17,20 +17,16 @@ import io.qameta.allure.Allure;
 
 public class BasePage {
     protected void click(WebElement element, String log){
-        Allure.step(log);
         element.click();
         LogHelper.getLogger().info(log);
     }
 
     protected void clickWithIndex(List<WebElement> element, int index, String log){
         element.get(index).click();
-        Allure.step(log);
         LogHelper.getLogger().info(log);
     }
 
     protected void input(WebElement element,String input, String log){
-        Allure.step(log);
-        Allure.parameter("userName", input);
         element.sendKeys(input);
         LogHelper.getLogger().info("Inputting username: {}", input);
     }
@@ -43,38 +39,32 @@ public class BasePage {
     protected void waitIsDisplayed(WebDriver driver, WebElement element, int seconds, String log, String locator){
         new ExplicitWait(driver).waitForElement(seconds,By.xpath(locator));
         element.isDisplayed();
-        Allure.step(log);
         LogHelper.getLogger().info(log);
     }
 
     protected String waitGettext(WebDriver driver, WebElement element, int seconds, String xpath, String log){
         new ExplicitWait(driver).waitForElement(seconds,By.xpath(xpath));
-        Allure.step(log);
         LogHelper.getLogger().info(log);
         return element.getText();
     }
 
     protected void goToNextTab(WebDriver driver, String originalTab, String log){
         Tab.goToNextTab(driver, originalTab);
-        Allure.step(log);
         LogHelper.getLogger().info(log);
     }
 
     protected void backToOriginalTab(WebDriver driver, String originalTab, String log){
         Tab.backToOriginalTab(driver, originalTab);
-        Allure.step(log);
         LogHelper.getLogger().info(log);
     }
 
     protected void closeTab(WebDriver driver, String log){
         Tab.closeTab(driver);
-        Allure.step(log);
         LogHelper.getLogger().info(log);
     }
 
     protected String readPDFContent(WebDriver driver, String pdfURL, String log) throws Exception {
         String pdfContent = PDFReader.ReadPDFContent(pdfURL);
-        Allure.step(log);
         LogHelper.getLogger().info(log);
         return pdfContent;
     }

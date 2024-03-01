@@ -7,6 +7,7 @@ import com.moda.pages.base.BasePage;
 import com.moda.utils.ExplicitWait;
 
 import com.moda.utils.LogHelper;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -40,6 +41,7 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//li//span[text()='Care Reminders' and @title='Care Reminders']")
     private WebElement careRemindersMenu;
 
+    @Step("Welcome Dashboard")
     public String welcomeMessage(){
         String welcomeMessageText = "";
         try {
@@ -52,31 +54,40 @@ public class DashboardPage extends BasePage {
         return welcomeMessageText;
     }
 
+    @Step("Click on Moda 360 Menu")
     public void clickOnModa360Menu(){
         click(moda360Menu,"Moda 360 Menu Clicked");
     }
 
+    @Step("Click on Moda 360 Programs from menu")
     public void clickModa360ProgramMenu(){
         click(moda360ProgramsMenu,"Clicked on 360 programs menu");
     }
 
+    @Step("Click on Behavioral Health 360 menu")
     public void clickOnBehavioralHealth360Menu(){
         click(behavioralHealth360Menu,"Clicked on Behavioral Health 360 menu");
     }
 
+    @Step("Click on Care reminder menu")
+    public void clickOnCareRemindersMenu(){
+        click(careRemindersMenu, "click on Care Reminders menu");
+    }
+
+    @Step("Go to next tab")
     public void goToNextTab(String originalTab){
         goToNextTab(driver, originalTab,  "Go to opened tab");
     }
 
+    @Step("Back to original tab")
     public void backToOriginalTab(String originalTab){
         backToOriginalTab(driver, originalTab,  "Back to original tab");
     }
 
+    @Step("Close the tab")
     public void closeTab(){
         closeTab(driver, "Close tab");
     }
 
-    public void clickOnCareRemindersMenu(){
-        click(careRemindersMenu, "click on Care Reminders menu");
-    }
+
 }

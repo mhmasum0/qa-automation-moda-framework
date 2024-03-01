@@ -4,6 +4,7 @@ import com.moda.pages.base.BasePage;
 
 import com.moda.utils.Scroll;
 import com.moda.utils.Tab;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,56 +65,69 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = "//button//span[text()='Unsnooze']")
     private WebElement unsnoozeButton;
 
+    @Step("Confirm Care Reminders page")
     public String confirmCareRemindersPage(){
         return waitGettext(driver,careRemindersHeading,30,careRemindersHeadingXpath, "Confirm Care Reminders page");
     }
 
+    @Step("Click on Active button")
     public void clickOnActiveButton() throws InterruptedException {
         Scroll.scrollToElement(driver, activeButton);
         click(activeButton, "Click on Active button");
     }
 
+    @Step("Click on Year Dental Exam and Cleaning Reminder link")
     public void clickOnYearlyDentalReminderLink() throws InterruptedException {
         Scroll.scrollToElement(driver, yearlyDentalReminderLink);
         waitClick(driver,yearlyDentalReminderLink, 30 ,"Click on Year Dental Exam and Cleaning Reminder link", yearlyDentalReminderLinkXpath);
     }
 
-    public void clickOnCervicalCancerScreening(){
+    @Step("Click on Cervical Cancer Screening")
+    public void clickOnCervicalCancerScreening() throws InterruptedException {
+        Scroll.scrollToElement(driver, cervicalCancerScreening);
         click(cervicalCancerScreening, "Click on Cervical Cancer Screening");
     }
 
+    @Step("Click on Snoozed Care Reminders")
     public void clickOnSnoozedCareReminders(){
         click(snoozedCareReminders, "Click on Snoozed Care Reminders");
     }
 
+    @Step("Click on Snooze this reminder")
     public void clickOnSnoozeReminder() throws InterruptedException {
         Scroll.scrollToElement(driver,snoozeReminderAction);
         waitClick(driver, snoozeReminderAction, 30, "Click on Snooze this reminder", snoozeReminderActionXpath);
     }
 
+    @Step("Click on OK")
     public void clickOnOK(){
         click(okButton, "Click on OK");
     }
 
+    @Step("Click on Snoozed button")
     public void clickOnSnoozedButton() throws InterruptedException {
         Scroll.scrollToElement(driver, snoozedButton);
         click(snoozedButton, "Click on Snoozed button");
     }
 
+    @Step("Confirm Yearly Dental Exam and Cleaning Snoozed")
     public String confirmYearlyDentalExamAndCleaningSnoozed(){
         return waitGettext(driver, yearlyDentalExamAndCleaningSnoozed, 30, careRemindersHeadingXpath, "Confirm Yearly Dental Exam and Cleaning Snoozed");
     }
 
+    @Step("Click on Yearly Dental Exam and Cleaning Snoozed")
     public void clickOnYearlyDentalExamAndCleaningSnoozed() throws InterruptedException {
         Scroll.scrollToElement(driver, yearlyDentalExamAndCleaningSnoozed);
         click(yearlyDentalExamAndCleaningSnoozed, "Click on Yearly Dental Exam and Cleaning Snoozed");
     }
 
+    @Step("Click on Unsnooze Care Reminder")
     public void clickOnUnsnoozeCareReminder() throws InterruptedException {
         Scroll.scrollToElement(driver, unsnoozeCareReminder);
         click(unsnoozeCareReminder, "Click on Unsnooze Care Reminder");
     }
 
+    @Step("Click on Unsnooze button")
     public void clickOnUnsnoozeButton(){
         click(unsnoozeButton, "Click on Unsnooze button");
     }
