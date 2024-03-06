@@ -9,4 +9,7 @@ public class ModaAPI {
     // Login
     public static String post_login_url = base_url +"/moda360gateway/api/token/authentication";
 
+    // Care Reminder
+    public static String active_care_reminder = base_url + "/moda360gateway/api/care-reminders?status=active";
+
 }

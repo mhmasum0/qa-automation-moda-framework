@@ -2,6 +2,7 @@ package com.moda.pages;
 
 import com.moda.api.LoginEndPoints;
 import com.moda.api.models.User;
+import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
 import com.moda.utils.LogHelper;
 
@@ -64,7 +65,9 @@ public class LoginPage extends BasePage {
         // Login user API
         User userPayload = new User(userName, password);
         Response response = LoginEndPoints.loginUsers(userPayload);
+        ShareData.accessToken = String.valueOf(response.body().print());
         LogHelper.getLogger().info("Status Code: " + response.getStatusCode());
+        LogHelper.getLogger().info("Body: " + response.body().print());
         return response;
     }
 

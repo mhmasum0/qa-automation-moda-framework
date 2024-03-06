@@ -4,6 +4,8 @@ package com.moda.pages;
 import java.util.List;
 
 import com.moda.pages.base.BasePage;
+import com.moda.utils.API;
+import com.moda.utils.ConfigFileReader;
 import com.moda.utils.ExplicitWait;
 
 import com.moda.utils.LogHelper;
@@ -32,6 +34,9 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360Menu;
 
+    @FindBy(xpath = "//button//span[text()='Moda360']")
+    private WebElement moda360MenuDev;
+
     @FindBy(xpath = "//span[@title='Moda 360 Programs']")
     private WebElement moda360ProgramsMenu;
 
@@ -56,7 +61,9 @@ public class DashboardPage extends BasePage {
 
     @Step("Click on Moda 360 Menu")
     public void clickOnModa360Menu(){
-        click(moda360Menu,"Moda 360 Menu Clicked");
+        String environment = API.extractEnvironment(ConfigFileReader.getConfigPropertyValue("url"));
+        WebElement elementToClick = "dev".equals(environment) ? moda360MenuDev : moda360Menu;
+        click(elementToClick, "Moda 360 Menu Clicked");
     }
 
     @Step("Click on Moda 360 Programs from menu")

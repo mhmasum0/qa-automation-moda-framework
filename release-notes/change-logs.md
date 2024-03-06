@@ -11,3 +11,7 @@
 **Date: 01-03-2024**
 - Allure annotation fixed
 - Login API
+
+**Date: 05-03-2024**
+- Care Reminder API Validation added
+- Custom PDF test report added

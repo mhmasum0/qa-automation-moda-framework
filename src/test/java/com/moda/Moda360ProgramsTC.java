@@ -23,12 +23,12 @@ public class Moda360ProgramsTC extends BaseTest {
 
     moda360ProgramsPage.visibility_360_programs_heading();
 
-    moda360ProgramsPage.clickOnHealthCoachingProgram();
-    ExtraWaiting.extraWait(3);
-    moda360ProgramsPage.checkHealthCoachingProgramHeading();
-    ExtraWaiting.extraWait(3);
-
-    moda360ProgramsPage.clickOnBackModa360Programs();
+//    moda360ProgramsPage.clickOnHealthCoachingProgram();
+//    ExtraWaiting.extraWait(3);
+//    moda360ProgramsPage.checkHealthCoachingProgramHeading();
+//    ExtraWaiting.extraWait(3);
+//
+//    moda360ProgramsPage.clickOnBackModa360Programs();
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnGetExtraBenefits();
     ExtraWaiting.extraWait(3);

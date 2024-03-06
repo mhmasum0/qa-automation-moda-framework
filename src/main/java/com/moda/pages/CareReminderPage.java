@@ -1,10 +1,14 @@
 package com.moda.pages;
 
+import com.moda.api.LoginEndPoints;
+import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
 
+import com.moda.utils.LogHelper;
 import com.moda.utils.Scroll;
 import com.moda.utils.Tab;
 import io.qameta.allure.Step;
+import io.restassured.response.Response;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -74,6 +78,14 @@ public class CareReminderPage  extends BasePage {
     public void clickOnActiveButton() throws InterruptedException {
         Scroll.scrollToElement(driver, activeButton);
         click(activeButton, "Click on Active button");
+    }
+
+    @Step("Active Care Reminder with API")
+    public Response activeCareReminderWithAPI(){
+        String token = ShareData.accessToken;
+        Response response = LoginEndPoints.activeCareReminder(token);
+        LogHelper.getLogger().info("Active Care Reminder with API: " + response.getBody().print());
+        return response;
     }
 
     @Step("Click on Year Dental Exam and Cleaning Reminder link")

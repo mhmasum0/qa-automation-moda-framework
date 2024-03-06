@@ -3,6 +3,7 @@ package com.moda;
 import com.moda.basetc.BaseTest;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
+import com.moda.core.ShareData;
 import com.moda.pages.DashboardPage;
 import com.moda.pages.LoginPage;
 

@@ -22,5 +22,16 @@ public class LoginEndPoints {
          .post(ModaAPI.post_login_url);
       return response;
    }
+
+   public static Response activeCareReminder(String token) {
+      // Active Care Reminder
+      Response response = given()
+         .header("Authorization", "Bearer " + token)
+         .when()
+         .get(ModaAPI.active_care_reminder);
+      return response;
+   }
+
+   
       
 }
