@@ -33,11 +33,9 @@ public class PDFReporter implements IReporter {
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
             table.addCell("Email:");
-            table.addCell("your-email@example.com");
+            table.addCell("testingusermoda@gmail.com");
             table.addCell("URL:");
-            table.addCell("http://example.com");
-            table.addCell("Credentials:");
-            table.addCell("username - yourusername, password - yourpassword");
+            table.addCell(ConfigFileReader.getConfigPropertyValue("url"));
             document.add(table);
 
             document.add(new Paragraph("\n"));

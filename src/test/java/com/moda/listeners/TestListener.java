@@ -1,7 +1,7 @@
 package com.moda.listeners;
 
 import com.moda.basetc.BaseTest;
-import com.moda.utils.AllureReporterHelper;
+import com.moda.utils.AllureReport;
 import com.moda.utils.ScreenShot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +33,7 @@ public class TestListener implements ITestListener {
         logger.error("Test failed: " + result.getMethod().getMethodName() + " - Error: " + errorMessage);
         ScreenShot screenShot = new ScreenShot(getDriver());
         String inputSc =  screenShot.takeScreenshot(result.getMethod().getMethodName());
-        AllureReporterHelper.attachScreenshot(inputSc,result.getMethod().getMethodName());
+        AllureReport.attachScreenshot(inputSc,result.getMethod().getMethodName());
 
     }
 

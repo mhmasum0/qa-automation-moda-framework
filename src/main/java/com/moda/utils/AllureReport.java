@@ -1,13 +1,14 @@
 package com.moda.utils;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class AllureReporterHelper {
+public class AllureReport {
     /**
      * Attach a screenshot to an Allure report.
      *
@@ -25,5 +26,10 @@ public class AllureReporterHelper {
             // Log the error or handle the exception as per your requirements
             System.err.println("Exception while reading the screenshot file: " + e.getMessage());
         }
+    }
+
+    @Step("{0}")
+    public static void step(String Description){
+        LogHelper.getLogger().info(Description);
     }
 }

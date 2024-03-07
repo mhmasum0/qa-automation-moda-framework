@@ -22,9 +22,20 @@ public class Moda360ProgramsPage extends BasePage {
     @FindBy(xpath = moda_360_programs_xpath)
     private WebElement moda_360_heading;
 
+    // Check the health coaching program
     @FindBy(xpath = "//div[text()='Health coaching program']")
     private WebElement healthCoachingProgram;
 
+    // Dynamic for first program xpath
+    @FindBy(xpath = "(//vlocity_ins-block[contains(@data-conditions, 'FirstProgramId')])[1]")
+    private WebElement firstProgram;
+
+    // Dynamic xpath for first program heading
+    private static final String firstProgramHeadingXpath = "(//div[@class='vloc-min-height' and @vlocity_ins-outputfield_outputfield=''])[4]";
+    @FindBy(xpath = firstProgramHeadingXpath)
+    private WebElement firstProgramHeading;
+
+    // Health Coaching Program details page heading
     private static final String healthCoachingProgramHeadingXpath = "//div[contains(text(),'Health coaching program')]";
     @FindBy(xpath = healthCoachingProgramHeadingXpath)
     private WebElement healthCoachingProgramHeading;
@@ -37,6 +48,10 @@ public class Moda360ProgramsPage extends BasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Health through Oral Wellness (PDF)')][1]")
     private List<WebElement> healthThroughOralWellNess;
+    
+    // dynamic xpath for pdf link on the program details page
+    @FindBy(xpath = "(//vlocity_ins-output-field[contains(@data-conditions, 'PDF')])[1]")
+    private WebElement pdfLink;
 
     @FindBy(xpath = "//div/span[contains(text(),'Leave')]")
     private WebElement leavePopupButton;
@@ -49,10 +64,21 @@ public class Moda360ProgramsPage extends BasePage {
         waitIsDisplayed(driver,moda_360_heading,40,"360 programs displayed",moda_360_programs_xpath);
     }
 
+    @Step("Click on first program")
+    public void clickOnFirstProgram() throws InterruptedException {
+        Scroll.scrollToElement(driver,firstProgram);
+        click(firstProgram,"Click on first program");
+    }
+
     @Step("Click on health program")
     public void clickOnHealthCoachingProgram() throws InterruptedException {
         Scroll.scrollToElement(driver,healthCoachingProgram);
         click(healthCoachingProgram,"Click on health program");
+    }
+
+    @Step("Check first program heading")
+    public void checkFirstProgramHeading() {
+        waitIsDisplayed(driver,firstProgramHeading,40,"Check first program heading",firstProgramHeadingXpath);
     }
 
     @Step("Check health coaching program heading")
@@ -76,6 +102,12 @@ public class Moda360ProgramsPage extends BasePage {
         var el = healthThroughOralWellNess.get(1);
         Scroll.scrollToElement(driver, el);
         clickWithIndex(healthThroughOralWellNess,1,"Click on Health thought Oral Wellness(PDF)");
+    }
+
+    @Step("Click on PDF link of the program details page")
+    public void clickOnPDFLink() throws InterruptedException {
+        Scroll.scrollToElement(driver,pdfLink);
+        click(pdfLink,"Click on PDF link of the program details page");
     }
 
     @Step("Click on Cancel")

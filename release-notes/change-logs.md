@@ -15,3 +15,10 @@
 **Date: 05-03-2024**
 - Care Reminder API Validation added
 - Custom PDF test report added
+
+**Date: 07-03-2024**
+- Updated information for PDF report
+- Allure PDF reporting
+- Allure report in single html file
+- Dynamic XPath for moda 360 programs page
+- Added steps for API validation

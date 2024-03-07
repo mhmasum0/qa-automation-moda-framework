@@ -23,9 +23,16 @@ mvn test -DsuiteXmlFile=src/test/resources/individual-tests/bh360-programs.xml
 
 # Generate allure report
 ```
+allure generate --single-file allure-results --clean
 allure serve allure-results
 allure generate allure-results
 allure open allure-report
+```
+## Allure test report: PDF
+Repository link: [https://github.com/eroshenkoam/allure-pdf/releases](https://github.com/eroshenkoam/allure-pdf/releases)
+**Command:**
+```shell
+allure-pdf allure-results -o report.pdf
 ```
 
 # Delete folder from command line
