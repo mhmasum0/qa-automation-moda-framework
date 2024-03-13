@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -12,6 +13,15 @@ import com.moda.utils.ConfigFileReader;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class PDFReporter implements IReporter {
     @Override
@@ -33,7 +43,7 @@ public class PDFReporter implements IReporter {
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
             table.addCell("Email:");
-            table.addCell("testingusermoda@gmail.com");
+            table.addCell("testingusermoda1@gmail.com");
             table.addCell("URL:");
             table.addCell(ConfigFileReader.getConfigPropertyValue("url"));
             document.add(table);
@@ -72,7 +82,75 @@ public class PDFReporter implements IReporter {
             }
             document.close();
             System.out.println("PDF Report generated at: " + reportPath);
+            sendEmail(reportPath);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendEmail(String attachmentPath) {
+        // SMTP server configuration
+        String host = "smtp.gmail.com";
+        String port = "587";
+        String mailFrom = "modatesting222@gmail.com"; // Your Gmail address
+        String password = "skzqpguoxuiiaygu"; // Your Gmail password
+
+        // Recipient's email address
+        String mailTo = "testingusermoda1@gmail.com";
+
+        // Email properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", port);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // Session to authenticate the sender
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(mailFrom, password);
+            }
+        });
+
+        try {
+            // Create MimeMessage object
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field
+            message.setFrom(new InternetAddress(mailFrom));
+
+            // Set To: header field
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(mailTo));
+
+            // Set Subject: header field
+            message.setSubject("TestNG Report");
+
+            // Create a multipart message
+            Multipart multipart = new MimeMultipart();
+
+            // Create the message part
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+
+            // Set the actual message
+            messageBodyPart.setText("Please find the attached TestNG report.");
+
+            // Add the text message part to the multipart
+            multipart.addBodyPart(messageBodyPart);
+
+            // Attachment part
+            messageBodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(attachmentPath);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(attachmentPath);
+            multipart.addBodyPart(messageBodyPart);
+
+            // Set the multipart message to the email message
+            message.setContent(multipart);
+
+            // Send message
+            Transport.send(message);
+            System.out.println("Email with TestNG report sent successfully.");
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
     }

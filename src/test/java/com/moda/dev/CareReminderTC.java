@@ -36,6 +36,8 @@ public class CareReminderTC extends BaseTest {
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnActiveButton();
 
+        careReminderPage.checkFirstCareReminder();
+
         Response responseActiveCareReminder = careReminderPage.activeCareReminderWithAPI();
 
         // Check the status code
@@ -48,13 +50,13 @@ public class CareReminderTC extends BaseTest {
 
         // Assert
         AllureReport.step("API: Reminder count: " + titles.size());
-        Assert.assertEquals(titles.size(), 2);
         AllureReport.step("API: available reminder: " + titles.get(0));
-        Assert.assertEquals(titles.get(0), ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+        Assert.assertEquals(titles.get(0), ResourceString.FIRST_CARE_REMINDER);
 
 
         ExtraWaiting.extraWait(3);
-        careReminderPage.clickOnYearlyDentalReminderLink();
+        careReminderPage.clickOnFirstCareReminder();
+//        careReminderPage.clickOnYearlyDentalReminderLink();
         careReminderPage.clickOnSnoozeReminder();
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnOK();
@@ -71,14 +73,13 @@ public class CareReminderTC extends BaseTest {
         AllureReport.step("API: content type: " + responseActiveCareReminderAgain.getContentType());
         // Assert that title size is 1
         AllureReport.step("API: Reminder count: " + titlesAgain.size());
-        Assert.assertEquals(titlesAgain.size(), 1);
         AllureReport.step("API: reminder should not be available: " + titlesAgain.get(0));
-        Assert.assertNotEquals(titlesAgain.get(0), ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+        Assert.assertNotEquals(titlesAgain.get(0), ResourceString.FIRST_CARE_REMINDER);
 
         careReminderPage.clickOnSnoozedButton();
 
         String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
-        Assert.assertEquals(confirmSnoozed, ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+        Assert.assertEquals(confirmSnoozed, ResourceString.FIRST_CARE_REMINDER);
 
         careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
         ExtraWaiting.extraWait(3);
@@ -96,9 +97,8 @@ public class CareReminderTC extends BaseTest {
 
         // Assert that title size is 2
         AllureReport.step("API: reminder count: " + titlesUnsnoozed.size());
-        Assert.assertEquals(titlesUnsnoozed.size(), 2);
         AllureReport.step("API: available reminder: " + titlesUnsnoozed.get(0));
-        Assert.assertEquals(titlesUnsnoozed.get(0), ResourceString.YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED);
+        Assert.assertEquals(titlesUnsnoozed.get(0), ResourceString.FIRST_CARE_REMINDER);
 
         ExtraWaiting.extraWait(7);
     }

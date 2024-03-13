@@ -22,3 +22,7 @@
 - Allure report in single html file
 - Dynamic XPath for moda 360 programs page
 - Added steps for API validation
+
+**Date: 12-03-2024**
+- Dynamic Xpath for first care reminder
+- Email configuration setup

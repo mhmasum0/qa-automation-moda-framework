@@ -23,8 +23,8 @@ public class Moda360ProgramsPage extends BasePage {
     private WebElement moda_360_heading;
 
     // Check the health coaching program
-    @FindBy(xpath = "//div[text()='Health coaching program']")
-    private WebElement healthCoachingProgram;
+//    @FindBy(xpath = "//div[text()='Health coaching program']")
+//    private WebElement healthCoachingProgram;
 
     // Dynamic for first program xpath
     @FindBy(xpath = "(//vlocity_ins-block[contains(@data-conditions, 'FirstProgramId')])[1]")
@@ -70,11 +70,11 @@ public class Moda360ProgramsPage extends BasePage {
         click(firstProgram,"Click on first program");
     }
 
-    @Step("Click on health program")
-    public void clickOnHealthCoachingProgram() throws InterruptedException {
-        Scroll.scrollToElement(driver,healthCoachingProgram);
-        click(healthCoachingProgram,"Click on health program");
-    }
+//    @Step("Click on health program")
+//    public void clickOnHealthCoachingProgram() throws InterruptedException {
+//        Scroll.scrollToElement(driver,healthCoachingProgram);
+//        click(healthCoachingProgram,"Click on health program");
+//    }
 
     @Step("Check first program heading")
     public void checkFirstProgramHeading() {

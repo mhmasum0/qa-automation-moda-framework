@@ -1,12 +1,12 @@
 package com.moda.pages;
 
 import com.moda.api.LoginEndPoints;
+import com.moda.core.ResourceString;
 import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
 
 import com.moda.utils.LogHelper;
 import com.moda.utils.Scroll;
-import com.moda.utils.Tab;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.openqa.selenium.WebDriver;
@@ -32,9 +32,14 @@ public class CareReminderPage  extends BasePage {
     private WebElement activeButton;
 
     // DEV
-    private static final String yearlyDentalReminderLinkXpath = "(//div[text()='Yearly Dental Exam and Cleaning'][1])[1]";
-    @FindBy(xpath = yearlyDentalReminderLinkXpath)
-    private WebElement yearlyDentalReminderLink;
+    // private static final String yearlyDentalReminderLinkXpath = "(//div[text()='Yearly Dental Exam and Cleaning'][1])[1]";
+    // @FindBy(xpath = yearlyDentalReminderLinkXpath)
+    // private WebElement yearlyDentalReminderLink;
+
+    // First Care Reminder Xpath
+    private static final String firstCaretReminderLinkXpath = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object') and contains(@data-element-label, 'block0clone0block3block2block0')])[2]//span//div";
+    @FindBy(xpath = firstCaretReminderLinkXpath)
+    private WebElement firstCareReminder;
 
     // UAT
     @FindBy(xpath = "//span[text()='Cervical Cancer Screening']")
@@ -88,11 +93,25 @@ public class CareReminderPage  extends BasePage {
         return response;
     }
 
-    @Step("Click on Year Dental Exam and Cleaning Reminder link")
-    public void clickOnYearlyDentalReminderLink() throws InterruptedException {
-        Scroll.scrollToElement(driver, yearlyDentalReminderLink);
-        waitClick(driver,yearlyDentalReminderLink, 30 ,"Click on Year Dental Exam and Cleaning Reminder link", yearlyDentalReminderLinkXpath);
+    // Check the First Care Reminder
+    @Step("Check the First Care Reminder")
+    public void checkFirstCareReminder(){
+        String firstCareReminderText = waitGettext(driver, firstCareReminder, 30, firstCaretReminderLinkXpath, "Check the First Care Reminder");
+        ResourceString.FIRST_CARE_REMINDER = firstCareReminderText;
     }
+
+    // Click the First Care Reminder
+    @Step("Click on First Care Reminder")
+    public void clickOnFirstCareReminder() throws InterruptedException {
+        Scroll.scrollToElement(driver, firstCareReminder);
+        click(firstCareReminder, "Click on First Care Reminder");
+    }
+
+//    @Step("Click on Year Dental Exam and Cleaning Reminder link")
+//    public void clickOnYearlyDentalReminderLink() throws InterruptedException {
+//        Scroll.scrollToElement(driver, yearlyDentalReminderLink);
+//        waitClick(driver,yearlyDentalReminderLink, 30 ,"Click on Year Dental Exam and Cleaning Reminder link", yearlyDentalReminderLinkXpath);
+//    }
 
     @Step("Click on Cervical Cancer Screening")
     public void clickOnCervicalCancerScreening() throws InterruptedException {

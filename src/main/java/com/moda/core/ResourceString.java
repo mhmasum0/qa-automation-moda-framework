@@ -16,4 +16,5 @@ public class ResourceString {
     // Care Reminders Page
     public final static String CARE_REMINDERS = "Care Reminders";
     public final static String YEARLY_DENTAL_EXAM_AND_CLEANING_SNOOZED = "Yearly Dental Exam and Cleaning";
+    public static String FIRST_CARE_REMINDER;
 }
