@@ -5,6 +5,8 @@
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
         <listener class-name="com.moda.listeners.PDFReporter"/>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+        <listener class-name="org.testng.reporters.XH"/>
     </listeners>
 
 

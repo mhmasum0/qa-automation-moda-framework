@@ -26,3 +26,17 @@
 **Date: 12-03-2024**
 - Dynamic Xpath for first care reminder
 - Email configuration setup
+
+**Date: 13-03-2024**
+- Email configuration
+
+**Date: 14-03-2024**
+- Added allure annotations: @Epic, @Feature ,@description, @severity
+
+**Date: 15-03-2024**
+- TestNG emailable report configuration
+- Refactored Allure annotations
+- SonarQube configuration
+
+**Date: 18-03-2024**
+- Fixed Security Hotshot by SonarQube

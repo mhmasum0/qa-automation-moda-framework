@@ -16,28 +16,28 @@ public class BH360ProgramsPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    private static final String addiction_car_section_heading_xpath = "//div[contains(text(),'Addiction care with Hazelden Betty Ford')]";
-    @FindBy(xpath = addiction_car_section_heading_xpath)
-    private WebElement addiction_care_section_heading;
+    private static final String ADDICTION_CARR_SECTION_HEADING_XPATH = "//div[contains(text(),'Addiction care with Hazelden Betty Ford')]";
+    @FindBy(xpath = ADDICTION_CARR_SECTION_HEADING_XPATH)
+    private WebElement addictionCareSectionHeading;
 
-    private static final String learn_more_xpath = "//div[contains(text(),'Learn more and enroll')]";
-    @FindBy(xpath = learn_more_xpath)
+    private static final String LEARN_MORE_XPATH = "//div[contains(text(),'Learn more and enroll')]";
+    @FindBy(xpath = LEARN_MORE_XPATH)
     private WebElement learn_more_link;
 
-    private static final String hopeHealthHealingXpath = "//h1[text()='Hope. Health. Healing.']";
-    @FindBy(xpath = hopeHealthHealingXpath)
+    private static final String HOPE_HEALTH_HEALING_XPATH = "//h1[text()='Hope. Health. Healing.']";
+    @FindBy(xpath = HOPE_HEALTH_HEALING_XPATH)
     private WebElement hopeHealthHealing;
 
 
     @Step("Click on addiction care")
     public void clickAddictionCare() throws InterruptedException {
-        Scroll.scrollToElement(driver, addiction_care_section_heading);
-        waitClick(driver,addiction_care_section_heading,60,"Click on addiction care", addiction_car_section_heading_xpath);
+        Scroll.scrollToElement(driver, addictionCareSectionHeading);
+        waitClick(driver, addictionCareSectionHeading,60,"Click on addiction care", ADDICTION_CARR_SECTION_HEADING_XPATH);
     }
 
     @Step("Click on learn more")
     public void clickLearnMore(){
-        waitClick(driver,learn_more_link,60, "Click on learn more", learn_more_xpath);
+        waitClick(driver,learn_more_link,60, "Click on learn more", LEARN_MORE_XPATH);
     }
 
     public void clickOnCancel() {
@@ -52,6 +52,6 @@ public class BH360ProgramsPage extends BasePage {
 
     @Step("Get main heading")
     public String getMainHeading(){
-        return waitGettext(driver, hopeHealthHealing, 60, hopeHealthHealingXpath,  "Get main heading");
+        return waitGettext(driver, hopeHealthHealing, 60, HOPE_HEALTH_HEALING_XPATH,  "Get main heading");
     }
 }

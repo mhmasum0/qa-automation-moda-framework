@@ -7,7 +7,7 @@ import com.moda.pages.Moda360ProgramsPage;
 import com.moda.utils.AllureReport;
 import com.moda.utils.ExtraWaiting;
 
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +15,11 @@ public class Moda360ProgramsTC extends BaseTest {
   // uat environment
   
   @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+  @Epic("Moda Main Web App")
+  @Feature("Moda 360 program")
+  @Story("Moda 360 Program validation")
+  @Severity(SeverityLevel.CRITICAL)
+  @Description("Moda 360 program")
   public void moda_360_programs_page() throws Exception {
     DashboardPage dashboardPage = new DashboardPage(getDriver());
 

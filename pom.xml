@@ -5,16 +5,20 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.moda</groupId>
-  <artifactId>qa-automation-test-framework-demo</artifactId>
+  <artifactId>qa-automation-moda-framework</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>qa-automation-test-framework-demo</name>
+  <name>qa-automation-moda-framework</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <aspectj.version>1.9.20.1</aspectj.version>
+    <sonarqube.host.url>http://localhost:9000</sonarqube.host.url>
+    <sonarqube.projectKey>test</sonarqube.projectKey>
+    <sonarqube.username>admin</sonarqube.username>
+    <sonarqube.password>test</sonarqube.password>
   </properties>
 
   <dependencies>
@@ -22,8 +26,9 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.17.0</version>
+      <version>4.18.1</version>
     </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
@@ -39,11 +44,12 @@
       <version>2.25.0</version>
     </dependency>
 
+
+    <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.6.3</version>
-      <scope>test</scope>
+      <version>5.7.0</version>
     </dependency>
 
     <dependency>
@@ -114,6 +120,11 @@
           <version>3.8.0</version>
         </plugin>
         <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.9.0.2155</version> <!-- Use the latest version -->
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.2</version>
@@ -162,6 +173,18 @@
     </pluginManagement>
   </build>
   <profiles>
+    <profile>
+      <id>sonar</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <sonar.host.url>${sonarqube.host.url}</sonar.host.url>
+        <sonar.projectKey>${sonarqube.projectKey}</sonar.projectKey>
+        <sonar.login>${sonarqube.username}</sonar.login>
+        <sonar.password>${sonarqube.password}</sonar.password>
+      </properties>
+    </profile>
     <profile>
       <id>parallel-tests</id>
       <build>

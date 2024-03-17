@@ -22,7 +22,7 @@ public class ConfigFileReader {
             System.out.println("File not found");
         } catch (IOException e) {
             System.out.println("IO exception: " + e.getMessage());
-            e.printStackTrace();
+            LogHelper.getLogger().info(e.getMessage());
         }
 
         return configPath;

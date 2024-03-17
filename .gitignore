@@ -12,3 +12,5 @@ screenshots
 .project
 *.log
 *.pdf
+*.avi
+test-output

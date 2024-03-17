@@ -16,7 +16,7 @@ public class API {
       String baseURL = url.getProtocol() + "://" + url.getHost();
       return baseURL;
     } catch (MalformedURLException e) {
-      e.printStackTrace();
+      LogHelper.getLogger().info(e.getMessage());
     }
     return "";
   }

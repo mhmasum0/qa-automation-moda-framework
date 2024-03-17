@@ -1,8 +1,6 @@
 package com.moda.pages;
 
 
-import java.util.List;
-
 import com.moda.pages.base.BasePage;
 import com.moda.utils.API;
 import com.moda.utils.ConfigFileReader;
@@ -10,8 +8,6 @@ import com.moda.utils.ExplicitWait;
 
 import com.moda.utils.LogHelper;
 import io.qameta.allure.Step;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -27,8 +23,8 @@ public class DashboardPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final String welcomeMessageXpath = "//div[contains(text(),'welcome to your Member Dashboard')]";
-    @FindBy(xpath = welcomeMessageXpath )
+    private static final String WELCOME_MESSAGE_XPATH = "//div[contains(text(),'welcome to your Member Dashboard')]";
+    @FindBy(xpath = WELCOME_MESSAGE_XPATH)
     private WebElement welcomeMessage;
 
     @FindBy(xpath = "//button//span[text()='Moda 360']")
@@ -50,11 +46,11 @@ public class DashboardPage extends BasePage {
     public String welcomeMessage(){
         String welcomeMessageText = "";
         try {
-            new ExplicitWait(driver).waitForElement(60, By.xpath(welcomeMessageXpath));
+            new ExplicitWait(driver).waitForElement(60, By.xpath(WELCOME_MESSAGE_XPATH));
             welcomeMessageText = welcomeMessage.getText();
             LogHelper.getLogger().info("Dashboard Welcome text: {}", welcomeMessageText); // Log the username input action
         } catch (TimeoutException timeout){
-            timeout.printStackTrace();
+            LogHelper.getLogger().info(timeout.getMessage());
         }
         return welcomeMessageText;
     }

@@ -19,6 +19,7 @@ public class BaseTest {
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     String URL = Constants.URL;
     protected static final Logger logger = LogManager.getLogger();
+    WebDriverManager wdm;
 
     @Parameters({"browser"})
     @BeforeTest
@@ -28,12 +29,12 @@ public class BaseTest {
 
             switch (browser.toLowerCase()) {
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driverInstance = new ChromeDriver();
+                    wdm = WebDriverManager.chromedriver();
+                    driverInstance = wdm.create();
                     break;
                 case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driverInstance = new FirefoxDriver();
+                    wdm = WebDriverManager.firefoxdriver();
+                    driverInstance = wdm.create();
                     break;
                 default:
                     throw new IllegalArgumentException("Browser \"" + browser + "\" isn't supported.");
@@ -57,7 +58,10 @@ public class BaseTest {
     @AfterTest(alwaysRun = true)
     public void wrapUp() throws InterruptedException {
         Thread.sleep(3000);
-        driver.get().quit();
+//        System.out.println(WebDriverManager.chromedriver().getDockerRecordingPath());
+        if ( driver != null ) {
+            driver.get().quit();
+        }
     }
 
     public static WebDriver getDriver() {

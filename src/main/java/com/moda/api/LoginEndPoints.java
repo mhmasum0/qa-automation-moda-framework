@@ -15,21 +15,19 @@ public class LoginEndPoints {
 
    public static Response loginUsers(User payload) {
       // Login user
-      Response response = given().
+      return given().
          contentType(ContentType.JSON)
          .body(payload)
          .when()
-         .post(ModaAPI.post_login_url);
-      return response;
+         .post(ModaAPI.postLoginUrl);
    }
 
    public static Response activeCareReminder(String token) {
       // Active Care Reminder
-      Response response = given()
+      return given()
          .header("Authorization", "Bearer " + token)
          .when()
-         .get(ModaAPI.active_care_reminder);
-      return response;
+         .get(ModaAPI.activeCareReminder);
    }
 
    

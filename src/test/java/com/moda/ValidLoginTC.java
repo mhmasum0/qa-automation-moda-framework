@@ -7,7 +7,9 @@ import com.moda.pages.DashboardPage;
 import com.moda.pages.LoginPage;
 
 import com.moda.utils.AllureReport;
+import io.qameta.allure.*;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
@@ -17,7 +19,12 @@ public class ValidLoginTC extends BaseTest {
     String userName = Constants.USER;
     String password = Constants.PASSWORD;
 
-    @Test(priority = 1, description = "Valid Credential login")
+    @Test(priority = 1)
+    @Epic("Moda Main Web App")
+    @Feature("Authentication")
+    @Story("Authentication with valid login")
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Valid Credential login")
     public void ValidLoginTest(){
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -25,6 +32,7 @@ public class ValidLoginTC extends BaseTest {
 
         // Check the status code
         AllureReport.step("API status code: "+ response.getStatusCode());
+        Reporter.log("ResponseCode: " + response.statusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
 
        // Check the response content type

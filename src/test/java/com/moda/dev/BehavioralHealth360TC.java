@@ -36,7 +36,7 @@ public class BehavioralHealth360TC extends BaseTest {
         dashboardPage.goToNextTab(originalTab);
 
         String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
-        Assert.assertEquals(hopeHealthHealing, ResourceString.Hazelden_Betty_Ford);
+        Assert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
 
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);

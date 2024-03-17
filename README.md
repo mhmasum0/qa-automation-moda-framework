@@ -21,6 +21,12 @@ mvn test -DsuiteXmlFile=src/test/resources/individual-tests/care-reminder.xml
 mvn test -DsuiteXmlFile=src/test/resources/individual-tests/bh360-programs.xml
 ```
 
+## SonarQube command
+```shell
+./sonar.sh start
+mvn sonar:sonar
+```
+
 # Generate allure report
 ```
 allure generate --single-file allure-results --clean

@@ -37,7 +37,7 @@ public class ScreenShot {
             ImageIO.write(screenshot.getImage(), "png", screenshotFile);
             return path.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            LogHelper.getLogger().info(e.getMessage());
         }
         return null;
     }

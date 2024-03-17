@@ -6,6 +6,7 @@ import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
 import com.moda.utils.ExtraWaiting;
 
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,11 @@ public class BehavioralHealth360TC extends BaseTest {
     // uat
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+    @Epic("Moda Main Web App")
+    @Feature("Validate the Behavioral 360 program")
+    @Story("Behavioral Health 360 Program validation")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Behavioral 360 program Test")
     public void behavioralHealth360() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         dashboardPage.clickOnModa360Menu();
@@ -37,7 +43,7 @@ public class BehavioralHealth360TC extends BaseTest {
         dashboardPage.goToNextTab(originalTab);
 
         String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
-        Assert.assertEquals(hopeHealthHealing, ResourceString.Hazelden_Betty_Ford);
+        Assert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
 
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);

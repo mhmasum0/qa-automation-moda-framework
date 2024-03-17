@@ -2,13 +2,12 @@ package com.moda.dev;
 
 import com.moda.basetc.BaseTest;
 import com.moda.core.ResourceString;
-import com.moda.core.ShareData;
 import com.moda.pages.CareReminderPage;
 import com.moda.pages.DashboardPage;
 import com.moda.utils.AllureReport;
 import com.moda.utils.ExtraWaiting;
 
-import io.opentelemetry.sdk.autoconfigure.internal.AutoConfigureUtil;
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -20,6 +19,10 @@ public class CareReminderTC extends BaseTest {
     // dev
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+    @Epic("Moda Main Web App")
+    @Story("Care reminder validation")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Care Reminder Validation")
     public void careReminderTest() throws InterruptedException {
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());
