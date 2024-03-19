@@ -66,8 +66,8 @@ public class LoginPage extends BasePage {
         User userPayload = new User(userName, password);
         Response response = LoginEndPoints.loginUsers(userPayload);
         ShareData.accessToken = String.valueOf(response.body().print());
-        LogHelper.getLogger().info("Status Code: " + response.getStatusCode());
-        LogHelper.getLogger().info("Body: " + response.body().print());
+        LogHelper.getLogger().info("Status Code: {} ", response.getStatusCode());
+        LogHelper.getLogger().info("Body: {} ", response.body().print());
         return response;
     }
 

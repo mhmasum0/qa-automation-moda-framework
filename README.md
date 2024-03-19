@@ -25,6 +25,7 @@ mvn test -DsuiteXmlFile=src/test/resources/individual-tests/bh360-programs.xml
 ```shell
 ./sonar.sh start
 mvn sonar:sonar
+mvn sonar:sonar -Pcoverage
 ```
 
 # Generate allure report

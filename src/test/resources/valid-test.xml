@@ -4,9 +4,10 @@
     <parameter name="browser" value="chrome" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
-        <listener class-name="com.moda.listeners.PDFReporter"/>
+<!--        <listener class-name="com.moda.listeners.PDFReporter"/>-->
         <listener class-name="org.testng.reporters.EmailableReporter"/>
-        <listener class-name="org.testng.reporters.XH"/>
+        <listener class-name="org.testng.reporters.TestHTMLReporter"/>
+        <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
 
 

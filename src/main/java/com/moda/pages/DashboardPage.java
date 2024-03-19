@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 public class DashboardPage extends BasePage {
     WebDriver driver;
@@ -27,7 +28,7 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = WELCOME_MESSAGE_XPATH)
     private WebElement welcomeMessage;
 
-    @FindBy(xpath = "//button//span[text()='Moda 360']")
+    @FindBy(xpath = "//button//span[text()='Moda360']")
     private WebElement moda360Menu;
 
     @FindBy(xpath = "//button//span[text()='Moda360']")
@@ -49,6 +50,7 @@ public class DashboardPage extends BasePage {
             new ExplicitWait(driver).waitForElement(60, By.xpath(WELCOME_MESSAGE_XPATH));
             welcomeMessageText = welcomeMessage.getText();
             LogHelper.getLogger().info("Dashboard Welcome text: {}", welcomeMessageText); // Log the username input action
+            Reporter.log("Dashboard Welcome text: " + welcomeMessageText);
         } catch (TimeoutException timeout){
             LogHelper.getLogger().info(timeout.getMessage());
         }

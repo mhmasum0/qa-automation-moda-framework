@@ -4,154 +4,30 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.moda.utils.ConfigFileReader;
+import com.moda.utils.EmailSender;
+import com.moda.utils.LogHelper;
+import com.moda.utils.PDFGenerator;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+
 
 public class PDFReporter implements IReporter {
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        try {
-            String reportPath = "report-" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".pdf";
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(reportPath));
-            document.open();
-
-            // Add additional information
-            PdfPTable table = new PdfPTable(2);
-            table.setWidthPercentage(100);
-            table.setSpacingBefore(10f);
-            table.setSpacingAfter(10f);
-            PdfPCell cell;
-            cell = new PdfPCell(new Paragraph("Additional Information"));
-            cell.setColspan(2);
-            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(cell);
-            table.addCell("Email:");
-            table.addCell("testingusermoda1@gmail.com");
-            table.addCell("URL:");
-            table.addCell(ConfigFileReader.getConfigPropertyValue("url"));
-            document.add(table);
-
-            document.add(new Paragraph("\n"));
-
-            for (ISuite suite : suites) {
-                String suiteName = suite.getName();
-                for (ISuiteResult suiteResult : suite.getResults().values()) {
-                    ITestContext context = suiteResult.getTestContext();
-                    document.add(new Paragraph("Suite Name: " + suiteName));
-                    document.add(new Paragraph("Test Name: " + context.getName()));
-                    document.add(new Paragraph("Passed tests: " + context.getPassedTests().size()));
-                    document.add(new Paragraph("Failed tests: " + context.getFailedTests().size()));
-                    document.add(new Paragraph("Skipped tests: " + context.getSkippedTests().size()));
-                    document.add(new Paragraph("Test Cases:"));
-                    for (ITestNGMethod method : context.getAllTestMethods()) {
-                        Font font = new Font();
-                        font.setStyle(Font.BOLD);
-                        String result = "";
-                        if (context.getPassedTests().getAllMethods().contains(method)) {
-                            result = "Passed";
-                            Paragraph para = new Paragraph("- " + method.getMethodName() + ": ", font);
-                            para.add(new Chunk(result, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.GREEN)));
-                            document.add(para);
-                        } else if (context.getFailedTests().getAllMethods().contains(method)) {
-                            result = "Failed";
-                            document.add(new Paragraph("- " + method.getMethodName() + ": " + result, font));
-                        } else {
-                            result = "Skipped";
-                            document.add(new Paragraph("- " + method.getMethodName() + ": " + result, font));
-                        }
-                    }
-                    document.add(new Paragraph("\n"));
-                }
-            }
-            document.close();
-            System.out.println("PDF Report generated at: " + reportPath);
-            sendEmail(reportPath);
-        } catch (Exception e) {
-            e.printStackTrace();
+        String reportPath = PDFGenerator.generatePdfReport(xmlSuites, suites, outputDirectory);
+        if (reportPath != null) {
+            DataSource source = new FileDataSource(reportPath);
+            EmailSender.sendEmailPDFFile(source, true);
         }
     }
 
-    private void sendEmail(String attachmentPath) {
-        // SMTP server configuration
-        String host = "smtp.gmail.com";
-        String port = "587";
-        String mailFrom = "modatesting222@gmail.com"; // Your Gmail address
-        String password = "skzqpguoxuiiaygu"; // Your Gmail password
-
-        // Recipient's email address
-        String mailTo = "testingusermoda1@gmail.com";
-
-        // Email properties
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", port);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        // Session to authenticate the sender
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(mailFrom, password);
-            }
-        });
-
-        try {
-            // Create MimeMessage object
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field
-            message.setFrom(new InternetAddress(mailFrom));
-
-            // Set To: header field
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(mailTo));
-
-            // Set Subject: header field
-            message.setSubject("TestNG Report");
-
-            // Create a multipart message
-            Multipart multipart = new MimeMultipart();
-
-            // Create the message part
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-
-            // Set the actual message
-            messageBodyPart.setText("Please find the attached TestNG report.");
-
-            // Add the text message part to the multipart
-            multipart.addBodyPart(messageBodyPart);
-
-            // Attachment part
-            messageBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(attachmentPath);
-            messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(attachmentPath);
-            multipart.addBodyPart(messageBodyPart);
-
-            // Set the multipart message to the email message
-            message.setContent(multipart);
-
-            // Send message
-            Transport.send(message);
-            System.out.println("Email with TestNG report sent successfully.");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
 }

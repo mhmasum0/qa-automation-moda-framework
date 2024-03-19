@@ -9,9 +9,9 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 public class PDFReader {
-    public static String ReadPDFContent(String _pdfURL) throws IOException {
-        URL pdfURL = new URL(_pdfURL);
-        InputStream inputStream = pdfURL.openStream();
+    public static String readPDFContent(String pdfURL) throws IOException {
+        URL url = new URL(pdfURL);
+        InputStream inputStream = url.openStream();
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
         PDDocument document = PDDocument.load(bufferedInputStream);
 

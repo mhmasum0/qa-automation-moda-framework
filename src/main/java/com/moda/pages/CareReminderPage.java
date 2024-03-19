@@ -23,12 +23,12 @@ public class CareReminderPage  extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final String careRemindersHeadingXpath = "//div[text()='Care Reminders']";
-    @FindBy(xpath = careRemindersHeadingXpath)
+    private static final String CARE_REMINDERS_HEADING_XPATH = "//div[text()='Care Reminders']";
+    @FindBy(xpath = CARE_REMINDERS_HEADING_XPATH)
     private WebElement careRemindersHeading;
 
-    private static final String activeButtonXpath = "//div[text()='Active']";
-    @FindBy(xpath = activeButtonXpath)
+    private static final String ACTIVE_BUTTON_XPATH = "//div[text()='Active']";
+    @FindBy(xpath = ACTIVE_BUTTON_XPATH)
     private WebElement activeButton;
 
     // DEV
@@ -37,8 +37,8 @@ public class CareReminderPage  extends BasePage {
     // private WebElement yearlyDentalReminderLink;
 
     // First Care Reminder Xpath
-    private static final String firstCaretReminderLinkXpath = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object') and contains(@data-element-label, 'block0clone0block3block2block0')])[2]//span//div";
-    @FindBy(xpath = firstCaretReminderLinkXpath)
+    private static final String FIRST_CARET_REMINDER_LINK_XPATH = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object') and contains(@data-element-label, 'block0clone0block3block2block0')])[2]//span//div";
+    @FindBy(xpath = FIRST_CARET_REMINDER_LINK_XPATH)
     private WebElement firstCareReminder;
 
     // UAT
@@ -46,8 +46,8 @@ public class CareReminderPage  extends BasePage {
     private WebElement cervicalCancerScreening;
 
     // DEV
-    private static final String snoozeReminderActionXpath = "//div[text()='Snooze this reminder']";
-    @FindBy( xpath = snoozeReminderActionXpath)
+    private static final String SNOOZE_REMINDER_ACTION_XPATH = "//div[text()='Snooze this reminder']";
+    @FindBy( xpath = SNOOZE_REMINDER_ACTION_XPATH)
     private WebElement snoozeReminderAction;
 
 //    // UAT
@@ -76,7 +76,7 @@ public class CareReminderPage  extends BasePage {
 
     @Step("Confirm Care Reminders page")
     public String confirmCareRemindersPage(){
-        return waitGettext(driver,careRemindersHeading,30,careRemindersHeadingXpath, "Confirm Care Reminders page");
+        return waitGettext(driver,careRemindersHeading,30, CARE_REMINDERS_HEADING_XPATH, "Confirm Care Reminders page");
     }
 
     @Step("Click on Active button")
@@ -89,15 +89,15 @@ public class CareReminderPage  extends BasePage {
     public Response activeCareReminderWithAPI(){
         String token = ShareData.accessToken;
         Response response = LoginEndPoints.activeCareReminder(token);
-        LogHelper.getLogger().info("Active Care Reminder with API: " + response.getBody().print());
+        LogHelper.getLogger().info("Active Care Reminder with API: {}",  response.getBody().print());
         return response;
     }
 
     // Check the First Care Reminder
     @Step("Check the First Care Reminder")
     public void checkFirstCareReminder(){
-        String firstCareReminderText = waitGettext(driver, firstCareReminder, 30, firstCaretReminderLinkXpath, "Check the First Care Reminder");
-        ResourceString.FIRST_CARE_REMINDER = firstCareReminderText;
+        String firstCareReminderText = waitGettext(driver, firstCareReminder, 30, FIRST_CARET_REMINDER_LINK_XPATH, "Check the First Care Reminder");
+        ResourceString.firstCareReminder = firstCareReminderText;
     }
 
     // Click the First Care Reminder
@@ -127,7 +127,7 @@ public class CareReminderPage  extends BasePage {
     @Step("Click on Snooze this reminder")
     public void clickOnSnoozeReminder() throws InterruptedException {
         Scroll.scrollToElement(driver,snoozeReminderAction);
-        waitClick(driver, snoozeReminderAction, 30, "Click on Snooze this reminder", snoozeReminderActionXpath);
+        waitClick(driver, snoozeReminderAction, 30, "Click on Snooze this reminder", SNOOZE_REMINDER_ACTION_XPATH);
     }
 
     @Step("Click on OK")
@@ -143,7 +143,7 @@ public class CareReminderPage  extends BasePage {
 
     @Step("Confirm Yearly Dental Exam and Cleaning Snoozed")
     public String confirmYearlyDentalExamAndCleaningSnoozed(){
-        return waitGettext(driver, yearlyDentalExamAndCleaningSnoozed, 30, careRemindersHeadingXpath, "Confirm Yearly Dental Exam and Cleaning Snoozed");
+        return waitGettext(driver, yearlyDentalExamAndCleaningSnoozed, 30, CARE_REMINDERS_HEADING_XPATH, "Confirm Yearly Dental Exam and Cleaning Snoozed");
     }
 
     @Step("Click on Yearly Dental Exam and Cleaning Snoozed")

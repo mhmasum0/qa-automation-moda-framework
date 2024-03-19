@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
  */
 public class API {
 
-  public static String parseBaseURL(String URL) {
+  public static String parseBaseURL(String appUrl) {
     try {
-      URL url = new URL(URL);
+      URL url = new URL(appUrl);
       String baseURL = url.getProtocol() + "://" + url.getHost();
       return baseURL;
     } catch (MalformedURLException e) {

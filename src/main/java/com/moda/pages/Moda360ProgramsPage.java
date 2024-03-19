@@ -18,9 +18,9 @@ public class Moda360ProgramsPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private static final String moda_360_programs_xpath = "//div[contains(text(),'Moda 360 programs')][1]";
-    @FindBy(xpath = moda_360_programs_xpath)
-    private WebElement moda_360_heading;
+    private static final String MODA_360_PROGRAMS_XPATH = "//div[contains(text(),'Moda 360 programs')][1]";
+    @FindBy(xpath = MODA_360_PROGRAMS_XPATH)
+    private WebElement moda360Heading;
 
     // Check the health coaching program
 //    @FindBy(xpath = "//div[text()='Health coaching program']")
@@ -31,13 +31,13 @@ public class Moda360ProgramsPage extends BasePage {
     private WebElement firstProgram;
 
     // Dynamic xpath for first program heading
-    private static final String firstProgramHeadingXpath = "(//div[@class='vloc-min-height' and @vlocity_ins-outputfield_outputfield=''])[4]";
-    @FindBy(xpath = firstProgramHeadingXpath)
+    private static final String FIRST_PROGRAM_HEADING_XPATH = "(//div[@class='vloc-min-height' and @vlocity_ins-outputfield_outputfield=''])[4]";
+    @FindBy(xpath = FIRST_PROGRAM_HEADING_XPATH)
     private WebElement firstProgramHeading;
 
     // Health Coaching Program details page heading
-    private static final String healthCoachingProgramHeadingXpath = "//div[contains(text(),'Health coaching program')]";
-    @FindBy(xpath = healthCoachingProgramHeadingXpath)
+    private static final String HEALTH_COACHING_PROGRAM_HEADING_XPATH = "//div[contains(text(),'Health coaching program')]";
+    @FindBy(xpath = HEALTH_COACHING_PROGRAM_HEADING_XPATH)
     private WebElement healthCoachingProgramHeading;
 
     @FindBy(xpath = "//span[text()='Moda 360 Programs']/preceding-sibling::lightning-icon")
@@ -60,8 +60,8 @@ public class Moda360ProgramsPage extends BasePage {
     private WebElement cancelButton;
 
     @Step("360 programs displayed")
-    public void visibility_360_programs_heading(){
-        waitIsDisplayed(driver,moda_360_heading,40,"360 programs displayed",moda_360_programs_xpath);
+    public void visibility360ProgramsHeading(){
+        waitIsDisplayed(driver, moda360Heading,40,"360 programs displayed", MODA_360_PROGRAMS_XPATH);
     }
 
     @Step("Click on first program")
@@ -78,12 +78,12 @@ public class Moda360ProgramsPage extends BasePage {
 
     @Step("Check first program heading")
     public void checkFirstProgramHeading() {
-        waitIsDisplayed(driver,firstProgramHeading,40,"Check first program heading",firstProgramHeadingXpath);
+        waitIsDisplayed(driver,firstProgramHeading,40,"Check first program heading", FIRST_PROGRAM_HEADING_XPATH);
     }
 
     @Step("Check health coaching program heading")
     public void checkHealthCoachingProgramHeading() {
-        waitIsDisplayed(driver,healthCoachingProgramHeading,40,"Check health coaching program heading",healthCoachingProgramHeadingXpath);
+        waitIsDisplayed(driver,healthCoachingProgramHeading,40,"Check health coaching program heading", HEALTH_COACHING_PROGRAM_HEADING_XPATH);
     }
 
     @Step("Click on back to Moda 360 programs")

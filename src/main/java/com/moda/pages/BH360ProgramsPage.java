@@ -22,7 +22,7 @@ public class BH360ProgramsPage extends BasePage {
 
     private static final String LEARN_MORE_XPATH = "//div[contains(text(),'Learn more and enroll')]";
     @FindBy(xpath = LEARN_MORE_XPATH)
-    private WebElement learn_more_link;
+    private WebElement learnMoreLink;
 
     private static final String HOPE_HEALTH_HEALING_XPATH = "//h1[text()='Hope. Health. Healing.']";
     @FindBy(xpath = HOPE_HEALTH_HEALING_XPATH)
@@ -37,7 +37,7 @@ public class BH360ProgramsPage extends BasePage {
 
     @Step("Click on learn more")
     public void clickLearnMore(){
-        waitClick(driver,learn_more_link,60, "Click on learn more", LEARN_MORE_XPATH);
+        waitClick(driver, learnMoreLink,60, "Click on learn more", LEARN_MORE_XPATH);
     }
 
     public void clickOnCancel() {

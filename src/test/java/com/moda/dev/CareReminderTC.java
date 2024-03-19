@@ -54,7 +54,7 @@ public class CareReminderTC extends BaseTest {
         // Assert
         AllureReport.step("API: Reminder count: " + titles.size());
         AllureReport.step("API: available reminder: " + titles.get(0));
-        Assert.assertEquals(titles.get(0), ResourceString.FIRST_CARE_REMINDER);
+        Assert.assertEquals(titles.get(0), ResourceString.firstCareReminder);
 
 
         ExtraWaiting.extraWait(3);
@@ -77,12 +77,12 @@ public class CareReminderTC extends BaseTest {
         // Assert that title size is 1
         AllureReport.step("API: Reminder count: " + titlesAgain.size());
         AllureReport.step("API: reminder should not be available: " + titlesAgain.get(0));
-        Assert.assertNotEquals(titlesAgain.get(0), ResourceString.FIRST_CARE_REMINDER);
+        Assert.assertNotEquals(titlesAgain.get(0), ResourceString.firstCareReminder);
 
         careReminderPage.clickOnSnoozedButton();
 
         String confirmSnoozed = careReminderPage.confirmYearlyDentalExamAndCleaningSnoozed();
-        Assert.assertEquals(confirmSnoozed, ResourceString.FIRST_CARE_REMINDER);
+        Assert.assertEquals(confirmSnoozed, ResourceString.firstCareReminder);
 
         careReminderPage.clickOnYearlyDentalExamAndCleaningSnoozed();
         ExtraWaiting.extraWait(3);
@@ -101,7 +101,7 @@ public class CareReminderTC extends BaseTest {
         // Assert that title size is 2
         AllureReport.step("API: reminder count: " + titlesUnsnoozed.size());
         AllureReport.step("API: available reminder: " + titlesUnsnoozed.get(0));
-        Assert.assertEquals(titlesUnsnoozed.get(0), ResourceString.FIRST_CARE_REMINDER);
+        Assert.assertEquals(titlesUnsnoozed.get(0), ResourceString.firstCareReminder);
 
         ExtraWaiting.extraWait(7);
     }

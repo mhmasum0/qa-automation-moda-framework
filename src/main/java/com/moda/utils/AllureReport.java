@@ -2,6 +2,7 @@ package com.moda.utils;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import org.testng.Reporter;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -24,12 +25,13 @@ public class AllureReport {
 
         } catch (IOException e) {
             // Log the error or handle the exception as per your requirements
-            System.err.println("Exception while reading the screenshot file: " + e.getMessage());
+            LogHelper.getLogger().error("Exception while reading the screenshot file: {}", e.getMessage());
         }
     }
 
     @Step("{0}")
-    public static void step(String Description){
-        LogHelper.getLogger().info(Description);
+    public static void step(String description){
+        LogHelper.getLogger().info(description);
+        Reporter.log(description);
     }
 }

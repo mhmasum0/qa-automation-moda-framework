@@ -15,7 +15,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <aspectj.version>1.9.20.1</aspectj.version>
-    <sonarqube.host.url>http://localhost:9000</sonarqube.host.url>
+    <sonarqube.host.url>http://localhost:9090</sonarqube.host.url>
     <sonarqube.projectKey>test</sonarqube.projectKey>
     <sonarqube.username>admin</sonarqube.username>
     <sonarqube.password>test</sonarqube.password>
@@ -35,7 +35,6 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.9.0</version>
-      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
     <dependency>
@@ -185,6 +184,44 @@
         <sonar.password>${sonarqube.password}</sonar.password>
       </properties>
     </profile>
+    <profile>
+      <id>coverage</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.7</version>
+            <executions>
+              <execution>
+                <id>prepare-agent</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>report</id>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+                <configuration>
+                  <formats>
+                    <format>XML</format>
+                  </formats>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+      <properties>
+        <sonar.host.url>${sonarqube.host.url}</sonar.host.url>
+        <sonar.projectKey>${sonarqube.projectKey}</sonar.projectKey>
+        <sonar.login>${sonarqube.username}</sonar.login>
+        <sonar.password>${sonarqube.password}</sonar.password>
+      </properties>
+    </profile>
+
     <profile>
       <id>parallel-tests</id>
       <build>

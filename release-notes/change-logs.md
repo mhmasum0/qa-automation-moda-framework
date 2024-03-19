@@ -40,3 +40,8 @@
 
 **Date: 18-03-2024**
 - Fixed Security Hotshot by SonarQube
+- Emailable reports logs added
+
+**Date: 19-03-2024**
+- TestNG emailable report: Send Email
+- jacoco configured

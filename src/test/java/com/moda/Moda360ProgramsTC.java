@@ -28,7 +28,7 @@ public class Moda360ProgramsTC extends BaseTest {
 
     Moda360ProgramsPage moda360ProgramsPage = new Moda360ProgramsPage(getDriver());
 
-    moda360ProgramsPage.visibility_360_programs_heading();
+    moda360ProgramsPage.visibility360ProgramsHeading();
 
     moda360ProgramsPage.clickOnFirstProgram();
 
