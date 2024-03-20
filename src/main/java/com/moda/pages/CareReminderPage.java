@@ -87,17 +87,16 @@ public class CareReminderPage  extends BasePage {
 
     @Step("Active Care Reminder with API")
     public Response activeCareReminderWithAPI(){
-        String token = ShareData.accessToken;
+        String token = ShareData.getAccessToken();
         Response response = LoginEndPoints.activeCareReminder(token);
-        LogHelper.getLogger().info("Active Care Reminder with API: {}",  response.getBody().print());
+        LogHelper.getLogger().info("Active Care Reminder with API: {}",  response.getBody());
         return response;
     }
 
     // Check the First Care Reminder
     @Step("Check the First Care Reminder")
     public void checkFirstCareReminder(){
-        String firstCareReminderText = waitGettext(driver, firstCareReminder, 30, FIRST_CARET_REMINDER_LINK_XPATH, "Check the First Care Reminder");
-        ResourceString.firstCareReminder = firstCareReminderText;
+        ResourceString.setFirstCareReminder(waitGettext(driver, firstCareReminder, 30, FIRST_CARET_REMINDER_LINK_XPATH, "Check the First Care Reminder"));
     }
 
     // Click the First Care Reminder

@@ -12,7 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 
 public class LoginPage extends BasePage {
@@ -37,12 +36,12 @@ public class LoginPage extends BasePage {
 
     @Step("Input Login Username")
     public void inputUserName(String userName){
-        input(userNameField,userName, "Enter User name");
+        input(userNameField,userName);
     }
 
     @Step("Input login password")
     public void inputPassword(String password){
-        input(passwordField,password, "Enter password");
+        input(passwordField,password);
     }
 
     @Step("Click on submit")
@@ -65,9 +64,9 @@ public class LoginPage extends BasePage {
         // Login user API
         User userPayload = new User(userName, password);
         Response response = LoginEndPoints.loginUsers(userPayload);
-        ShareData.accessToken = String.valueOf(response.body().print());
+        ShareData.setAccessToken(String.valueOf(response.body().print()));
         LogHelper.getLogger().info("Status Code: {} ", response.getStatusCode());
-        LogHelper.getLogger().info("Body: {} ", response.body().print());
+        LogHelper.getLogger().info("Body: {} ", response.body());
         return response;
     }
 

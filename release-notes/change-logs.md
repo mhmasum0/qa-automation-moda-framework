@@ -45,3 +45,6 @@
 **Date: 19-03-2024**
 - TestNG emailable report: Send Email
 - jacoco configured
+
+**Date: 20-03-2024**
+- Refactoring the code base as per sonarqube suggestion

@@ -8,7 +8,6 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ISuite;
 import org.testng.ISuiteResult;
-import org.testng.xml.XmlSuite;
 
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -16,8 +15,11 @@ import java.util.Date;
 import java.util.List;
 
 public class PDFGenerator {
+    private PDFGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
 
-    public static String generatePdfReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
+    public static String generatePdfReport(List<ISuite> suites) {
         String reportPath = null;
         try {
             reportPath = "report-" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".pdf";

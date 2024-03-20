@@ -11,6 +11,9 @@ import java.util.Properties;
 
 
 public class EmailSender {
+    private EmailSender() {
+        throw new IllegalStateException("Utility class");
+    }
     public static void sendEmailHTMLFile(File htmlFile, boolean isAttachment){
         sendEmail(null, htmlFile, isAttachment);
     }
@@ -38,6 +41,7 @@ public class EmailSender {
 
         // Session to authenticate the sender
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(mailFrom, password);
             }

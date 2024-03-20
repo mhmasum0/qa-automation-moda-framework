@@ -13,6 +13,10 @@ import io.restassured.response.Response;
  */
 public class LoginEndPoints {
 
+   private LoginEndPoints() {
+      throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+   }
+
    public static Response loginUsers(User payload) {
       // Login user
       return given().

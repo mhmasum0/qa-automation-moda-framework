@@ -32,7 +32,6 @@ public class ValidLoginTC extends BaseTest {
 
         // Check the status code
         AllureReport.step("API status code: "+ response.getStatusCode());
-        Reporter.log("ResponseCode: " + response.statusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
 
        // Check the response content type

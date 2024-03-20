@@ -1,5 +1,6 @@
 package com.moda.pages.base;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.moda.utils.ExplicitWait;
@@ -26,7 +27,7 @@ public class BasePage {
         Reporter.log(log);
     }
 
-    protected void input(WebElement element,String input, String log){
+    protected void input(WebElement element,String input){
         element.sendKeys(input);
         LogHelper.getLogger().info("Inputting username: {}", input);
         Reporter.log("Inputting username: "+ input);
@@ -69,8 +70,13 @@ public class BasePage {
         Reporter.log(log);
     }
 
-    protected String readPDFContent(WebDriver driver, String pdfURL, String log) throws Exception {
-        String pdfContent = PDFReader.readPDFContent(pdfURL);
+    protected String readPDFContent(String pdfURL, String log)  {
+        String pdfContent;
+        try {
+            pdfContent = PDFReader.readPDFContent(pdfURL);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Could not read PDF");
+        }
         LogHelper.getLogger().info(log);
         Reporter.log(log);
         return pdfContent;

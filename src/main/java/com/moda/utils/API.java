@@ -10,11 +10,14 @@ import java.util.regex.Pattern;
  */
 public class API {
 
+  private API() {
+    throw new IllegalStateException("Utility class");
+  }
+
   public static String parseBaseURL(String appUrl) {
     try {
       URL url = new URL(appUrl);
-      String baseURL = url.getProtocol() + "://" + url.getHost();
-      return baseURL;
+      return url.getProtocol() + "://" + url.getHost();
     } catch (MalformedURLException e) {
       LogHelper.getLogger().info(e.getMessage());
     }

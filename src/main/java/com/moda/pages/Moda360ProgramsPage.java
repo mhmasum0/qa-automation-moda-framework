@@ -121,8 +121,8 @@ public class Moda360ProgramsPage extends BasePage {
     }
 
     @Step("Get the PDF Content")
-    public String getPDFContent(String url) throws Exception {
-        return readPDFContent(driver,url,"Get the PDF content");
+    public String getPDFContent(String url) {
+        return readPDFContent(url,"Get the PDF content");
     }
 
 }
