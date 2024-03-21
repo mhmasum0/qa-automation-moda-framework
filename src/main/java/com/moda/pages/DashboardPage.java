@@ -28,10 +28,10 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = WELCOME_MESSAGE_XPATH)
     private WebElement welcomeMessage;
 
-    @FindBy(xpath = "//button//span[text()='Moda360']")
+    @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360Menu;
 
-    @FindBy(xpath = "//button//span[text()='Moda360']")
+    @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360MenuDev;
 
     @FindBy(xpath = "//span[@title='Moda 360 Programs']")
