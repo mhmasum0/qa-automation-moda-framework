@@ -1,13 +1,14 @@
 package com.moda.pages;
 
 
+import com.moda.api.LoginEndPoints;
+import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
 import com.moda.utils.API;
 import com.moda.utils.ConfigFileReader;
 import com.moda.utils.ExplicitWait;
-
 import com.moda.utils.LogHelper;
-import io.qameta.allure.Step;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
+
+import io.qameta.allure.Step;
+import io.restassured.response.Response;
 
 public class DashboardPage extends BasePage {
     WebDriver driver;
@@ -94,5 +98,10 @@ public class DashboardPage extends BasePage {
         closeTab(driver, "Close tab");
     }
 
+    @Step("PCP Eligibility with API")
+    public Response pcpEligibilityWithAPI(){
+        String token = ShareData.getAccessToken();
+        return LoginEndPoints.pcpEligibility(token);
+    }
 
 }

@@ -18,6 +18,7 @@ public class ValidLoginTC extends BaseTest {
 
     String userName = Constants.USER;
     String password = Constants.PASSWORD;
+    String appURL;
 
     @Test(priority = 1)
     @Epic("Moda Main Web App")
@@ -26,6 +27,9 @@ public class ValidLoginTC extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Description("Valid Credential login")
     public void ValidLoginTest(){
+        appURL = Constants.URL;
+        getDriver().get(appURL);
+
         LoginPage loginPage = new LoginPage(getDriver());
 
         Response response = loginPage.loginUserAPI(userName, password);

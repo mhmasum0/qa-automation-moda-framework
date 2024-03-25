@@ -17,7 +17,6 @@ public class BaseTest {
     // initialize web driver
 //    public WebDriver driver;
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    String URL = Constants.URL;
     protected static final Logger logger = LogManager.getLogger();
     WebDriverManager wdm;
 
@@ -43,7 +42,7 @@ public class BaseTest {
             driver.set(driverInstance); // Setting the WebDriver in ThreadLocal
 
             driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-            driverInstance.get(Constants.URL);
+//            driverInstance.get(Constants.URL);
 
             // Optionally maximize window
              driverInstance.manage().window().maximize();

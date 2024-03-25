@@ -17,6 +17,7 @@
             <class name="com.moda.Moda360ProgramsTC"/>
 <!--            <class name="com.moda.CareReminderTC" />-->
             <class name="com.moda.BehavioralHealth360TC"/>
+            <class name="com.moda.UserEligibilityTC"/>
         </classes>
     </test>
 </suite>

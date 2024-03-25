@@ -19,6 +19,9 @@ public class InvalidLoginTC extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Description("Invalid Credentials Test")
     public void inValidLoginTest() {
+        String appURL = Constants.URL;
+        getDriver().get(appURL);
+
         LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.inputUserName(userName);

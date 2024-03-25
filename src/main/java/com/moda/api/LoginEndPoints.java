@@ -34,6 +34,12 @@ public class LoginEndPoints {
          .get(ModaAPI.activeCareReminder);
    }
 
-   
+   public static Response pcpEligibility(String token) {
+      // PCP Eligibility
+      return given()
+         .header("Authorization", "Bearer " + token)
+         .when()
+         .get(ModaAPI.pcpEligibility);
+   }
       
 }
