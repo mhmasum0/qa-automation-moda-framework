@@ -22,6 +22,7 @@ allure open allure-report
 ```
 ## Allure test report: PDF
 Repository link: [https://github.com/eroshenkoam/allure-pdf/releases](https://github.com/eroshenkoam/allure-pdf/releases)
+
 **Command:**
 ```shell
 allure-pdf allure-results -o report.pdf
@@ -35,6 +36,6 @@ rmdir /s logs
 ```
 
 ## Resources:
-[Resources.md](/Resources.md)
+[Resources.md](/docs/Resources.md)
 
 
