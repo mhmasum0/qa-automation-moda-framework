@@ -1,6 +1,6 @@
 package com.moda;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;
 import com.moda.pages.Moda360ProgramsPage;
@@ -11,7 +11,7 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Moda360ProgramsTC extends BaseTest {
+public class Moda360ProgramsTC extends Base {
   // uat environment
   
   @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
@@ -38,22 +38,12 @@ public class Moda360ProgramsTC extends BaseTest {
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnPDFLink();
 
-
-//    moda360ProgramsPage.clickOnHealthCoachingProgram();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.checkHealthCoachingProgramHeading();
-//    ExtraWaiting.extraWait(3);
-//
-//    moda360ProgramsPage.clickOnBackModa360Programs();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.clickOnGetExtraBenefits();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.clickOnHealthThroughOraWellness();
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnCancel();
+
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnPDFLink();
-//    moda360ProgramsPage.clickOnHealthThroughOraWellness();
+
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickLeavePopup();
 

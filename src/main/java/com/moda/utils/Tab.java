@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
 
 public class Tab {
+    private Tab(){
+        throw new IllegalStateException("This is utility class");
+    }
+
     public static void goToNextTab(WebDriver driver, String originalTab){
 
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());

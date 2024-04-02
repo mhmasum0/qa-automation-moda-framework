@@ -1,6 +1,6 @@
 package com.moda.dev;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.CareReminderPage;
 import com.moda.pages.DashboardPage;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CareReminderTC extends BaseTest {
+public class CareReminderTestCase extends Base {
     // dev
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")

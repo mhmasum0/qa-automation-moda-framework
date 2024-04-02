@@ -1,6 +1,6 @@
 package com.moda.dev;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
@@ -9,7 +9,7 @@ import com.moda.utils.ExtraWaiting;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BehavioralHealth360TC extends BaseTest {
+public class BehavioralHealth360TC extends Base {
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
     public void behavioralHealth360() throws InterruptedException {

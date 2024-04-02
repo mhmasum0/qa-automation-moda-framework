@@ -35,6 +35,9 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360Menu;
 
+    @FindBy(xpath = "//button//span[text()='Find care']")
+    private WebElement findCareMenu;
+
     @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360MenuDev;
 
@@ -43,6 +46,10 @@ public class DashboardPage extends BasePage {
 
     @FindBy(xpath = "(//a[@aria-label='Behavioral Health 360'])[1]")
     private WebElement behavioralHealth360Menu;
+
+    // (//span[text()='PCP 360'])[1]
+    @FindBy(xpath = "//span[text()='PCP 360']")
+    private WebElement pcp360Menu;
 
     @FindBy(xpath = "//li//span[text()='Care Reminders' and @title='Care Reminders']")
     private WebElement careRemindersMenu;
@@ -81,6 +88,16 @@ public class DashboardPage extends BasePage {
     @Step("Click on Care reminder menu")
     public void clickOnCareRemindersMenu(){
         click(careRemindersMenu, "click on Care Reminders menu");
+    }
+
+    @Step("Click on Find Care menu")
+    public void clickOnFindCareMenu(){
+        click(findCareMenu, "Clicked on Find Care menu");
+    }
+
+    @Step("Click on PCP 360 menu")
+    public void clickOnPCP360Menu(){
+        click(pcp360Menu, "Clicked on PCP 360 menu");
     }
 
     @Step("Go to next tab")

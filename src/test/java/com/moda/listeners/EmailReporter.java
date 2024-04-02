@@ -1,7 +1,8 @@
 package com.moda.listeners;
 
 import com.moda.utils.EmailSender;
-import org.testng.*;
+import org.testng.IReporter;
+import org.testng.ISuite;
 import org.testng.xml.XmlSuite;
 
 import java.io.File;

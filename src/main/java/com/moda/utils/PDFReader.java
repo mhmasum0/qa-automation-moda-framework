@@ -9,6 +9,10 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 public class PDFReader {
+    private PDFReader(){
+        throw new IllegalStateException("This is utility class");
+    }
+
     public static String readPDFContent(String pdfURL) throws IOException {
         URL url = new URL(pdfURL);
         InputStream inputStream = url.openStream();

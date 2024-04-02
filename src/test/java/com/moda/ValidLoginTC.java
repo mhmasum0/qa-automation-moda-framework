@@ -1,6 +1,6 @@
 package com.moda;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;
@@ -9,12 +9,11 @@ import com.moda.pages.LoginPage;
 import com.moda.utils.AllureReport;
 import io.qameta.allure.*;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
 
-public class ValidLoginTC extends BaseTest {
+public class ValidLoginTC extends Base {
 
     String userName = Constants.USER;
     String password = Constants.PASSWORD;
@@ -28,7 +27,6 @@ public class ValidLoginTC extends BaseTest {
     @Description("Valid Credential login")
     public void ValidLoginTest(){
         appURL = Constants.URL;
-        getDriver().get(appURL);
 
         LoginPage loginPage = new LoginPage(getDriver());
 

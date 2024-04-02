@@ -52,3 +52,9 @@
 **Date: 25-03-2024**
 - Data Provider from excel added
 - API response for User Eligibility added
+
+**Date: 28-03-2024**
+- Updated Java version from 11 to 17
+- Cleanup Maven configuration
+- Created Markdown file for the resource
+- Worked on Use Case 4

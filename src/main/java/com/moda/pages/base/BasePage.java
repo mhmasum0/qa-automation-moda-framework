@@ -11,7 +11,6 @@ import com.moda.utils.Tab;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.testng.Reporter;
 
 public class BasePage {
@@ -38,11 +37,11 @@ public class BasePage {
         click(element,log);
     }
 
-    protected void waitIsDisplayed(WebDriver driver, WebElement element, int seconds, String log, String locator){
-        new ExplicitWait(driver).waitForElement(seconds,By.xpath(locator));
-        element.isDisplayed();
+    protected boolean isElementDisplayed(WebDriver driver, int seconds, String log, String locator){
+        boolean isDisplayed = new ExplicitWait(driver).isElementDisplayed(seconds, By.xpath(locator));
         LogHelper.getLogger().info(log);
         Reporter.log(log);
+        return isDisplayed;
     }
 
     protected String waitGettext(WebDriver driver, WebElement element, int seconds, String xpath, String log){
