@@ -11,7 +11,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BehavioralHealth360TC extends Base {
-    // uat
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
     @Epic("Moda Main Web App")

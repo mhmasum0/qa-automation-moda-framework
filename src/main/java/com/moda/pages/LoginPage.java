@@ -53,7 +53,6 @@ public class LoginPage extends BasePage {
     public String loginErrorMessage(){
         String fullErrorMessage = errorMessageText.getText();
 
-        // Extract only the Error Text
         String errorMessage = fullErrorMessage.split("\\n")[0].trim();
         LogHelper.getLogger().info("Error Message: {}", errorMessage);
         return errorMessage;
@@ -61,7 +60,6 @@ public class LoginPage extends BasePage {
 
     @Step("Login API")
     public Response loginUserAPI(String userName, String password){
-        // Login user API
         User userPayload = new User(userName, password);
         Response response = LoginEndPoints.loginUsers(userPayload);
         ShareData.setAccessToken(String.valueOf(response.body().print()));

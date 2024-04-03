@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigFileReader {
+
     private ConfigFileReader(){
         throw new IllegalStateException("This is utility class");
     }

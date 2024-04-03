@@ -29,10 +29,8 @@ public class ScreenShot {
             Path path = Paths.get(screenshotDirectory, screenshotName);
             File screenshotFile = path.toFile();
 
-            // Ensure the directory exists
             Files.createDirectories(Paths.get(screenshotFile.getParent()));
 
-            // Write the screenshot to file
             ImageIO.write(screenshot.getImage(), "png", screenshotFile);
             return path.toString();
         } catch (IOException e) {

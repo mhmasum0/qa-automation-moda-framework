@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PDFGenerator {
+
     private PDFGenerator() {
         throw new IllegalStateException("Utility class");
     }
@@ -27,7 +28,6 @@ public class PDFGenerator {
             PdfWriter.getInstance(document, new FileOutputStream(reportPath));
             document.open();
 
-            // Add additional information
             PdfPTable table = new PdfPTable(2);
             table.setWidthPercentage(100);
             table.setSpacingBefore(10f);
@@ -39,9 +39,8 @@ public class PDFGenerator {
             table.addCell(cell);
             table.addCell("Email:");
             table.addCell("testingusermoda1@gmail.com");
-            // You can add more rows here if needed
-            document.add(table);
 
+            document.add(table);
             document.add(new Paragraph("\n"));
 
             for (ISuite suite : suites) {

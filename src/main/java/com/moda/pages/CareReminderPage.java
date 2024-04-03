@@ -31,16 +31,13 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = ACTIVE_BUTTON_XPATH)
     private WebElement activeButton;
 
-    // First Care Reminder Xpath
     private static final String FIRST_CARET_REMINDER_LINK_XPATH = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object') and contains(@data-element-label, 'block0clone0block3block2block0')])[2]//span//div";
     @FindBy(xpath = FIRST_CARET_REMINDER_LINK_XPATH)
     private WebElement firstCareReminder;
 
-    // UAT
     @FindBy(xpath = "//span[text()='Cervical Cancer Screening']")
     private WebElement cervicalCancerScreening;
 
-    // DEV
     private static final String SNOOZE_REMINDER_ACTION_XPATH = "//div[text()='Snooze this reminder']";
     @FindBy( xpath = SNOOZE_REMINDER_ACTION_XPATH)
     private WebElement snoozeReminderAction;
@@ -51,7 +48,6 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = "//div[text()='Snoozed']")
     private WebElement snoozedButton;
 
-    // UAT
     @FindBy(xpath = "//span[text()='Snoozed Care Reminders']")
     private WebElement snoozedCareReminders;
 
@@ -83,13 +79,11 @@ public class CareReminderPage  extends BasePage {
         return response;
     }
 
-    // Check the First Care Reminder
     @Step("Check the First Care Reminder")
     public void checkFirstCareReminder(){
         ResourceString.setFirstCareReminder(waitGettext(driver, firstCareReminder, 30, FIRST_CARET_REMINDER_LINK_XPATH, "Check the First Care Reminder"));
     }
 
-    // Click the First Care Reminder
     @Step("Click on First Care Reminder")
     public void clickOnFirstCareReminder() throws InterruptedException {
         Scroll.scrollToElement(driver, firstCareReminder);

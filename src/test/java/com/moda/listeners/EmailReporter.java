@@ -15,7 +15,6 @@ public class EmailReporter implements IReporter {
 
         File htmlReport = new File(outputDirectory, "emailable-report.html");
 
-        // Send email with the emailable report attached
         EmailSender.sendEmailHTMLFile(htmlReport, true);
     }
 

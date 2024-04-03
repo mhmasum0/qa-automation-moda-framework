@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
 
 public class Tab {
+
     private Tab(){
         throw new IllegalStateException("This is utility class");
     }
@@ -23,6 +24,7 @@ public class Tab {
     public static void backToOriginalTab(WebDriver driver, String originalTab){
         driver.switchTo().window(originalTab);
     }
+
     public static void closeTab(WebDriver driver){
         driver.close();
     }

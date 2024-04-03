@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 public class PDFReader {
+
     private PDFReader(){
         throw new IllegalStateException("This is utility class");
     }

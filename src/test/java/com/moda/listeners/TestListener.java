@@ -28,7 +28,7 @@ public class TestListener implements ITestListener {
         String testMethod = result.getMethod().getMethodName();
         LogHelper.getLogger().info("Starting test: " + testMethod);
 
-        waitForPageLoad(getDriver());
+        waitForPageLoad(Base.getDriver());
         DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
 
         if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
@@ -46,8 +46,9 @@ public class TestListener implements ITestListener {
             Base.getWDM().stopRecording(getDriver());
             try {
                 saveRecording(videoRecordingFileName);
+                AllureReport.attachVideoWebm("video", getRecFile(videoRecordingFileName).toString());
                 deleteIfExists(videoRecordingFileName);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IOException e) {
                 LogHelper.getLogger().error(e.getMessage());
             }
         }
@@ -55,16 +56,13 @@ public class TestListener implements ITestListener {
 
     public void onTestFailure(ITestResult result){
 
-        // Log the error message
         String errorMessage = result.getThrowable() != null ? result.getThrowable().getMessage() : "Unknown error";
         LogHelper.getLogger().error("Test failed: " + result.getMethod().getMethodName() + " - Error: " + errorMessage);
 
-        // ScreenShot
         ScreenShot screenShot = new ScreenShot(getDriver());
         String inputSc =  screenShot.takeScreenshot(result.getMethod().getMethodName());
         AllureReport.attachScreenshot(inputSc,result.getMethod().getMethodName());
 
-        // Video
         DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
 
         if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
@@ -86,7 +84,6 @@ public class TestListener implements ITestListener {
             String readyState = (String) jsExecutor.executeScript("return document.readyState");
             return "complete".equals(readyState);
         };
-        // Wait until the page is fully loaded
         wait.until(pageLoadCondition);
     }
 

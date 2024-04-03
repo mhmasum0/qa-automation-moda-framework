@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import com.moda.basetc.Base;
 import com.moda.core.Constants;
@@ -13,6 +14,7 @@ import com.moda.pages.DashboardPage;
 import com.moda.pages.LoginPage;
 import com.moda.pages.PCB360Page;
 import com.moda.utils.AllureReport;
+import com.moda.utils.Common;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -22,6 +24,12 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 
 public class PCP_BH360_EligibilityTestCase extends Base {
@@ -30,6 +38,11 @@ public class PCP_BH360_EligibilityTestCase extends Base {
     String appURL;
 
     @Test(dataProvider = "dataProviderFromExcel")
+    @Epic("Moda Main Web App")
+    @Feature("Eligibility test ")
+    @Story("PCP and BH360 Eligibility")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("PCP and BH360 Eligibility test")
     public void userEligibilityTest(String group, String pcb360, String bh360, String userID) throws InterruptedException {
         appURL = Constants.URL;
         userName = userID;
@@ -43,11 +56,9 @@ public class PCP_BH360_EligibilityTestCase extends Base {
 
         Response response = loginPage.loginUserAPI(userName, password);
 
-        // Check the status code
         AllureReport.step("API status code: "+ response.getStatusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
 
-        // Check the response content type
         AllureReport.step("API content type:" + response.getContentType() );
         Assert.assertEquals(response.getContentType(), "text/plain;charset=UTF-8", "Response type is not text/plain;charset=UTF-8");
 
@@ -62,16 +73,13 @@ public class PCP_BH360_EligibilityTestCase extends Base {
 
         Response pcpEligibilityResponse = dashboardPage.pcpEligibilityWithAPI();
 
-        // Check the status code
         AllureReport.step("PCP Eligibility API status code: "+ pcpEligibilityResponse.getStatusCode());
         Assert.assertEquals(pcpEligibilityResponse.getStatusCode(), 200, "Status code is not 200");
 
-        // Check the response content type
         AllureReport.step("PCP Eligibility API content type:" + pcpEligibilityResponse.getContentType() );
         Assert.assertEquals(pcpEligibilityResponse.getContentType(), "application/json", "Response type is not application/json");
 
          if ( pcb360.equals("Y") ) {
-            // Check the pcpType is "PCP360"
             String pcpType = pcpEligibilityResponse.jsonPath().getString("pcpType");
             AllureReport.step("Check the PCP Type: " + pcpType);
             Assert.assertEquals(pcpType, ResourceString.PCP_360_ELIGIBILITY, "PCP Type is not PCP360");
@@ -80,25 +88,30 @@ public class PCP_BH360_EligibilityTestCase extends Base {
              dashboardPage.clickOnPCP360Menu();
 
             PCB360Page pcb360Page = new PCB360Page(getDriver());
-            // Check if PCB360 lateral is displayed
             boolean isPCB360LateralTabDisplayed = pcb360Page.isPCB360LateralTabDisplayed();
             Assert.assertTrue(isPCB360LateralTabDisplayed, "PCB360 lateral is not displayed");
          }
 
         if ( bh360.equals("Y") ) {
-            // Click on Moda 360 Menu and Behavioral Health 360 Menu
             dashboardPage.clickOnModa360Menu();
             dashboardPage.clickOnBehavioralHealth360Menu();
 
             BH360ProgramsPage bh360ProgramsPage = new BH360ProgramsPage(getDriver());
-            // Check if BH360 lateral is displayed
+
+            AllureReport.step("Check if BH360 lateral is displayed");
             boolean isBH360LateralDisplayed = bh360ProgramsPage.isBH360LateralDisplayed();
             Assert.assertTrue(isBH360LateralDisplayed, "BH360 lateral is not displayed");
+
+            AllureReport.step("Check BH360 Groups");
+            boolean isBH360Group = Common.arrayContainsElement(ResourceString.BH_360_GROUPS, group);
+            Assert.assertTrue(isBH360Group, Arrays.toString(ResourceString.BH_360_GROUPS) + " in BH360 group should exist: " + group);
+        } else {
+            AllureReport.step("Check WithoutBH360 Groups");
+            boolean isWithoutBH360Group = Common.arrayContainsElement(ResourceString.WITHOUT_BH_360_GROUPS, group);
+            Assert.assertTrue(isWithoutBH360Group, Arrays.toString(ResourceString.WITHOUT_BH_360_GROUPS) + " in WithoutBH360 group should exist: " + group);
         }
 
-        // Fetch the full response and print it
         AllureReport.step("PCP Eligibility API response: " + pcpEligibilityResponse.getBody().asString());
-        Assert.fail();
 
     }
 
@@ -114,7 +127,7 @@ public class PCP_BH360_EligibilityTestCase extends Base {
         int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
         Object[][] data = new Object[rowCount][4];
 
-        for (int i = 1; i <= rowCount; i++) { // Starting from 1 to skip header row
+        for (int i = 1; i <= rowCount; i++) {
             Row row = sheet.getRow(i);
             for (int j = 0; j < 4; j++) {
                 data[i - 1][j] = row.getCell(j).toString();

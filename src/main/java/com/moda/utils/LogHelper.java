@@ -13,6 +13,7 @@ public class LogHelper {
         String callingClassName = Thread.currentThread().getStackTrace()[2].getClassName();
         return LogManager.getLogger(callingClassName);
     }
+
     public static synchronized void testLogger(String testName){
         ThreadContext.put("logFilename", testName);
     }

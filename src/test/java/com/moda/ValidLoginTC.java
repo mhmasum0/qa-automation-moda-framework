@@ -19,7 +19,7 @@ public class ValidLoginTC extends Base {
     String password = Constants.PASSWORD;
     String appURL;
 
-    @Test(priority = 1)
+    @Test
     @Epic("Moda Main Web App")
     @Feature("Authentication")
     @Story("Authentication with valid login")
@@ -32,11 +32,9 @@ public class ValidLoginTC extends Base {
 
         Response response = loginPage.loginUserAPI(userName, password);
 
-        // Check the status code
         AllureReport.step("API status code: "+ response.getStatusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
 
-       // Check the response content type
         AllureReport.step("API content type:" + response.getContentType() );
         Assert.assertEquals(response.getContentType(), "text/plain;charset=UTF-8", "Response type is not text/plain;charset=UTF-8");
 

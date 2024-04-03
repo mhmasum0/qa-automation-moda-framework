@@ -47,7 +47,6 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "(//a[@aria-label='Behavioral Health 360'])[1]")
     private WebElement behavioralHealth360Menu;
 
-    // (//span[text()='PCP 360'])[1]
     @FindBy(xpath = "//span[text()='PCP 360']")
     private WebElement pcp360Menu;
 
@@ -60,7 +59,7 @@ public class DashboardPage extends BasePage {
         try {
             new ExplicitWait(driver).waitForElement(60, By.xpath(WELCOME_MESSAGE_XPATH));
             welcomeMessageText = welcomeMessage.getText();
-            LogHelper.getLogger().info("Dashboard Welcome text: {}", welcomeMessageText); // Log the username input action
+            LogHelper.getLogger().info("Dashboard Welcome text: {}", welcomeMessageText);
             Reporter.log("Dashboard Welcome text: " + welcomeMessageText);
         } catch (TimeoutException timeout){
             LogHelper.getLogger().info(timeout.getMessage());

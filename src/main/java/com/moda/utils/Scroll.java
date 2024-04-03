@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Scroll {
+
     private Scroll(){
         throw new IllegalStateException("This is utility class");
     }
@@ -12,9 +13,9 @@ public class Scroll {
     public static void scrollToElement(WebDriver driver, WebElement element) throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String jsCode = "arguments[0].scrollIntoView({" +
-                "behavior: 'smooth'," +  // defines the transition animation
-                "block: 'center'," +   // vertically aligns at center
-                "inline: 'center'});";  // horizontally aligns at center (if needed)
+                "behavior: 'smooth'," +
+                "block: 'center'," +
+                "inline: 'center'});";
         js.executeScript(jsCode, element);
         ExtraWaiting.extraWait(3);
     }

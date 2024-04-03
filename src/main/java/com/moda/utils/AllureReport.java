@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class AllureReport {
+
     private AllureReport(){
         throw new IllegalStateException("This is utility class");
     }

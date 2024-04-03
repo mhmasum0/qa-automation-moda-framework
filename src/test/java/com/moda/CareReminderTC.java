@@ -10,7 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CareReminderTC extends Base {
-    // dev
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
     public void careReminderTest() throws InterruptedException {

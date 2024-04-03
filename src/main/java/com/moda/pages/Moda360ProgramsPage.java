@@ -22,16 +22,13 @@ public class Moda360ProgramsPage extends BasePage {
     @FindBy(xpath = MODA_360_PROGRAMS_XPATH)
     private WebElement moda360Heading;
 
-    // Dynamic for first program xpath
     @FindBy(xpath = "(//vlocity_ins-block[contains(@data-conditions, 'FirstProgramId')])[1]")
     private WebElement firstProgram;
 
-    // Dynamic xpath for first program heading
     private static final String FIRST_PROGRAM_HEADING_XPATH = "(//div[@class='vloc-min-height' and @vlocity_ins-outputfield_outputfield=''])[4]";
     @FindBy(xpath = FIRST_PROGRAM_HEADING_XPATH)
     private WebElement firstProgramHeading;
 
-    // Health Coaching Program details page heading
     private static final String HEALTH_COACHING_PROGRAM_HEADING_XPATH = "//div[contains(text(),'Health coaching program')]";
     @FindBy(xpath = HEALTH_COACHING_PROGRAM_HEADING_XPATH)
     private WebElement healthCoachingProgramHeading;
@@ -45,7 +42,6 @@ public class Moda360ProgramsPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Health through Oral Wellness (PDF)')][1]")
     private List<WebElement> healthThroughOralWellNess;
     
-    // dynamic xpath for pdf link on the program details page
     @FindBy(xpath = "(//vlocity_ins-output-field[contains(@data-conditions, 'PDF')])[1]")
     private WebElement pdfLink;
 

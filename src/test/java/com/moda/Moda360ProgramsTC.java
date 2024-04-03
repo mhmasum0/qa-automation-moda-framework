@@ -12,8 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Moda360ProgramsTC extends Base {
-  // uat environment
-  
+
   @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
   @Epic("Moda Main Web App")
   @Feature("Moda 360 program")
