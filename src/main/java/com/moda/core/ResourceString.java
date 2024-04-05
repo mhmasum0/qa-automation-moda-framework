@@ -10,7 +10,7 @@ public class ResourceString {
 
     public static final  String WELCOME_MESSAGE = "welcome to your Member Dashboard";
     public static final  String PCP_360_ELIGIBILITY = "PCP360";
-    public static final String[] BH_360_GROUPS = {"OEBB", "CPH", "SPH", "Leatherman", "Trailblazers"};
+    public static final String[] BH_360_GROUPS = {"OEBB", "CPH", "SPH", "Leatherman", "Trailblazer"};
     public static final String[] WITHOUT_BH_360_GROUPS = { "PEBB", "Salem Health", "OHSU"};
 
     public static final  String ORAL_HEALTH_PDF_CONTENT = "Health through Oral Wellness";
