@@ -25,7 +25,7 @@ public class ValidLoginTC extends Base {
     @Story("Authentication with valid login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Valid Credential login")
-    public void ValidLoginTest(){
+    public void _01_ValidLoginTest(){
         appURL = Constants.URL;
 
         LoginPage loginPage = new LoginPage(getDriver());

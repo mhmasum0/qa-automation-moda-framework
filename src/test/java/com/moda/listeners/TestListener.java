@@ -46,7 +46,7 @@ public class TestListener implements ITestListener {
             Base.getWDM().stopRecording(getDriver());
             try {
                 saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm("video", getRecFile(videoRecordingFileName).toString());
+                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
                 deleteIfExists(videoRecordingFileName);
             } catch (InterruptedException | IOException e) {
                 LogHelper.getLogger().error(e.getMessage());
@@ -69,7 +69,7 @@ public class TestListener implements ITestListener {
             Base.getWDM().stopRecording(getDriver());
             try {
                 saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm("video", getRecFile(videoRecordingFileName).toString());
+                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
                 deleteIfExists(videoRecordingFileName);
             } catch (InterruptedException | IOException e) {
                 LogHelper.getLogger().error(e.getMessage());

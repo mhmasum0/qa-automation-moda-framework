@@ -18,7 +18,7 @@ public class BehavioralHealth360TC extends Base {
     @Story("Behavioral Health 360 Program validation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Behavioral 360 program Test")
-    public void behavioralHealth360() throws InterruptedException {
+    public void BehavioralHealth360() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         dashboardPage.clickOnModa360Menu();
         dashboardPage.clickOnBehavioralHealth360Menu();
