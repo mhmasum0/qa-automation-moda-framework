@@ -5,12 +5,17 @@ import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;
 import com.moda.pages.LoginPage;
-
 import com.moda.utils.AllureReport;
-import io.qameta.allure.*;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 
 public class ValidLoginTC extends Base {
@@ -25,7 +30,7 @@ public class ValidLoginTC extends Base {
     @Story("Authentication with valid login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Valid Credential login")
-    public void _01_ValidLoginTest(){
+    public void ValidLoginTest(){
         appURL = Constants.URL;
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -41,6 +46,11 @@ public class ValidLoginTC extends Base {
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);
         loginPage.submitLogin();
+
+        boolean isTermsAndPoliciesDisplayed = loginPage.waitForTermsAndPolicies();
+        if(isTermsAndPoliciesDisplayed){
+            loginPage.processTestForm(Constants.TEST_EMAIL);
+        }
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         String welcomeMessage = dashboardPage.welcomeMessage();

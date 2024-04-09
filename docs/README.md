@@ -10,6 +10,7 @@ mvn test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/pcp-bh360-elig
 ## SonarQube command
 ```shell
 ./sonar.sh start
+mvn compile
 mvn sonar:sonar
 ```
 

@@ -66,6 +66,11 @@ public class PCP_BH360_EligibilityTestCase extends Base {
         loginPage.inputPassword(password);
         loginPage.submitLogin();
 
+        boolean isTermsAndPoliciesDisplayed = loginPage.waitForTermsAndPolicies();
+        if(isTermsAndPoliciesDisplayed){
+            loginPage.processTestForm(Constants.TEST_EMAIL);
+        }
+
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         String welcomeMessage = dashboardPage.welcomeMessage();
 
