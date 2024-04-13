@@ -25,11 +25,11 @@ public class Base {
 
             switch (browser.toLowerCase()) {
                 case "chrome":
-                    setWDM(WebDriverManager.chromedriver().watch());
+                    setWDM(WebDriverManager.chromedriver().clearDriverCache().watch());
                     driverInstance = wdm.get().create();
                     break;
                 case "edge":
-                    setWDM(WebDriverManager.edgedriver().watch());
+                    setWDM(WebDriverManager.edgedriver().clearDriverCache().watch());
                     driverInstance = wdm.get().create();
                     break;
                 case "firefox":
@@ -54,7 +54,8 @@ public class Base {
 
     @AfterTest(alwaysRun = true)
     public void wrapUp() {
-        if ( driver != null ) {
+        wdm.get().quit(driver.get());
+        if ( driver.get() != null ) {
             driver.get().quit();
         }
     }
