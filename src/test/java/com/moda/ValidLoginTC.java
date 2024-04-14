@@ -17,6 +17,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
+import org.testng.asserts.SoftAssert;
 
 public class ValidLoginTC extends Base {
 
@@ -42,6 +43,13 @@ public class ValidLoginTC extends Base {
 
         AllureReport.step("API content type:" + response.getContentType() );
         Assert.assertEquals(response.getContentType(), "text/plain;charset=UTF-8", "Response type is not text/plain;charset=UTF-8");
+
+
+        Response getAccountResponse = loginPage.getAccountsWithAPI();
+
+        AllureReport.step("Get Accounts with API: " + getAccountResponse.getBody());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(getAccountResponse.body().toString().contains("firstName"));
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);

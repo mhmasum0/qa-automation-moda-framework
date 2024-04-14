@@ -118,6 +118,7 @@ public class PCP_BH360_EligibilityTestCase extends Base {
 
         AllureReport.step("PCP Eligibility API response: " + pcpEligibilityResponse.getBody().asString());
 
+
     }
 
     @DataProvider(name = "dataProviderFromExcel")

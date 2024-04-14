@@ -80,6 +80,12 @@ public class LoginPage extends BasePage {
         return response;
     }
 
+    @Step("Get Accounts with API")
+    public Response getAccountsWithAPI(){
+        String token = ShareData.getAccessToken();
+        return LoginEndPoints.getAccount(token);
+    }
+
     @Step("Wait for terms and policies to load")
     public boolean waitForTermsAndPolicies(){
         return isElementDisplayed(driver, 5, "Wait for terms and policies to load", termsAndPoliciesHeaderXpath);

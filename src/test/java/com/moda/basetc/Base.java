@@ -3,6 +3,8 @@ package com.moda.basetc;
 import java.time.Duration;
 
 import com.moda.core.Constants;
+import com.moda.utils.ClearCache;
+import com.moda.utils.ExtraWaiting;
 import com.moda.utils.LogHelper;
 import org.openqa.selenium.WebDriver;
 
@@ -27,24 +29,29 @@ public class Base {
                 case "chrome":
                     setWDM(WebDriverManager.chromedriver().clearDriverCache().watch());
                     driverInstance = wdm.get().create();
+                    driver.set(driverInstance);
+                    driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                    ClearCache.clearChromeCache(driverInstance);
                     break;
                 case "edge":
-                    setWDM(WebDriverManager.edgedriver().clearDriverCache().watch());
+                    setWDM(WebDriverManager.edgedriver().watch());
                     driverInstance = wdm.get().create();
+                    driver.set(driverInstance);
+                    driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                    ClearCache.clearEdgeCache(driverInstance);
                     break;
                 case "firefox":
                     setWDM(WebDriverManager.firefoxdriver());
                     driverInstance = wdm.get().create();
+                    driver.set(driverInstance);
+                    driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
                     break;
                 default:
                     throw new IllegalArgumentException("Browser \"" + browser + "\" isn't supported.");
             }
 
-            driver.set(driverInstance);
-            driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
-             driverInstance.manage().window().maximize();
-             driverInstance.get(Constants.URL);
+            driverInstance.manage().window().maximize();
+            driverInstance.get(Constants.URL);
 
             LogHelper.getLogger().info("Navigated to the URL with browser: {}", browser);
         } catch (Exception e) {
@@ -54,9 +61,9 @@ public class Base {
 
     @AfterTest(alwaysRun = true)
     public void wrapUp() {
-        wdm.get().quit(driver.get());
-        if ( driver.get() != null ) {
-            driver.get().quit();
+        getWDM().quit(driver.get());
+        if ( getDriver() != null ) {
+            getDriver().quit();
         }
     }
 

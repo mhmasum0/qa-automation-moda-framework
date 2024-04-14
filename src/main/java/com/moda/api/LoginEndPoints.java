@@ -35,5 +35,12 @@ public class LoginEndPoints {
          .when()
          .get(ModaAPI.pcpEligibility);
    }
+
+   public static Response getAccount(String token){
+      return given()
+              .header("Authorization", "Bearer " + token)
+              .when()
+              .get(ModaAPI.getAccount);
+   }
       
 }

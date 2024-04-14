@@ -16,4 +16,6 @@ public class ModaAPI {
     protected static String activeCareReminder = BASE_URL + "/moda360gateway/api/care-reminders?status=active";
 
     protected static String pcpEligibility = BASE_URL + "/moda360gateway/api/pcp/eligibility";
+
+    protected static String getAccount = BASE_URL + "/moda360gateway/api/account";
 }
