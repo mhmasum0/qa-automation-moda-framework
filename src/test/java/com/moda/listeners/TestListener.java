@@ -28,30 +28,30 @@ public class TestListener implements ITestListener {
         String testMethod = result.getMethod().getMethodName();
         LogHelper.getLogger().info("Starting test: " + testMethod);
 
-        waitForPageLoad(Base.getDriver());
-        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
-
-        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
-            videoRecordingFileName = testMethod;
-            deleteIfExists(videoRecordingFileName);
-            Base.getWDM().startRecording(getDriver(), videoRecordingFileName);
-        }
+//        waitForPageLoad(Base.getDriver());
+//        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
+//
+//        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
+//            videoRecordingFileName = testMethod;
+//            deleteIfExists(videoRecordingFileName);
+//            Base.getWDM().startRecording(getDriver(), videoRecordingFileName);
+//        }
 
     }
 
     public void onTestSuccess(ITestResult result) {
-        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
-
-        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
-            Base.getWDM().stopRecording(getDriver());
-            try {
-                saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
-                deleteIfExists(videoRecordingFileName);
-            } catch (InterruptedException | IOException e) {
-                LogHelper.getLogger().error(e.getMessage());
-            }
-        }
+//        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
+//
+//        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
+//            Base.getWDM().stopRecording(getDriver());
+//            try {
+//                saveRecording(videoRecordingFileName);
+//                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
+//                deleteIfExists(videoRecordingFileName);
+//            } catch (InterruptedException | IOException e) {
+//                LogHelper.getLogger().error(e.getMessage());
+//            }
+//        }
     }
 
     public void onTestFailure(ITestResult result){
@@ -63,18 +63,18 @@ public class TestListener implements ITestListener {
         String inputSc =  screenShot.takeScreenshot(result.getMethod().getMethodName());
         AllureReport.attachScreenshot(inputSc,result.getMethod().getMethodName());
 
-        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
-
-        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
-            Base.getWDM().stopRecording(getDriver());
-            try {
-                saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
-                deleteIfExists(videoRecordingFileName);
-            } catch (InterruptedException | IOException e) {
-                LogHelper.getLogger().error(e.getMessage());
-            }
-        }
+//        DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
+//
+//        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
+//            Base.getWDM().stopRecording(getDriver());
+//            try {
+//                saveRecording(videoRecordingFileName);
+//                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
+//                deleteIfExists(videoRecordingFileName);
+//            } catch (InterruptedException | IOException e) {
+//                LogHelper.getLogger().error(e.getMessage());
+//            }
+//        }
     }
 
     private void waitForPageLoad(WebDriver driver) {

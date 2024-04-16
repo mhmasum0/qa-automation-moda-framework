@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PDFReader {
-
-    private PDFReader(){
-        throw new IllegalStateException("This is utility class");
-    }
 
     public static String readPDFContent(String pdfURL) throws IOException {
         URL url = new URL(pdfURL);

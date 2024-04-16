@@ -13,11 +13,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 public class Base {
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected static ThreadLocal<WebDriverManager> wdm = new ThreadLocal<>();
+    public SoftAssert softAssert = new SoftAssert();
 
     @Parameters({"browser"})
     @BeforeTest
@@ -31,14 +33,14 @@ public class Base {
                     driverInstance = wdm.get().create();
                     driver.set(driverInstance);
                     driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                    ClearCache.clearChromeCache(driverInstance);
+//                    ClearCache.clearChromeCache(driverInstance);
                     break;
                 case "edge":
                     setWDM(WebDriverManager.edgedriver().watch());
                     driverInstance = wdm.get().create();
                     driver.set(driverInstance);
                     driverInstance.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                    ClearCache.clearEdgeCache(driverInstance);
+//                    ClearCache.clearEdgeCache(driverInstance);
                     break;
                 case "firefox":
                     setWDM(WebDriverManager.firefoxdriver());

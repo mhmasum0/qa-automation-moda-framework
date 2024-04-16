@@ -44,12 +44,10 @@ public class ValidLoginTC extends Base {
         AllureReport.step("API content type:" + response.getContentType() );
         Assert.assertEquals(response.getContentType(), "text/plain;charset=UTF-8", "Response type is not text/plain;charset=UTF-8");
 
-
         Response getAccountResponse = loginPage.getAccountsWithAPI();
 
-        AllureReport.step("Get Accounts with API: " + getAccountResponse.getBody());
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(getAccountResponse.body().toString().contains("firstName"));
+        AllureReport.step("Get Accounts with API: firstName => " + getAccountResponse.jsonPath().getString("firstName"));
+        softAssert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);
