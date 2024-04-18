@@ -2,11 +2,8 @@ package com.moda.utils;
 
 import java.util.ArrayList;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Tab {
 
     public static void goToNextTab(WebDriver driver, String originalTab){
