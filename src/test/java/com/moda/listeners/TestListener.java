@@ -2,7 +2,6 @@ package com.moda.listeners;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.moda.basetc.Base;
 import com.moda.utils.AllureReport;
@@ -34,7 +33,8 @@ public class TestListener implements ITestListener {
 
     public void onStart(ITestContext context) {
         extent = new ExtentReports();
-        spark = new ExtentSparkReporter("target/extent-report.html");
+        spark = new ExtentSparkReporter("target/extend-report/extend-report.html");
+
         extent.attachReporter(spark);
     }
 
@@ -49,7 +49,7 @@ public class TestListener implements ITestListener {
 //        if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
 //            videoRecordingFileName = testMethod;
 //            deleteIfExists(videoRecordingFileName);
-//            Base.getWDM().startRecording(getDriver(), videoRecordingFileName);
+//            Base.getWDM().startRecording(getDriver(), "hjjk");
 //        }
 
     }
