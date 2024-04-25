@@ -8,7 +8,6 @@ import ru.yandex.qatools.ashot.Screenshot;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -29,8 +28,12 @@ public class ScreenShot {
             Path path = Paths.get(screenshotDirectory, screenshotName);
             File screenshotFile = path.toFile();
 
-            Files.createDirectories(Paths.get(screenshotFile.getParent()));
+            // Ensure the directory exists
+            if (!screenshotFile.getParentFile().exists()) {
+                screenshotFile.getParentFile().mkdirs();
+            }
 
+            // Write the screenshot to file
             ImageIO.write(screenshot.getImage(), "png", screenshotFile);
             return path.toString();
         } catch (IOException e) {

@@ -2,13 +2,11 @@ package com.moda.pages;
 
 import com.moda.pages.base.BasePage;
 import com.moda.utils.Scroll;
-
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import io.qameta.allure.Step;
 
 public class BH360ProgramsPage extends BasePage {
     WebDriver driver;
@@ -22,10 +20,6 @@ public class BH360ProgramsPage extends BasePage {
     @FindBy(xpath = ADDICTION_CARR_SECTION_HEADING_XPATH)
     private WebElement addictionCareSectionHeading;
 
-    private static final String BH360_LATERAL_XPATH = "//div[@class='active']//span";
-    @FindBy(xpath = BH360_LATERAL_XPATH)
-    private WebElement H360Lateral;
-
     private static final String LEARN_MORE_XPATH = "//div[contains(text(),'Learn more and enroll')]";
     @FindBy(xpath = LEARN_MORE_XPATH)
     private WebElement learnMoreLink;
@@ -34,10 +28,6 @@ public class BH360ProgramsPage extends BasePage {
     @FindBy(xpath = HOPE_HEALTH_HEALING_XPATH)
     private WebElement hopeHealthHealing;
 
-    @Step("Check if BH360 lateral is displayed")
-    public boolean isBH360LateralDisplayed(){
-        return isElementDisplayed(driver, 60, "Check if BH360 lateral is displayed", BH360_LATERAL_XPATH);
-    }
 
     @Step("Click on addiction care")
     public void clickAddictionCare() throws InterruptedException {

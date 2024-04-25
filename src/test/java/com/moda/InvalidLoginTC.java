@@ -1,6 +1,6 @@
 package com.moda;
 
-import com.moda.basetc.Base;
+import com.moda.basetc.BaseTest;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.LoginPage;
@@ -8,8 +8,7 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class InvalidLoginTC extends Base {
-    String appURL;
+public class InvalidLoginTC extends BaseTest {
     String userName = Constants.USER;
     String wrongPassword = Constants.WRONG_PASSWORD;
 
@@ -20,9 +19,9 @@ public class InvalidLoginTC extends Base {
     @Severity(SeverityLevel.NORMAL)
     @Description("Invalid Credentials Test")
     public void inValidLoginTest() {
-        appURL = Constants.URL;
-
+        String appURL = Constants.URL;
         getDriver().get(appURL);
+
         LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.inputUserName(userName);
