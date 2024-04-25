@@ -20,6 +20,7 @@
     <rest-assured.version>5.4.0</rest-assured.version>
     <aspectj.version>1.9.20.1</aspectj.version>
     <jacoco.version>0.8.11</jacoco.version>
+
     <extentreports.version>5.1.1</extentreports.version>
 
     <sonarqube.host.url>http://localhost:9090</sonarqube.host.url>
@@ -106,6 +107,11 @@
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>${extentreports.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extend.version}</version>
     </dependency>
   </dependencies>
 
