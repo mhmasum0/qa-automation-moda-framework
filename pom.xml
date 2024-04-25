@@ -20,6 +20,7 @@
     <rest-assured.version>5.4.0</rest-assured.version>
     <aspectj.version>1.9.20.1</aspectj.version>
     <jacoco.version>0.8.11</jacoco.version>
+    <extend.version>5.1.1</extend.version>
 
     <sonarqube.host.url>http://localhost:9090</sonarqube.host.url>
     <sonarqube.projectKey>moda</sonarqube.projectKey>
@@ -106,6 +107,11 @@
       <artifactId>lombok</artifactId>
       <version>1.18.26</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extend.version}</version>
     </dependency>
   </dependencies>
 
