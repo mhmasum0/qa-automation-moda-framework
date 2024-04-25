@@ -29,14 +29,4 @@ Repository link: [https://github.com/eroshenkoam/allure-pdf/releases](https://gi
 allure-pdf allure-results -o report.pdf
 ```
 
-# Delete folder from command line
-```
-rmdir /s .git
-rmdir /s allure-results
-rmdir /s logs
-```
-
-## Resources:
-[Resources.md](/docs/Resources.md)
-
 
