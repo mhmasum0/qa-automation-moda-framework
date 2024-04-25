@@ -8,7 +8,7 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class InvalidLoginTC extends Base {
+public class InvalidLoginTestCase extends Base {
     String userName = Constants.USER;
     String wrongPassword = Constants.WRONG_PASSWORD;
 

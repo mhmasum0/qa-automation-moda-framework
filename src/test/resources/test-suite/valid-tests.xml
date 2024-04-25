@@ -4,16 +4,16 @@
     <parameter name="browser" value="chrome" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
-         <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
         <listener class-name="org.testng.reporters.TestHTMLReporter"/>
         <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
 
     <test verbose="2" name="Full test suite">
         <classes>
-            <class name="com.moda.ValidLoginTC" />
-            <class name="com.moda.Moda360ProgramsTC"/>
-            <class name="com.moda.BehavioralHealth360TC"/>
+            <class name="com.moda.ValidLoginTestCase" />
+            <class name="com.moda.Moda360ProgramsTestCase"/>
+            <class name="com.moda.BehavioralHealth360TestCase"/>
         </classes>
     </test>
 </suite>

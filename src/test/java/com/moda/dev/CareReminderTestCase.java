@@ -17,7 +17,7 @@ import java.util.List;
 
 public class CareReminderTestCase extends Base {
 
-    @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+    @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
     @Epic("Moda Main Web App")
     @Story("Care reminder validation")
     @Severity(SeverityLevel.CRITICAL)

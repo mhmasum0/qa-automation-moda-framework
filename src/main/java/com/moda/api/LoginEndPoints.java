@@ -10,6 +10,9 @@ import io.restassured.response.Response;
 
 public class LoginEndPoints {
 
+   private static final String AUTHORIZATION = "Authorization";
+   private static final String BEARER = "Bearer ";
+
    private LoginEndPoints() {
       throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
    }
@@ -24,21 +27,21 @@ public class LoginEndPoints {
 
    public static Response activeCareReminder(String token) {
       return given()
-         .header("Authorization", "Bearer " + token)
+         .header(AUTHORIZATION, BEARER + token)
          .when()
          .get(ModaAPI.activeCareReminder);
    }
 
    public static Response pcpEligibility(String token) {
       return given()
-         .header("Authorization", "Bearer " + token)
+         .header(AUTHORIZATION, BEARER + token)
          .when()
          .get(ModaAPI.pcpEligibility);
    }
 
    public static Response getAccount(String token){
       return given()
-              .header("Authorization", "Bearer " + token)
+              .header(AUTHORIZATION, BEARER + token)
               .when()
               .get(ModaAPI.getAccount);
    }

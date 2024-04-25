@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@name='loginBtn']")
     private WebElement loginButton;
 
-    private static final String termsAndPoliciesHeaderXpath = "//h1[text()='Terms and policies']";
+    private static final String TERMS_AND_POLICIES_HEADER_XPATH = "//h1[text()='Terms and policies']";
 
     @FindBy(xpath = "//input[@id='commPolicy']")
     private WebElement commPolicyCheckbox;
@@ -88,7 +88,7 @@ public class LoginPage extends BasePage {
 
     @Step("Wait for terms and policies to load")
     public boolean waitForTermsAndPolicies(){
-        return isElementDisplayed(driver, 5, "Wait for terms and policies to load", termsAndPoliciesHeaderXpath);
+        return isElementDisplayed(driver, 5, "Wait for terms and policies to load", TERMS_AND_POLICIES_HEADER_XPATH);
     }
 
     @Step("Process test form")

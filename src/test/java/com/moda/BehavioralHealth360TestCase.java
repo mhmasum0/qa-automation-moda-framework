@@ -10,9 +10,9 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BehavioralHealth360TC extends Base {
+public class BehavioralHealth360TestCase extends Base {
 
-    @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+    @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
     @Epic("Moda Main Web App")
     @Feature("Validate the Behavioral 360 program")
     @Story("Behavioral Health 360 Program validation")

@@ -9,9 +9,9 @@ import com.moda.utils.ExtraWaiting;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CareReminderTC extends Base {
+public class CareReminderTestCase extends Base {
 
-    @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+    @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
     public void careReminderTest() throws InterruptedException {
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());

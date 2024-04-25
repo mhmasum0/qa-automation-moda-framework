@@ -2,9 +2,10 @@
 
 ## Run the test
 ```shell
+mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/all-tests.xml
 mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/valid-tests.xml
-mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/dev-tests.xml
 mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/pcp-bh360-eligibility-tests.xml
+mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/dev-tests.xml
 ```
 
 ## SonarQube command
@@ -28,5 +29,3 @@ Repository link: [https://github.com/eroshenkoam/allure-pdf/releases](https://gi
 ```shell
 allure-pdf allure-results -o report.pdf
 ```
-
-

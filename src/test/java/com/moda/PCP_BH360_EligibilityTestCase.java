@@ -114,16 +114,15 @@ public class PCP_BH360_EligibilityTestCase extends Base {
             Assert.assertTrue(isBH360LateralDisplayed, "BH360 lateral is not displayed");
 
             AllureReport.step("Check BH360 Groups");
-            boolean isBH360Group = Common.arrayContainsElement(ResourceString.BH_360_GROUPS, group);
-            Assert.assertTrue(isBH360Group, Arrays.toString(ResourceString.BH_360_GROUPS) + " in BH360 group should exist: " + group);
+            boolean isBH360Group = Common.arrayContainsElement(ResourceString.getBHGroups(), group);
+            Assert.assertTrue(isBH360Group, Arrays.toString(ResourceString.getBHGroups()) + " in BH360 group should exist: " + group);
         } else {
             AllureReport.step("Check WithoutBH360 Groups");
-            boolean isWithoutBH360Group = Common.arrayContainsElement(ResourceString.WITHOUT_BH_360_GROUPS, group);
-            Assert.assertTrue(isWithoutBH360Group, Arrays.toString(ResourceString.WITHOUT_BH_360_GROUPS) + " in WithoutBH360 group should exist: " + group);
+            boolean isWithoutBH360Group = Common.arrayContainsElement(ResourceString.getWithoutBh360Groups(), group);
+            Assert.assertTrue(isWithoutBH360Group, Arrays.toString(ResourceString.getWithoutBh360Groups()) + " in WithoutBH360 group should exist: " + group);
         }
 
         AllureReport.step("PCP Eligibility API response: " + pcpEligibilityResponse.getBody().asString());
-
 
     }
 

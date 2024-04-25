@@ -24,7 +24,7 @@ public class BH360ProgramsPage extends BasePage {
 
     private static final String BH360_LATERAL_XPATH = "//div[@class='active']//span";
     @FindBy(xpath = BH360_LATERAL_XPATH)
-    private WebElement H360Lateral;
+    private WebElement h360Lateral;
 
     private static final String LEARN_MORE_XPATH = "//div[contains(text(),'Learn more and enroll')]";
     @FindBy(xpath = LEARN_MORE_XPATH)

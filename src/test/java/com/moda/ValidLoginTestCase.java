@@ -17,9 +17,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
-import org.testng.asserts.SoftAssert;
 
-public class ValidLoginTC extends Base {
+public class ValidLoginTestCase extends Base {
 
     String userName = Constants.USER;
     String password = Constants.PASSWORD;
@@ -31,7 +30,7 @@ public class ValidLoginTC extends Base {
     @Story("Authentication with valid login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Valid Credential login")
-    public void ValidLoginTest(){
+    public void validLoginTest(){
         appURL = Constants.URL;
 
         LoginPage loginPage = new LoginPage(getDriver());

@@ -11,9 +11,9 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Moda360ProgramsTC extends Base {
+public class Moda360ProgramsTestCase extends Base {
 
-  @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
+  @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
   @Epic("Moda Main Web App")
   @Feature("Moda 360 program")
   @Story("Moda 360 Program validation")
