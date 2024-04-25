@@ -1,6 +1,6 @@
 package com.moda;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;
 import com.moda.pages.Moda360ProgramsPage;
@@ -11,16 +11,15 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Moda360ProgramsTC extends BaseTest {
-  // uat environment
-  
+public class Moda360ProgramsTC extends Base {
+
   @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
   @Epic("Moda Main Web App")
   @Feature("Moda 360 program")
   @Story("Moda 360 Program validation")
   @Severity(SeverityLevel.CRITICAL)
   @Description("Moda 360 program")
-  public void moda_360_programs_page() throws Exception {
+  public void Moda360ProgramsTest() throws Exception {
     DashboardPage dashboardPage = new DashboardPage(getDriver());
 
     dashboardPage.clickOnModa360Menu();
@@ -38,22 +37,12 @@ public class Moda360ProgramsTC extends BaseTest {
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnPDFLink();
 
-
-//    moda360ProgramsPage.clickOnHealthCoachingProgram();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.checkHealthCoachingProgramHeading();
-//    ExtraWaiting.extraWait(3);
-//
-//    moda360ProgramsPage.clickOnBackModa360Programs();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.clickOnGetExtraBenefits();
-//    ExtraWaiting.extraWait(3);
-//    moda360ProgramsPage.clickOnHealthThroughOraWellness();
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnCancel();
+
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickOnPDFLink();
-//    moda360ProgramsPage.clickOnHealthThroughOraWellness();
+
     ExtraWaiting.extraWait(3);
     moda360ProgramsPage.clickLeavePopup();
 

@@ -5,9 +5,6 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * API
- */
 public class API {
 
   private API() {

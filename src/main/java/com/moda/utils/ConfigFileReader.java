@@ -9,6 +9,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigFileReader {
+
+    private ConfigFileReader(){
+        throw new IllegalStateException("This is utility class");
+    }
+
     public static String getConfigPropertyValue(String propertyName){
 
         String configPath = "";
@@ -19,9 +24,8 @@ public class ConfigFileReader {
             configPath = properties.getProperty(propertyName);
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            LogHelper.getLogger().error("File not found: {}", e.getMessage() );
         } catch (IOException e) {
-            System.out.println("IO exception: " + e.getMessage());
             LogHelper.getLogger().info(e.getMessage());
         }
 

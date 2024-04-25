@@ -1,6 +1,6 @@
 package com.moda.dev;
 
-import com.moda.basetc.BaseTest;
+import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.CareReminderPage;
 import com.moda.pages.DashboardPage;
@@ -15,8 +15,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CareReminderTC extends BaseTest {
-    // dev
+public class CareReminderTestCase extends Base {
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
     @Epic("Moda Main Web App")
@@ -43,7 +42,6 @@ public class CareReminderTC extends BaseTest {
 
         Response responseActiveCareReminder = careReminderPage.activeCareReminderWithAPI();
 
-        // Check the status code
         AllureReport.step("API: Status Code: " + responseActiveCareReminder.getStatusCode());
         Assert.assertEquals(responseActiveCareReminder.getStatusCode(), 200);
         AllureReport.step("API: content type: " + responseActiveCareReminder.getContentType());
@@ -51,7 +49,6 @@ public class CareReminderTC extends BaseTest {
         JsonPath jsonPath = responseActiveCareReminder.jsonPath();
         List<String> titles = jsonPath.getList("title");
 
-        // Assert
         AllureReport.step("API: Reminder count: " + titles.size());
         AllureReport.step("API: available reminder: " + titles.get(0));
         Assert.assertEquals(titles.get(0), ResourceString.getFirstCareReminder());
@@ -59,7 +56,6 @@ public class CareReminderTC extends BaseTest {
 
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnFirstCareReminder();
-//        careReminderPage.clickOnYearlyDentalReminderLink();
         careReminderPage.clickOnSnoozeReminder();
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnOK();
@@ -67,14 +63,13 @@ public class CareReminderTC extends BaseTest {
         String careRemindersPageHeadingAgain = careReminderPage.confirmCareRemindersPage();
         Assert.assertEquals(careRemindersPageHeadingAgain, ResourceString.CARE_REMINDERS);
 
-        // validate that the snoozed care reminder is not in the active care reminder list
         Response responseActiveCareReminderAgain = careReminderPage.activeCareReminderWithAPI();
         JsonPath jsonPathAgain = responseActiveCareReminderAgain.jsonPath();
         List<String> titlesAgain = jsonPathAgain.getList("title");
 
         AllureReport.step("API: Status Code: " + responseActiveCareReminderAgain.getStatusCode());
         AllureReport.step("API: content type: " + responseActiveCareReminderAgain.getContentType());
-        // Assert that title size is 1
+
         AllureReport.step("API: Reminder count: " + titlesAgain.size());
         AllureReport.step("API: reminder should not be available: " + titlesAgain.get(0));
         Assert.assertNotEquals(titlesAgain.get(0), ResourceString.getFirstCareReminder());
@@ -90,7 +85,6 @@ public class CareReminderTC extends BaseTest {
         ExtraWaiting.extraWait(3);
         careReminderPage.clickOnUnsnoozeButton();
 
-        // validate that the unsnoozed care reminder is in the active care reminder list
         Response responseActiveCareReminderUnsnoozed = careReminderPage.activeCareReminderWithAPI();
         JsonPath jsonPathUnsnoozed = responseActiveCareReminderUnsnoozed.jsonPath();
 
@@ -98,7 +92,6 @@ public class CareReminderTC extends BaseTest {
         Assert.assertEquals( responseActiveCareReminderUnsnoozed.getStatusCode(), 200);
         List<String> titlesUnsnoozed = jsonPathUnsnoozed.getList("title");
 
-        // Assert that title size is 2
         AllureReport.step("API: reminder count: " + titlesUnsnoozed.size());
         AllureReport.step("API: available reminder: " + titlesUnsnoozed.get(0));
         Assert.assertEquals(titlesUnsnoozed.get(0), ResourceString.getFirstCareReminder());
