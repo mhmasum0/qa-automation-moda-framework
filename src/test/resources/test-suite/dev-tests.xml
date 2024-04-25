@@ -4,9 +4,9 @@
     <parameter name="browser" value="chrome" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
-<!--        <listener class-name="org.testng.reporters.EmailableReporter2"/>-->
-<!--        <listener class-name="org.testng.reporters.TestHTMLReporter"/>-->
-<!--        <listener class-name="com.moda.listeners.EmailReporter"/>-->
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="org.testng.reporters.TestHTMLReporter"/>
+        <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
     <test verbose="2" name="Full test suite">
         <classes>

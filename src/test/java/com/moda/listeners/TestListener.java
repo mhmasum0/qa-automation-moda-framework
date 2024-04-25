@@ -52,6 +52,7 @@ public class TestListener implements ITestListener {
             Base.getWDM().startRecording(getDriver(), videoRecordingFileName);
         }
 
+
     }
 
     public void onTestSuccess(ITestResult result) {
@@ -69,6 +70,7 @@ public class TestListener implements ITestListener {
                 LogHelper.getLogger().error(e.getMessage());
             }
         }
+
     }
 
     public void onTestFailure(ITestResult result){
@@ -76,10 +78,13 @@ public class TestListener implements ITestListener {
         String errorMessage = result.getThrowable() != null ? result.getThrowable().getMessage() : "Unknown error";
         LogHelper.getLogger().error("Test failed: " + result.getMethod().getMethodName() + " - Error: " + errorMessage);
         String testMethod = result.getMethod().getMethodName();
-        test.fail("Failed: " + testMethod);
+        
         ScreenShot screenShot = new ScreenShot(getDriver());
         String inputSc =  screenShot.takeScreenshot(result.getMethod().getMethodName());
         AllureReport.attachScreenshot(inputSc,result.getMethod().getMethodName());
+      
+      test.addScreenCaptureFromPath(inputSc)
+                .fail( testMethod + " Failed");
 
         DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
 

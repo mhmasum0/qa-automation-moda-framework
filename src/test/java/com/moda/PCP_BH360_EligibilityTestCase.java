@@ -49,10 +49,7 @@ public class PCP_BH360_EligibilityTestCase extends Base {
         userName = userID;
         password = Constants.PASSWORD;
 
-        if ( !getDriver().getCurrentUrl().equals(appURL)){
-            getDriver().get(appURL);
-        }
-
+        getDriver().get(appURL);
         LoginPage loginPage = new LoginPage(getDriver());
 
         Response response = loginPage.loginUserAPI(userName, password);

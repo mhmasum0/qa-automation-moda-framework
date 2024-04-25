@@ -5,9 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
 public class LogHelper {
-    private LogHelper(){
-        throw new IllegalStateException("This is utility class");
-    }
 
     public static Logger getLogger(){
         String callingClassName = Thread.currentThread().getStackTrace()[2].getClassName();

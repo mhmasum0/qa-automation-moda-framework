@@ -19,7 +19,7 @@ public class Moda360ProgramsTC extends Base {
   @Story("Moda 360 Program validation")
   @Severity(SeverityLevel.CRITICAL)
   @Description("Moda 360 program")
-  public void Moda360ProgramsPage() throws Exception {
+  public void Moda360ProgramsTest() throws Exception {
     DashboardPage dashboardPage = new DashboardPage(getDriver());
 
     dashboardPage.clickOnModa360Menu();
