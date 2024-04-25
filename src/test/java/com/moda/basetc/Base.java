@@ -53,7 +53,7 @@ public class Base {
             }
 
             driverInstance.manage().window().maximize();
-            driverInstance.get(Constants.URL);
+//            driverInstance.get(Constants.URL);
 
             LogHelper.getLogger().info("Navigated to the URL with browser: {}", browser);
         } catch (Exception e) {

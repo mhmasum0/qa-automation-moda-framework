@@ -28,5 +28,3 @@ Repository link: [https://github.com/eroshenkoam/allure-pdf/releases](https://gi
 ```shell
 allure-pdf allure-results -o report.pdf
 ```
-
-

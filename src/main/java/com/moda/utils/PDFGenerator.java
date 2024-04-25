@@ -4,8 +4,6 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ISuite;
@@ -16,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PDFGenerator {
 
     public static String generatePdfReport(List<ISuite> suites) {

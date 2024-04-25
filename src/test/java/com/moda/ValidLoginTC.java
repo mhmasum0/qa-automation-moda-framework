@@ -34,6 +34,8 @@ public class ValidLoginTC extends Base {
     public void ValidLoginTest(){
         appURL = Constants.URL;
 
+        getDriver().get(appURL);
+
         LoginPage loginPage = new LoginPage(getDriver());
 
         Response response = loginPage.loginUserAPI(userName, password);

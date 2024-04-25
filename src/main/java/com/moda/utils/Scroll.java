@@ -1,12 +1,10 @@
 package com.moda.utils;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Scroll {
 
     public static void scrollToElement(WebDriver driver, WebElement element) throws InterruptedException {
