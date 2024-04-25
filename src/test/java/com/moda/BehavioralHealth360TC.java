@@ -1,6 +1,6 @@
 package com.moda;
 
-import com.moda.basetc.Base;
+import com.moda.basetc.BaseTest;
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
@@ -10,7 +10,8 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BehavioralHealth360TC extends Base {
+public class BehavioralHealth360TC extends BaseTest {
+    // uat
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTC.ValidLoginTest")
     @Epic("Moda Main Web App")
@@ -18,7 +19,7 @@ public class BehavioralHealth360TC extends Base {
     @Story("Behavioral Health 360 Program validation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Behavioral 360 program Test")
-    public void BehavioralHealth360() throws InterruptedException {
+    public void behavioralHealth360() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(getDriver());
         dashboardPage.clickOnModa360Menu();
         dashboardPage.clickOnBehavioralHealth360Menu();
