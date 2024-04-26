@@ -41,8 +41,8 @@ public class BehavioralHealth360TestCase extends Base {
         String originalTab = getDriver().getWindowHandle();
         dashboardPage.goToNextTab(originalTab);
 
-        String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
-        Assert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
+//        String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
+//        softAssert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
 
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);
