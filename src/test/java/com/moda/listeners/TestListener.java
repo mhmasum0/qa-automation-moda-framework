@@ -23,7 +23,6 @@ import java.nio.file.Files;
 import java.time.Duration;
 
 public class TestListener implements ITestListener {
-    Thread thread;
     ExtentReports extent;
     ExtentSparkReporter spark;
     ExtentTest test;
@@ -47,8 +46,9 @@ public class TestListener implements ITestListener {
         DriverManagerType wdmType = Base.getWDM().getDriverManagerType();
 
         if ( wdmType.toString().equals("EDGE") || wdmType.toString().equals("CHROME") ){
-            thread = Thread.currentThread();
-            videoRecordingFileName = testMethod + "-" + thread.getId();
+//            thread = Thread.currentThread();
+//            videoRecordingFileName = testMethod + "-" + thread.getId();
+            videoRecordingFileName = testMethod;
             LogHelper.getLogger().info(videoRecordingFileName);
             deleteIfExists(videoRecordingFileName);
             Base.getWDM().startRecording(getDriver(), videoRecordingFileName);
@@ -65,7 +65,7 @@ public class TestListener implements ITestListener {
             Base.getWDM().stopRecording(getDriver());
             try {
                 saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm(videoRecordingFileName, getRecFile(videoRecordingFileName).toString());
+                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
                 deleteIfExists(videoRecordingFileName);
             } catch (InterruptedException | IOException e) {
                 LogHelper.getLogger().error(e.getMessage());
@@ -92,7 +92,7 @@ public class TestListener implements ITestListener {
             Base.getWDM().stopRecording(getDriver());
             try {
                 saveRecording(videoRecordingFileName);
-                AllureReport.attachVideoWebm(videoRecordingFileName, getRecFile(videoRecordingFileName).toString());
+                AllureReport.attachVideoWebm(result.getMethod().getMethodName(), getRecFile(videoRecordingFileName).toString());
                 deleteIfExists(videoRecordingFileName);
             } catch (InterruptedException | IOException e) {
                 LogHelper.getLogger().error(e.getMessage());
@@ -131,7 +131,8 @@ public class TestListener implements ITestListener {
     private File getRecFile(String fileName) {
         String REC_EXT = ".webm";
         File targetFolder = new File(System.getProperty("user.home"), "Downloads");
-        return new File(targetFolder, fileName + REC_EXT);
+        File recFile = new File(targetFolder, fileName + REC_EXT);
+        return recFile;
     }
 
 
