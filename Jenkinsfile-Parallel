@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven'
+        jdk 'JDK17'
+    }
+
+    stages {
+
+        stage('Maven Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('All Test'){
+            parallel {
+                stage('Valid Test') {
+                    steps {
+                        sh 'mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/valid-tests.xml'
+                    }
+                }
+                stage('PCP eligibility Test') {
+                    steps {
+                        sh 'mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/pcp-bh360-eligibility-tests.xml'
+                    }
+                }
+            }
+        }
+        stage('Reports') {
+            parallel {
+                stage('TestNG XML Report') {
+                    steps {
+                        testNG()
+                    }
+                }
+                stage('TestNG HTML Report') {
+                    steps {
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/surefire-reports/All Test Suite/', reportFiles: 'Full test suite.html', reportName: 'TestNG HTML report', reportTitles: ''])
+                    }
+                }
+                stage('Extent Report') {
+                    steps {
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent Report', reportTitles: ''])
+                    }
+                }
+                stage('Allure Report') {
+                    steps {
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                    }
+                }
+            }
+        }
+    }
+}
