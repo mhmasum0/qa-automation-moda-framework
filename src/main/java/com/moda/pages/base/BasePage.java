@@ -1,6 +1,7 @@
 package com.moda.pages.base;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.moda.utils.ExplicitWait;
@@ -49,6 +50,22 @@ public class BasePage {
         LogHelper.getLogger().info(log);
         Reporter.log(log);
         return element.getText();
+    }
+
+    protected String getText(WebElement element, String log){
+        LogHelper.getLogger().info(log);
+        Reporter.log(log);
+        return element.getText();
+    }
+
+    protected List<String> getElementListText(List<WebElement> elementList, String log){
+        LogHelper.getLogger().info(log);
+        Reporter.log(log);
+        List<String> elementsText = new ArrayList<>();
+        for (WebElement element: elementList ){
+            elementsText.add(element.getText());
+        }
+        return elementsText;
     }
 
     protected void goToNextTab(WebDriver driver, String originalTab, String log){

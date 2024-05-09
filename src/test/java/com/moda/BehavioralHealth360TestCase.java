@@ -1,18 +1,16 @@
 package com.moda;
 
-import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
 import com.moda.pages.DashboardPage;
 import com.moda.utils.ExtraWaiting;
 
 import io.qameta.allure.*;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BehavioralHealth360TestCase extends Base {
+public class BehavioralHealth360TestCase extends ValidLoginTestCase {
 
-    @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
+    @Test(groups = "behavioralHealth360", dependsOnGroups = "validLogin")
     @Epic("Moda Main Web App")
     @Feature("Validate the Behavioral 360 program")
     @Story("Behavioral Health 360 Program validation")
@@ -41,8 +39,8 @@ public class BehavioralHealth360TestCase extends Base {
         String originalTab = getDriver().getWindowHandle();
         dashboardPage.goToNextTab(originalTab);
 
-//        String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
-//        softAssert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
+        String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
+        softAssert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
 
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);

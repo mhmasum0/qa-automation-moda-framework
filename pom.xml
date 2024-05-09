@@ -22,7 +22,7 @@
     <jacoco.version>0.8.11</jacoco.version>
     <extend.version>5.1.1</extend.version>
 
-    <sonarqube.host.url>http://localhost:9090</sonarqube.host.url>
+    <sonarqube.host.url>http://localhost:9000</sonarqube.host.url>
     <sonarqube.projectKey>moda</sonarqube.projectKey>
   </properties>
 
@@ -30,7 +30,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.19.1</version>
+      <version>4.20.0</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>

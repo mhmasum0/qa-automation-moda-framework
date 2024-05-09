@@ -4,15 +4,17 @@ import com.moda.api.LoginEndPoints;
 import com.moda.core.ResourceString;
 import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
-
-import com.moda.utils.LogHelper;
 import com.moda.utils.Scroll;
-import io.qameta.allure.Step;
-import io.restassured.response.Response;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import io.qameta.allure.Step;
+import io.restassured.response.Response;
+
+import java.util.List;
 
 public class CareReminderPage  extends BasePage {
     WebDriver driver;
@@ -31,9 +33,21 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = ACTIVE_BUTTON_XPATH)
     private WebElement activeButton;
 
-    private static final String FIRST_CARET_REMINDER_LINK_XPATH = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object') and contains(@data-element-label, 'block0clone0block3block2block0')])[2]//span//div";
-    @FindBy(xpath = FIRST_CARET_REMINDER_LINK_XPATH)
+    private static final String FIRST_CARE_REMINDER_LINK_XPATH = "(//vlocity_ins-block[contains(@data-conditions, 'state-condition-object')]//div[ contains(@data-style-id, 'state0element0block_element0block_element0')]//span//div)[1]";
+    @FindBy(xpath = FIRST_CARE_REMINDER_LINK_XPATH)
     private WebElement firstCareReminder;
+
+    private static final String SNOOZED_CARE_REMINDER_TITLE_XPATH = "((//div[@class='slds-col condition-element slds-size_12-of-12'])[2]//span/div)[1]";
+    @FindBy(xpath = SNOOZED_CARE_REMINDER_TITLE_XPATH)
+    private WebElement snoozedCareReminder;
+
+    private static final String ACTIVE_SNOOZED_XPATH = "//div[contains(@class,'btn active')]//div[text()='Snoozed']";
+
+    @FindBy(xpath = "//div[text()='Completed']")
+    private WebElement completedButton;
+
+    @FindBy(xpath = "(//div[@class='slds-col condition-element slds-size_12-of-12'])[2]//vlocity_ins-flex-card-state//div[contains(@class,'sl-text-teal')]")
+    private List<WebElement> completedCareReminder;
 
     @FindBy(xpath = "//span[text()='Cervical Cancer Screening']")
     private WebElement cervicalCancerScreening;
@@ -60,6 +74,19 @@ public class CareReminderPage  extends BasePage {
     @FindBy(xpath = "//button//span[text()='Unsnooze']")
     private WebElement unsnoozeButton;
 
+    private static final String SNOOZED_CARE_REMINDERS_HEADER_XPATH = "//div[text()='Snoozed Care Reminders']";
+
+    @FindBy(xpath = "//lightning-icon/following-sibling::span[text()='Care Reminders']")
+    private WebElement careRemindersBackButton;
+
+    @FindBy(xpath = "//div[text()='Unsnooze Care Reminder']")
+    private WebElement unsnoozeCareReminderButton;
+
+    @Step("Check all the completed care reminder")
+    public List<String> completedCareReminder(){
+        return getElementListText(completedCareReminder,  "All the completed care reminder title");
+    }
+
     @Step("Confirm Care Reminders page")
     public String confirmCareRemindersPage(){
         return waitGettext(driver,careRemindersHeading,30, CARE_REMINDERS_HEADING_XPATH, "Confirm Care Reminders page");
@@ -74,14 +101,64 @@ public class CareReminderPage  extends BasePage {
     @Step("Active Care Reminder with API")
     public Response activeCareReminderWithAPI(){
         String token = ShareData.getAccessToken();
-        Response response = LoginEndPoints.activeCareReminder(token);
-        LogHelper.getLogger().info("Active Care Reminder with API: {}",  response.getBody());
-        return response;
+        return LoginEndPoints.activeCareReminder(token);
+    }
+
+    @Step("Snoozed Care Reminder with API")
+    public Response snoozedCareReminderWithAPI(){
+        String token = ShareData.getAccessToken();
+        return LoginEndPoints.snoozedCareReminder(token);
+    }
+
+    @Step("Snooze Reminder Header")
+    public void snoozeReminderHeader(){
+        isElementDisplayed(driver, 30, "Snooze Reminder Header", SNOOZED_CARE_REMINDERS_HEADER_XPATH);
+    }
+
+    @Step("Click on Care Reminders Back Button")
+    public void clickOnCareRemindersBackButton() throws InterruptedException {
+        Scroll.scrollToElement(driver, careRemindersBackButton);
+        click(careRemindersBackButton, "Click on Care Reminders Back Button");
+    }
+
+    @Step("Completed Care Reminder with API")
+    public Response completedCareReminderWithAPI(){
+        String token = ShareData.getAccessToken();
+        return LoginEndPoints.completedCareReminder(token);
     }
 
     @Step("Check the First Care Reminder")
     public void checkFirstCareReminder(){
-        ResourceString.setFirstCareReminder(waitGettext(driver, firstCareReminder, 30, FIRST_CARET_REMINDER_LINK_XPATH, "Check the First Care Reminder"));
+        ResourceString.setFirstCareReminder(waitGettext(driver, firstCareReminder, 30, FIRST_CARE_REMINDER_LINK_XPATH, "Check the First Care Reminder"));
+    }
+
+    @Step("Check the Active Snoozed")
+    public void checkActiveSnoozed(){
+        isElementDisplayed(driver, 20, "Check the Active Snoozed", ACTIVE_SNOOZED_XPATH);
+    }
+
+    @Step("Check the Snoozed Care Reminder")
+    public void checkSnoozedCareReminder(){
+        String snoozedCareReminderr = waitGettext(driver, snoozedCareReminder, 30, SNOOZED_CARE_REMINDER_TITLE_XPATH, "Check the Snoozed Care Reminder");
+        ResourceString.setSnoozedCareReminder(snoozedCareReminderr);
+    }
+
+    @Step("Click on the Snoozed Care Reminder")
+    public void clickOnSnoozedCareReminder() throws InterruptedException {
+        Scroll.scrollToElement(driver, snoozedCareReminder);
+        click(snoozedCareReminder, "Click on the Snoozed Care Reminder");
+    }
+
+    @Step("Click on UnSnoozed button")
+    public void clickOnUnSnoozedCareReminderButton() throws InterruptedException {
+        Scroll.scrollToElement(driver, unsnoozeCareReminderButton);
+        click(unsnoozeCareReminderButton, "Click on UnSnoozed button");
+    }
+
+    @Step("Click on Completed button")
+    public void clickOnCompletedButton() throws InterruptedException {
+        Scroll.scrollToElement(driver, completedButton);
+        click(completedButton, "Click on Snoozed button");
     }
 
     @Step("Click on First Care Reminder")

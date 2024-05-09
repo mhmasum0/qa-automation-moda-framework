@@ -9,13 +9,22 @@
         <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
 
-    <test verbose="2" name="Full test suite">
+    <test name="All the test">
         <classes>
-            <class name="com.moda.ValidLoginTestCase" />
-            <class name="com.moda.Moda360ProgramsTestCase"/>
-            <class name="com.moda.BehavioralHealth360TestCase"/>
-            <class name="com.moda.PCP_BH360_EligibilityTestCase"/>
-            <class name="com.moda.CareReminderTestCase"/>
+            <class name="com.moda.Moda360ProgramsTestCase">
+                <methods>
+                    <include name="validLoginTest"/>
+                    <include name="Moda360ProgramsPage"/>
+                </methods>
+            </class>
+            <class name="com.moda.BehavioralHealth360TestCase">
+                <methods>
+                    <exclude name="validLoginTest"/>
+                    <include name="BehavioralHealth360"/>
+                </methods>
+            </class>
+            <class name="com.moda.VerifyBH360UserTestCase"/>
+            <class name="com.moda.PCPBH360EligibilityTestCase"/>
         </classes>
     </test>
 </suite>

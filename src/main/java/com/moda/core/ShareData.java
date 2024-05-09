@@ -6,14 +6,14 @@ public class ShareData {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
-    private static String accessToken;
+    protected static ThreadLocal<String> accessToken = new ThreadLocal<>();
 
     public static void setAccessToken(String value){
-        accessToken = value;
+        accessToken.set(value);
     }
 
     public static String getAccessToken(){
-        return accessToken;
+        return accessToken.get();
     }
 
 

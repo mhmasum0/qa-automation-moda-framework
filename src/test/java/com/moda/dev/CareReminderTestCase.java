@@ -1,5 +1,6 @@
 package com.moda.dev;
 
+import com.moda.ValidLoginTestCase;
 import com.moda.basetc.Base;
 import com.moda.core.ResourceString;
 import com.moda.pages.CareReminderPage;
@@ -15,7 +16,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CareReminderTestCase extends Base {
+public class CareReminderTestCase extends ValidLoginTestCase {
 
     @Test(dependsOnMethods = "com.moda.ValidLoginTestCase.validLoginTest")
     @Epic("Moda Main Web App")

@@ -16,7 +16,7 @@ public class EmailReporter implements IReporter {
 
         File htmlReport = new File(outputDirectory, "emailable-report.html");
 
-        String reportFile = Paths.get(System.getProperty("user.dir"),"target", "extend-report", "extend-report.html").toString();
+        String reportFile = Paths.get(System.getProperty("user.dir"),"target", "extent-report", "extent-report.html").toString();
         File extentReport = new File(reportFile);
 
         EmailSender.sendEmailHTMLFile(htmlReport, true);

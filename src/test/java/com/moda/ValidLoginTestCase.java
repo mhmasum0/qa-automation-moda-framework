@@ -24,7 +24,7 @@ public class ValidLoginTestCase extends Base {
     String password = Constants.PASSWORD;
     String appURL;
 
-    @Test
+    @Test(groups = "validLogin")
     @Epic("Moda Main Web App")
     @Feature("Authentication")
     @Story("Authentication with valid login")

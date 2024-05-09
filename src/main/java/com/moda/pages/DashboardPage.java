@@ -4,10 +4,7 @@ package com.moda.pages;
 import com.moda.api.LoginEndPoints;
 import com.moda.core.ShareData;
 import com.moda.pages.base.BasePage;
-import com.moda.utils.API;
-import com.moda.utils.ConfigFileReader;
-import com.moda.utils.ExplicitWait;
-import com.moda.utils.LogHelper;
+import com.moda.utils.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -35,6 +32,9 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//button//span[text()='Moda 360']")
     private WebElement moda360Menu;
 
+    @FindBy(xpath = "//span[text()='BH360']")
+    private WebElement bh360MainMenu;
+
     @FindBy(xpath = "//button//span[text()='Find care']")
     private WebElement findCareMenu;
 
@@ -49,6 +49,15 @@ public class DashboardPage extends BasePage {
 
     @FindBy(xpath = "//span[text()='PCP 360']")
     private WebElement pcp360Menu;
+
+    @FindBy(xpath = "(//div//strong)[2]")
+    private WebElement memberName;
+
+    @FindBy(xpath = "(//label[text()='Group name'])[1]/parent::div/parent::div//span")
+    private WebElement groupName;
+
+    private static final String BH360_GROUP_ICON_XPATH = "(//div[contains(@class,'slds-size_small')]//img[contains(@src,'BH360Group.svg')])[2]";
+    private static final String BH360_TITLE_XPATH = "(//div[text()='Behavioral Health 360'])[2]";
 
     @FindBy(xpath = "//li//span[text()='Care Reminders' and @title='Care Reminders']")
     private WebElement careRemindersMenu;
@@ -77,6 +86,16 @@ public class DashboardPage extends BasePage {
     @Step("Click on Moda 360 Programs from menu")
     public void clickModa360ProgramMenu(){
         click(moda360ProgramsMenu,"Clicked on 360 programs menu");
+    }
+
+    @Step("Click on Moda 360 Programs from menu")
+    public void clickBH360Menu(){
+        click(bh360MainMenu,"Clicked on BH360 menu");
+    }
+
+    @Step("Check if BH360 title is displayed")
+    public boolean isBH360TitleDisplayed() {
+        return isElementDisplayed(driver, 10, "BH360 title is displayed", BH360_TITLE_XPATH);
     }
 
     @Step("Click on Behavioral Health 360 menu")
@@ -118,6 +137,26 @@ public class DashboardPage extends BasePage {
     public Response pcpEligibilityWithAPI(){
         String token = ShareData.getAccessToken();
         return LoginEndPoints.pcpEligibility(token);
+    }
+
+    @Step("Member Name")
+    public String getMemberName(){
+        return getText(memberName, "Member Name");
+    }
+
+    @Step("Group Name")
+    public String getGroupName(){
+        return getText(groupName, "Group Name");
+    }
+
+    // Check if BH360 group icon is displayed
+    @Step("Check if BH360 group icon is displayed")
+    public boolean isBH360GroupIconDisplayed() throws InterruptedException {
+        boolean isDisplayed = isElementDisplayed(driver, 10, "BH360 Group Icon is displayed", BH360_GROUP_ICON_XPATH);
+        if (isDisplayed){
+            Scroll.scrollToElement(driver, driver.findElement(By.xpath(BH360_GROUP_ICON_XPATH)));
+        }
+        return isDisplayed;
     }
 
 }

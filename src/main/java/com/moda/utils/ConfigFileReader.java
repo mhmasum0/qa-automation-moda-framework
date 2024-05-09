@@ -23,8 +23,6 @@ public class ConfigFileReader {
             properties.load(inputStream);
             configPath = properties.getProperty(propertyName);
 
-        } catch (FileNotFoundException e) {
-            LogHelper.getLogger().error("File not found: {}", e.getMessage() );
         } catch (IOException e) {
             LogHelper.getLogger().info(e.getMessage());
         }

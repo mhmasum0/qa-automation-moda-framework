@@ -14,6 +14,8 @@ public class ModaAPI {
     protected static String postLoginUrl = BASE_URL +"/moda360gateway/api/token/authentication";
 
     protected static String activeCareReminder = BASE_URL + "/moda360gateway/api/care-reminders?status=active";
+    protected static String snoozedCareReminder = BASE_URL + "/moda360gateway/api/care-reminders?status=dismissed";
+    protected static String completedCareReminder = BASE_URL + "/moda360gateway/api/care-reminders?status=accomplished";
 
     protected static String pcpEligibility = BASE_URL + "/moda360gateway/api/pcp/eligibility";
 

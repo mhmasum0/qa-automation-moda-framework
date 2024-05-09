@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Valid Test Suite">
+<suite name="Care Reminder Test Suite">
     <parameter name="browser" value="chrome" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
@@ -8,19 +8,12 @@
         <listener class-name="org.testng.reporters.TestHTMLReporter"/>
         <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
-
-    <test verbose="2" name="Moda360 and BH360 Programs Test">
+    <test verbose="2" name="Care Reminder Test suite">
         <classes>
-            <class name="com.moda.Moda360ProgramsTestCase">
+            <class name="com.moda.CareReminderTestCase" >
                 <methods>
                     <include name="validLoginTest"/>
-                    <include name="Moda360ProgramsPage"/>
-                </methods>
-            </class>
-            <class name="com.moda.BehavioralHealth360TestCase">
-                <methods>
-                    <exclude name="validLoginTest"/>
-                    <include name="BehavioralHealth360"/>
+                    <include name="careReminderTest"/>
                 </methods>
             </class>
         </classes>

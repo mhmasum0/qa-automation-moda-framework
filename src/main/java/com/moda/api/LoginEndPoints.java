@@ -32,6 +32,20 @@ public class LoginEndPoints {
          .get(ModaAPI.activeCareReminder);
    }
 
+   public static Response snoozedCareReminder(String token) {
+      return given()
+              .header(AUTHORIZATION, BEARER + token)
+              .when()
+              .get(ModaAPI.snoozedCareReminder);
+   }
+
+   public static Response completedCareReminder(String token) {
+      return given()
+              .header(AUTHORIZATION, BEARER + token)
+              .when()
+              .get(ModaAPI.completedCareReminder);
+   }
+
    public static Response pcpEligibility(String token) {
       return given()
          .header(AUTHORIZATION, BEARER + token)

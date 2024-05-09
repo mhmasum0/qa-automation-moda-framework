@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="Verify BH360 test suite">
     <parameter name="browser" value="chrome" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
@@ -9,9 +9,9 @@
         <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
 
-    <test verbose="2" name="PCP BH360 Eligibility Test">
+    <test name="Verify BH360 User Test">
         <classes>
-            <class name="com.moda.PCPBH360EligibilityTestCase"/>
+            <class name="com.moda.VerifyBH360UserTestCase"/>
         </classes>
     </test>
 </suite>
