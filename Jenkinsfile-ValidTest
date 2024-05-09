@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven'
+        jdk 'JDK17'
+    }
+
+    stages {
+        stage('Maven Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('Valid Test') {
+            steps {
+                sh 'mvn clean test -Prun-tests -DsuiteXmlFile=src/test/resources/test-suite/valid-tests.xml'
+            }
+        }
+        stage('Reports') {
+            parallel {
+                stage('TestNG XML Report') {
+                    steps {
+                        testNG()
+                    }
+                }
+                stage('Extent Report') {
+                    steps {
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent Report', reportTitles: ''])
+                    }
+                }
+                stage('Allure Report') {
+                    steps {
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                    }
+                }
+            }
+        }
+    }
+}
