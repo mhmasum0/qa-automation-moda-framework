@@ -36,8 +36,9 @@ pipeline {
                 }
                 stage('Script Console') {
                     steps {
-                        script {
-                            System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")
+                        script
+                        {
+                            System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts; default-src 'self'; img-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline';")
                         }
                     }
                 }
