@@ -1,10 +1,8 @@
-package com.moda.basetc;
+package com.moda.testcase.basetc;
 
 import java.time.Duration;
 
 import com.moda.core.Constants;
-import com.moda.utils.ClearCache;
-import com.moda.utils.ExtraWaiting;
 import com.moda.utils.LogHelper;
 import org.openqa.selenium.WebDriver;
 
@@ -19,7 +17,6 @@ public class Base {
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected static ThreadLocal<WebDriverManager> wdm = new ThreadLocal<>();
-    public SoftAssert softAssert = new SoftAssert();
 
     @Parameters({"browser"})
     @BeforeTest

@@ -1,4 +1,4 @@
-package com.moda;
+package com.moda.testcase;
 
 import java.util.List;
 

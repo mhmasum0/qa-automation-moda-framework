@@ -1,9 +1,9 @@
-package com.moda;
+package com.moda.testcase;
 
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import com.moda.basetc.Base;
+import com.moda.testcase.basetc.Base;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
@@ -59,7 +59,7 @@ public class PCPBH360EligibilityTestCase extends Base {
         Response getAccountResponse = loginPage.getAccountsWithAPI();
 
         AllureReport.step("Get Accounts with API: firstName => " + getAccountResponse.jsonPath().getString("firstName"));
-        softAssert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
+        Assert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);

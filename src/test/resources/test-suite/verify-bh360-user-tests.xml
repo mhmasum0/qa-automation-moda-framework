@@ -11,7 +11,7 @@
 
     <test name="Verify BH360 User Test">
         <classes>
-            <class name="com.moda.VerifyBH360UserTestCase"/>
+            <class name="com.moda.testcase.VerifyBH360UserTestCase"/>
         </classes>
     </test>
 </suite>

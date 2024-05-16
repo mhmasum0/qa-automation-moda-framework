@@ -1,4 +1,4 @@
-package com.moda;
+package com.moda.testcase;
 
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
@@ -6,6 +6,7 @@ import com.moda.pages.DashboardPage;
 import com.moda.utils.ExtraWaiting;
 
 import io.qameta.allure.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BehavioralHealth360TestCase extends ValidLoginTestCase {
@@ -40,7 +41,7 @@ public class BehavioralHealth360TestCase extends ValidLoginTestCase {
         dashboardPage.goToNextTab(originalTab);
 
         String hopeHealthHealing = bh360ProgramsPage.getMainHeading();
-        softAssert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
+        Assert.assertEquals(hopeHealthHealing, ResourceString.HAZELDEN_BETTY_FORD);
 
         dashboardPage.closeTab();
         dashboardPage.backToOriginalTab(originalTab);

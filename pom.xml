@@ -127,7 +127,7 @@
           <version>3.2.5</version>
           <configuration>
             <includes>
-              <include>com.moda.ValidLoginTestCase</include>
+              <include>com.moda.testcase.ValidLoginTestCase</include>
             </includes>
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

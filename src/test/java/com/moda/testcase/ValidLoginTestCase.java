@@ -1,6 +1,6 @@
-package com.moda;
+package com.moda.testcase;
 
-import com.moda.basetc.Base;
+import com.moda.testcase.basetc.Base;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;
@@ -8,6 +8,8 @@ import com.moda.pages.LoginPage;
 import com.moda.utils.AllureReport;
 
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
@@ -20,18 +22,21 @@ import io.restassured.response.Response;
 
 public class ValidLoginTestCase extends Base {
 
-    String userName = Constants.USER;
-    String password = Constants.PASSWORD;
-    String appURL;
-
     @Test(groups = "validLogin")
     @Epic("Moda Main Web App")
     @Feature("Authentication")
     @Story("Authentication with valid login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Valid Credential login")
-    public void validLoginTest(){
-        appURL = Constants.URL;
+    @Parameters({"IsCareReminder"})
+    public void validLoginTest(@Optional("false") String IsCareReminder){
+        String password = Constants.PASSWORD;
+        String userName = IsCareReminder.equals("true") ? Constants.CARE_REMINDER_USER : Constants.USER;
+
+        String appURL = Constants.URL;
+        if ( !getDriver().getCurrentUrl().equals(appURL)){
+            getDriver().get(appURL);
+        }
 
         LoginPage loginPage = new LoginPage(getDriver());
 
@@ -46,7 +51,7 @@ public class ValidLoginTestCase extends Base {
         Response getAccountResponse = loginPage.getAccountsWithAPI();
 
         AllureReport.step("Get Accounts with API: firstName => " + getAccountResponse.jsonPath().getString("firstName"));
-        softAssert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
+        Assert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);

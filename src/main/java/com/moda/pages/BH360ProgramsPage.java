@@ -34,7 +34,7 @@ public class BH360ProgramsPage extends BasePage {
     @FindBy(xpath = LEARN_MORE_XPATH)
     private WebElement learnMoreLink;
 
-    private static final String HOPE_HEALTH_HEALING_XPATH = "//h1[text()='Hope. Health. Healing.']";
+    private static final String HOPE_HEALTH_HEALING_XPATH = "//p[text()='Hope. Health. Healing.']";
     @FindBy(xpath = HOPE_HEALTH_HEALING_XPATH)
     private WebElement hopeHealthHealing;
 
@@ -44,7 +44,8 @@ public class BH360ProgramsPage extends BasePage {
     private static final String PROGRAM_TITLE_XPATH = "//div[contains(@class,'sl-h3')]//span//div";
     private static final String LEARN_MORE_BUTTON_XPATH = "//div[contains(@class,'learn-btn')]";
 
-    @FindBy(xpath = "//lightning-icon/following-sibling::span[text()='Behavioral Health 360 Services']")
+    private static final String BHPROGRAM_BACK_BUTTON_XPATH = "//lightning-icon/following-sibling::span[text()='Behavioral Health 360 Services']";
+    @FindBy(xpath = BHPROGRAM_BACK_BUTTON_XPATH)
     private WebElement bhprogramBackButton;
 
     @Step("Check if BH360 lateral is displayed")
@@ -87,7 +88,7 @@ public class BH360ProgramsPage extends BasePage {
                 ExtraWaiting.extraWait(2);
             }
 
-            bhprogramBackButton.click();
+            waitClick(driver, bhprogramBackButton, 60, "Click on back button", BHPROGRAM_BACK_BUTTON_XPATH);
             this.isBH360LateralDisplayed();
         }
     }

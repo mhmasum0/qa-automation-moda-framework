@@ -1,6 +1,6 @@
-package com.moda;
+package com.moda.testcase;
 
-import com.moda.basetc.Base;
+import com.moda.testcase.basetc.Base;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.LoginPage;

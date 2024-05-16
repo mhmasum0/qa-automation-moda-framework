@@ -14,6 +14,7 @@ public class Constants {
     public static final String CONFIG_PATH = Paths.get(System.getProperty("user.dir"), "src", "test", "resources", "config.properties").toString();
     public static final String URL = ConfigFileReader.getConfigPropertyValue("url");
     public static final String USER = ConfigFileReader.getConfigPropertyValue("username");
+    public static final String CARE_REMINDER_USER = ConfigFileReader.getConfigPropertyValue("care_reminder_username");
     public static final String PASSWORD = ConfigFileReader.getConfigPropertyValue("password");
     public static final String WRONG_PASSWORD = ConfigFileReader.getConfigPropertyValue("wrong_password");
     public static final String TEST_EMAIL = ConfigFileReader.getConfigPropertyValue("testEmail");

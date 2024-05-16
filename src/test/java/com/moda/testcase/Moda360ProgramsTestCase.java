@@ -1,4 +1,4 @@
-package com.moda;
+package com.moda.testcase;
 
 import com.moda.core.ResourceString;
 import com.moda.pages.DashboardPage;

@@ -1,10 +1,10 @@
-package com.moda;
+package com.moda.testcase;
 
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-import com.moda.basetc.Base;
+import com.moda.testcase.basetc.Base;
 import com.moda.core.Constants;
 import com.moda.core.ResourceString;
 import com.moda.pages.BH360ProgramsPage;
@@ -55,7 +55,7 @@ public class VerifyBH360UserTestCase extends Base {
         Response getAccountResponse = loginPage.getAccountsWithAPI();
 
         AllureReport.step("Get Accounts with API: firstName => " + getAccountResponse.jsonPath().getString("members[0].firstName"));
-        softAssert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
+        Assert.assertTrue(getAccountResponse.getBody().print().contains("firstName"));
 
         loginPage.inputUserName(userName);
         loginPage.inputPassword(password);
@@ -75,20 +75,20 @@ public class VerifyBH360UserTestCase extends Base {
 
         String firstName = jsonPath.getString("members[0].firstName");
         String lastName = jsonPath.getString("members[0].lastName");
-        String fullNameFromAPI = firstName + lastName;
+        String fullNameFromAPI = firstName + " " + lastName;
         String memberName = dashboardPage.getMemberName();
-        softAssert.assertEquals(fullNameFromAPI, memberName);
+        Assert.assertEquals(fullNameFromAPI, memberName);
 
         String groupNameFromAPI = jsonPath.getString("groupName");
         String groupName = dashboardPage.getGroupName();
         Allure.parameter("groupName", groupName);
-        softAssert.assertEquals(groupNameFromAPI, groupName);
+        Assert.assertEquals(groupNameFromAPI, groupName);
 
         boolean isBH360GroupIconDisplayed = dashboardPage.isBH360GroupIconDisplayed();
-        softAssert.assertTrue(isBH360GroupIconDisplayed);
+        Assert.assertTrue(isBH360GroupIconDisplayed);
 
         boolean isBH360TitleDisplayed = dashboardPage.isBH360TitleDisplayed();
-        softAssert.assertTrue(isBH360TitleDisplayed);
+        Assert.assertTrue(isBH360TitleDisplayed);
 
         dashboardPage.clickBH360Menu();
         dashboardPage.clickOnBehavioralHealth360Menu();
@@ -101,7 +101,7 @@ public class VerifyBH360UserTestCase extends Base {
         List<String> programListFromResource = Arrays.asList(ResourceString.getBH360ProgramList());
 
         AllureReport.step("Check Program list: " + programList);
-        softAssert.assertEquals(programList, programListFromResource);
+        Assert.assertEquals(programList, programListFromResource);
 
         if (isBH360Programs.equals("Y")){
             bh360ProgramsPage.clickProgramList();

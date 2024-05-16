@@ -7,7 +7,7 @@
 <!--    </listeners>-->
     <test name="Moda Test">
         <classes>
-            <class name="com.moda.Moda360ProgramsTestCase">
+            <class name="com.moda.testcase.Moda360ProgramsTestCase">
 <!--                <methods>-->
 <!--                    <include name="validLoginTest"/>-->
 <!--                    <include name="Moda360ProgramsPage"/>-->
@@ -17,7 +17,7 @@
     </test>
     <test name="BH360 Test">
         <classes>
-            <class name="com.moda.BehavioralHealth360TestCase"/>
+            <class name="com.moda.testcase.BehavioralHealth360TestCase"/>
 <!--                <methods>-->
 <!--                    <include name="validLoginTest"/>-->
 <!--                    <include name="BehavioralHealth360"/>-->
@@ -27,7 +27,7 @@
     </test>
     <test name="PCP BH360 Eligibility Test">
         <classes>
-            <class name="com.moda.PCPBH360EligibilityTestCase"/>
+            <class name="com.moda.testcase.PCPBH360EligibilityTestCase"/>
         </classes>
     </test>
 </suite>

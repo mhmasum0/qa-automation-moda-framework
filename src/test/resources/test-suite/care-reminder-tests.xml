@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Care Reminder Test Suite">
     <parameter name="browser" value="chrome" />
+    <parameter name="IsCareReminder" value="true" />
     <listeners>
         <listener class-name="com.moda.listeners.TestListener"/>
         <listener class-name="org.testng.reporters.EmailableReporter2"/>
@@ -10,7 +11,7 @@
     </listeners>
     <test verbose="2" name="Care Reminder Test suite">
         <classes>
-            <class name="com.moda.CareReminderTestCase" >
+            <class name="com.moda.testcase.CareReminderTestCase" >
                 <methods>
                     <include name="validLoginTest"/>
                     <include name="careReminderTest"/>
