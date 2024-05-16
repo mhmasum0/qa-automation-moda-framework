@@ -34,13 +34,6 @@ pipeline {
                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                     }
                 }
-                stage('Script Console') {
-                    steps {
-                        script {
-                            System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts; default-src 'self'; img-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline';")
-                        }
-                    }
-                }
             }
         }
     }
