@@ -25,7 +25,7 @@ pipeline {
                 }
                 stage('Extent Report') {
                     steps {
-                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent Report', reportTitles: ''])
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent-Report', reportTitles: ''])
                     }
                 }
                 stage('Allure Report') {

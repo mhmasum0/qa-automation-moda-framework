@@ -25,12 +25,19 @@ pipeline {
                 }
                 stage('Extent Report') {
                     steps {
-                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent Report', reportTitles: ''])
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, escapeUnderscores: false, keepAll: true, reportDir: 'target/extent-report', reportFiles: 'extent-report.html', reportName: 'Extent-Report', reportTitles: ''])
                     }
                 }
                 stage('Allure Report') {
                     steps {
                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                    }
+                }
+                stage('Script Console') {
+                    steps {
+                        script {
+                            System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")
+                        }
                     }
                 }
             }
