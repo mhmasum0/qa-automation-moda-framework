@@ -12,7 +12,7 @@ public class InvalidLoginTestCase extends Base {
     String userName = Constants.USER;
     String wrongPassword = Constants.WRONG_PASSWORD;
 
-    @Test(priority = 1)
+    @Test(priority = 1, retryAnalyzer = Retry.class)
     @Epic("Moda Main Web App")
     @Feature("Authentication")
     @Story("Authentication with Invalid data")

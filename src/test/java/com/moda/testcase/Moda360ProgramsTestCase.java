@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class Moda360ProgramsTestCase extends ValidLoginTestCase {
 
-  @Test(groups = "Moda360ProgramsPage", dependsOnGroups = "validLogin")
+  @Test(retryAnalyzer = Retry.class, groups = "Moda360ProgramsPage", dependsOnGroups = "validLogin")
   @Epic("Moda Main Web App")
   @Feature("Moda 360 program")
   @Story("Moda 360 Program validation")

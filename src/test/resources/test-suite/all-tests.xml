@@ -9,7 +9,7 @@
         <listener class-name="com.moda.listeners.EmailReporter"/>
     </listeners>
 
-    <test name="All the test" preserve-order="true">
+    <test name="All the test">
         <classes>
             <class name="com.moda.testcase.Moda360ProgramsTestCase">
                 <methods>

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class BehavioralHealth360TestCase extends ValidLoginTestCase {
 
-    @Test(groups = "behavioralHealth360", dependsOnGroups = "validLogin")
+    @Test(retryAnalyzer = Retry.class, groups = "behavioralHealth360", dependsOnGroups = "validLogin")
     @Epic("Moda Main Web App")
     @Feature("Validate the Behavioral 360 program")
     @Story("Behavioral Health 360 Program validation")

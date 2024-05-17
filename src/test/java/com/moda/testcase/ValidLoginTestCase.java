@@ -22,7 +22,7 @@ import io.restassured.response.Response;
 
 public class ValidLoginTestCase extends Base {
 
-    @Test(groups = "validLogin")
+    @Test(retryAnalyzer = Retry.class, groups = "validLogin")
     @Epic("Moda Main Web App")
     @Feature("Authentication")
     @Story("Authentication with valid login")

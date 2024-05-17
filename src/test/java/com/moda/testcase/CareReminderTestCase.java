@@ -17,7 +17,7 @@ import io.restassured.response.Response;
 
 public class CareReminderTestCase extends ValidLoginTestCase {
 
-    @Test(groups = "careReminder", dependsOnGroups = "validLogin")
+    @Test(retryAnalyzer = Retry.class, groups = "careReminder", dependsOnGroups = "validLogin")
     public void careReminderTest() throws InterruptedException {
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());

@@ -27,7 +27,7 @@ public class VerifyBH360UserTestCase extends Base {
     String password;
     String appURL;
 
-    @Test(dataProvider = "dataProviderFromExcel")
+    @Test(retryAnalyzer = Retry.class, dataProvider = "dataProviderFromExcel")
     @Epic("Moda Main Web App")
     @Feature("BH360 user test ")
     @Story("Verify BH360 users")

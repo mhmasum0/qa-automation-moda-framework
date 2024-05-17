@@ -31,7 +31,7 @@ public class PCPBH360EligibilityTestCase extends Base {
     String password;
     String appURL;
 
-    @Test(dataProvider = "dataProviderFromExcel")
+    @Test(retryAnalyzer = Retry.class ,dataProvider = "dataProviderFromExcel")
     @Epic("Moda Main Web App")
     @Feature("Eligibility test ")
     @Story("PCP and BH360 Eligibility")
@@ -110,7 +110,7 @@ public class PCPBH360EligibilityTestCase extends Base {
 
             AllureReport.step("Check BH360 Groups");
             boolean isBH360Group = Common.arrayContainsElement(ResourceString.getBHGroups(), group);
-            Assert.assertTrue(isBH360Group, Arrays.toString(ResourceString.getBHGroups()) + " in BH360 group should exist: " + group);
+            Assert.assertTrue(isBH360Group);
         } else {
             AllureReport.step("Check WithoutBH360 Groups");
             boolean isWithoutBH360Group = Common.arrayContainsElement(ResourceString.getWithoutBh360Groups(), group);

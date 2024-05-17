@@ -1,8 +1,10 @@
 package com.moda.utils;
 
 import java.util.List;
+import java.util.Random;
 
 public class Common {
+    private static final Random RANDOM = new Random();
 
     private Common(){
         throw new IllegalStateException("Utility class");
@@ -38,5 +40,13 @@ public class Common {
         }
 
         return true;
+    }
+
+    public static int getRandomInteger(int min, int max) {
+
+        if (min > max) {
+            throw new IllegalArgumentException("min cannot be greater than max");
+        }
+        return RANDOM.nextInt((max - min) + 1) + min;
     }
 }
